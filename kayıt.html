@@ -1,0 +1,18 @@
+<h2>Kayıt</h2>
+<input id="name" placeholder="İsminizi yazın">
+<button id="saveBtn">Devam Et</button>
+
+<script>
+const saveBtn = document.getElementById("saveBtn");
+
+saveBtn.onclick = () => {
+  const name = document.getElementById("name").value.trim();
+  if(!name) return alert("İsim girin");
+
+  // İsmi localStorage'a kaydet
+  localStorage.setItem("currentName", name);
+
+  // index.html'e yönlendir
+  window.location.href = "index.html";
+};
+</script>
