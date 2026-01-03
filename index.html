@@ -14,6 +14,56 @@
         width="1890px"
         height=""
          alt="">
+        <h1>Katılım</h1>
+<p>Katılan kişi sayısı: <span id="count">0</span> / 100</p>
+
+<button id="joinBtn">Katıl</button>
+
+<script>
+const MAX = 100;
+
+let count = Number(localStorage.getItem("count")) || 0;
+let joined = localStorage.getItem("joined");
+
+const countEl = document.getElementById("count");
+const joinBtn = document.getElementById("joinBtn");
+
+countEl.innerText = count;
+
+if (joined === "true") {
+  joinBtn.disabled = true;
+  joinBtn.innerText = "Zaten Katıldın";
+}
+
+joinBtn.onclick = () => {
+  if (joined === "true") return;
+  if (count >= MAX) {
+    alert("Katılım doldu");
+    return;
+  }
+
+  count++;
+  localStorage.setItem("count", count);
+  localStorage.setItem("joined", "true");
+
+  countEl.innerText = count;
+  joinBtn.disabled = true;
+  joinBtn.innerText = "Zaten Katıldın";
+};
+
+// 🔐 F8 → Şifre → Admin sayfası
+document.addEventListener("keydown", (e) => {
+  if (e.key === "F8") {
+    e.preventDefault();
+    const sifre = prompt("Şifre:");
+    if (sifre === "TAHA") {
+      window.location.href = "admin.html";
+    }
+  }
+});
+</script>
+
     </body>
 
 </html>
+
