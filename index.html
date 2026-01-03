@@ -14,56 +14,77 @@
         width="1890px"
         height=""
          alt="">
-        <h1>Katılım</h1>
-<p>Katılan kişi sayısı: <span id="count">0</span> / 100</p>
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Katılım Sayfası</title>
+</head>
+<body>
+<h2>Katılım</h2>
+<p>Hoşgeldin: <span id="userName"></span></p>
 <button id="joinBtn">Katıl</button>
+<p>Katılan kişi: <span id="count">0</span> / 100</p>
 
 <script>
 const MAX = 100;
-
-let count = Number(localStorage.getItem("count")) || 0;
-let joined = localStorage.getItem("joined");
-
-const countEl = document.getElementById("count");
+const userNameEl = document.getElementById("userName");
 const joinBtn = document.getElementById("joinBtn");
+const countEl = document.getElementById("count");
 
-countEl.innerText = count;
+const currentName = localStorage.getItem("currentName");
+if(!currentName){
+  alert("Önce kayıt olun");
+  window.location.href = "kayıt.html";
+} else {
+  userNameEl.innerText = currentName;
+}
 
-if (joined === "true") {
+// Katılanlar
+let participants = JSON.parse(localStorage.getItem("participants") || "[]");
+countEl.innerText = participants.length;
+
+// Eğer kişi zaten katıldıysa butonu kilitle
+if(participants.includes(currentName)){
   joinBtn.disabled = true;
   joinBtn.innerText = "Zaten Katıldın";
 }
 
+// Katıl butonu
 joinBtn.onclick = () => {
-  if (joined === "true") return;
-  if (count >= MAX) {
-    alert("Katılım doldu");
-    return;
+  if(participants.includes(currentName)){
+    return alert("Zaten katıldın");
+  }
+  if(participants.length >= MAX){
+    return alert("Katılım doldu");
   }
 
-  count++;
-  localStorage.setItem("count", count);
-  localStorage.setItem("joined", "true");
-
-  countEl.innerText = count;
+  participants.push(currentName);
+  localStorage.setItem("participants", JSON.stringify(participants));
   joinBtn.disabled = true;
   joinBtn.innerText = "Zaten Katıldın";
+  countEl.innerText = participants.length;
+  alert("Katılım başarılı");
 };
 
-// 🔐 F8 → Şifre → Admin sayfası
-document.addEventListener("keydown", (e) => {
-  if (e.key === "F8") {
+// F8 → Admin Paneli
+document.addEventListener("keydown", (e)=>{
+  if(e.key === "F8"){
     e.preventDefault();
-    const sifre = prompt("Şifre:");
-    if (sifre === "TAHA") {
-      window.location.href = "admin.html";
+    const sifre = prompt("Admin Şifresi:");
+    if(sifre === "TAHA"){
+      window.open("admin.html", "_blank", "width=500,height=600");
+    } else {
+      alert("Yanlış şifre");
     }
   }
 });
 </script>
+</body>
+</html>
 
     </body>
 
 </html>
+
 
