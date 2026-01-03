@@ -3,21 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    button {
+      padding: 8px 12px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 4px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    h1, h3 {
+      color: #333;
+    }
+  </style>
 </head>
 <body>
+  <h1>Admin Panel</h1>
+  <button id="resetBtn">SIFIRLA</button>
+  <h3>Katılanlar:</h3>
+  <ul id="list"></ul>
 
-<h1>Admin Panel</h1>
-<p>Tüm katılım sıfırlanacak</p>
+  <script>
+    const listEl = document.getElementById('list');
+    const resetBtn = document.getElementById('resetBtn');
 
-<button id="resetBtn">SIFIRLA</button>
+    // Katılanları listele
+    function updateList() {
+      const participants = JSON.parse(localStorage.getItem('participants') || '[]');
+      listEl.innerHTML = '';
+      participants.forEach(name => {
+        listEl.innerHTML += '<li>' + name + '</li>';
+      });
+    }
 
-<script>
-resetBtn.onclick = () => {
-  localStorage.removeItem("count");
-  localStorage.removeItem("joined");
-  alert("Katılım sıfırlandı");
-};
-</script>
+    updateList();
+    setInterval(updateList, 1000);
 
+    // Sıfırla butonu
+    resetBtn.onclick = () => {
+      localStorage.removeItem('participants');
+      updateList();
+      alert('Herkesin katılımı sıfırlandı');
+    };
+  </script>
 </body>
 </html>
