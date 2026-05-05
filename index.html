@@ -1,90 +1,34 @@
 <!DOCTYPE html>
-
-<html>
-    <head> 
-    <title>KZP</title>
-    </head> 
-    <body>
-     <h1>Abone olmayı unutmayın: </h1>
-        <h2><a href="https://www.youtube.com/@tahaalkanYT"
-    title="Youtube'ye gider"
-        >Youtube Linki</a></h2>
-        <hr>
-         <img src="KZP.png"
-        width="1890px"
-        height=""
-         alt="">
-<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Katılım Sayfası</title>
-</head>
-<body>
-<h2>Katılım</h2>
-<p>Hoşgeldin: <span id="userName"></span></p>
-<button id="joinBtn">Katıl</button>
-<p>Katılan kişi: <span id="count">0</span> / 100</p>
-
-<script>
-const MAX = 100;
-const userNameEl = document.getElementById("userName");
-const joinBtn = document.getElementById("joinBtn");
-const countEl = document.getElementById("count");
-
-const currentName = localStorage.getItem("currentName");
-if(!currentName){
-  alert("Önce kayıt olun");
-  window.location.href = "kayıt.html";
-} else {
-  userNameEl.innerText = currentName;
-}
-
-// Katılanlar
-let participants = JSON.parse(localStorage.getItem("participants") || "[]");
-countEl.innerText = participants.length;
-
-// Eğer kişi zaten katıldıysa butonu kilitle
-if(participants.includes(currentName)){
-  joinBtn.disabled = true;
-  joinBtn.innerText = "Zaten Katıldın";
-}
-
-// Katıl butonu
-joinBtn.onclick = () => {
-  if(participants.includes(currentName)){
-    return alert("Zaten katıldın");
-  }
-  if(participants.length >= MAX){
-    return alert("Katılım doldu");
-  }
-
-  participants.push(currentName);
-  localStorage.setItem("participants", JSON.stringify(participants));
-  joinBtn.disabled = true;
-  joinBtn.innerText = "Zaten Katıldın";
-  countEl.innerText = participants.length;
-  alert("Katılım başarılı");
-};
-
-// F8 → Admin Paneli
-document.addEventListener("keydown", (e)=>{
-  if(e.key === "F8"){
-    e.preventDefault();
-    const sifre = prompt("Admin Şifresi:");
-    if(sifre === "TAHA"){
-      window.open("admin.html", "_blank", "width=500,height=600");
-    } else {
-      alert("Yanlış şifre");
-    }
-  }
-});
-</script>
-</body>
-</html>
-
-    </body>
-
-</html>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasaklılar Listesi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #2d2d2d;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 400px;
+            border-top: 5px solid #ff4444;
+        }
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            color: #ff4444;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
