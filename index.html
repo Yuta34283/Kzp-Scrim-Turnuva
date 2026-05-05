@@ -2,73 +2,159 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Yasaklılar Listesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Yasaklılar Paneli</title>
     <style>
         body {
-            background-color: #0f0f0f;
-            color: #e0e0e0;
-            font-family: 'Orbitron', sans-serif; /* Daha dijital bir font */
+            background-color: #0b0b0b;
+            color: #ff4444;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            justify-content: center;
-            padding-top: 50px;
-        }
-        .banned-card {
-            width: 450px;
-            background: linear-gradient(145deg, #1a1a1a, #111);
-            border: 2px solid #ff0000;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-            overflow: hidden;
-        }
-        .header {
-            background-color: #ff0000;
-            color: black;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
             text-align: center;
-            font-weight: bold;
-            font-size: 22px;
-            letter-spacing: 2px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #ff4444;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
         }
-        .list-container {
-            padding: 20px;
-        }
-        .banned-item {
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 10px;
+
+        /* Arama Kutusu Tasarımı */
+        .search-box {
+            width: 100%;
             padding: 15px;
-            border-left: 5px solid #ff0000;
+            margin-bottom: 20px;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .search-box:focus {
+            border-color: #ff4444;
+        }
+
+        /* Liste Tasarımı */
+        .liste {
+            list-style: none;
+            padding: 0;
+        }
+
+        .oyuncu-kart {
+            background: #1a1a1a;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-left: 5px solid #ff4444;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .bilgi-satiri {
+            margin: 5px 0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-radius: 0 5px 5px 0;
         }
-        .banned-item span {
-            font-size: 18px;
-            color: #fff;
-        }
-        .status {
-            color: #ff0000;
-            font-size: 12px;
+
+        .etiket {
+            color: #888;
             font-weight: bold;
-            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .deger {
+            font-weight: bold;
+        }
+
+        .id-numarasi {
+            color: #ffffff;
+            background: #441111;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
-<div class="banned-card">
-    <div class="header">
-        PUBG UCLİ ODALARDAKİ YASAKLILAR
+    <div class="container">
+        <h1>YASAKLI SORGULAMA SİSTEMİ</h1>
+
+        <!-- Arama Girişi -->
+        <input type="text" id="idArama" class="search-box" placeholder="Oyuncu ID veya İsim Ara..." onkeyup="aramaYap()">
+
+        <ul class="liste" id="yasakliListesi">
+            <!-- Örnek Oyuncu 1 -->
+            <li class="oyuncu-kart">
+                <div class="bilgi-satiri">
+                    <span class="etiket">İsim:</span>
+                    <span class="deger">Letafet</span>
+                </div>
+                <div class="bilgi-satiri">
+                    <span class="etiket">ID:</span>
+                    <span class="deger id-numarasi">5123445678</span>
+                </div>
+                <div class="bilgi-satiri">
+                    <span class="etiket">Sebep:</span>
+                    <span class="deger">Wallhack / Speed Hack</span>
+                </div>
+                <div class="bilgi-satiri">
+                    <span class="etiket">Tarih:</span>
+                    <span class="deger">05.05.2026</span>
+                </div>
+            </li>
+
+            <!-- Örnek Oyuncu 2 -->
+            <li class="oyuncu-kart">
+                <div class="bilgi-satiri">
+                    <span class="etiket">İsim:</span>
+                    <span class="deger">KralPUBG_34</span>
+                </div>
+                <div class="bilgi-satiri">
+                    <span class="etiket">ID:</span>
+                    <span class="deger id-numarasi">5987654321</span>
+                </div>
+                <div class="bilgi-satiri">
+                    <span class="etiket">Sebep:</span>
+                    <span class="deger">Takım Arkadaşını Öldürme</span>
+                </div>
+                <div class="bilgi-satiri">
+                    <span class="etiket">Tarih:</span>
+                    <span class="deger">04.05.2026</span>
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="list-container">
-        <!-- İsimleri buraya eklemeye başlayabilirsin -->
-        <div class="banned-item">
-            <span>BURAYA İSİM GELECEK</span>
-            <span class="status">YASAKLI</span>
-        </div>
-    </div>
-</div>
+
+    <script>
+        function aramaYap() {
+            var input = document.getElementById('idArama');
+            var filter = input.value.toUpperCase();
+            var ul = document.getElementById("yasakliListesi");
+            var li = ul.getElementsByClassName('oyuncu-kart');
+
+            for (var i = 0; i < li.length; i++) {
+                var textContent = li[i].textContent || li[i].innerText;
+                if (textContent.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
