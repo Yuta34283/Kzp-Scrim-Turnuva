@@ -7,12 +7,9 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; display: flex; flex-direction: column; align-items: center; padding: 20px; }
         h1 { color: #ff4444; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        
-        /* Arama Kutusu */
         .arama-konteynir { width: 100%; max-width: 500px; margin-bottom: 25px; }
         #aramaCubugu { width: 100%; padding: 12px; border-radius: 25px; border: 2px solid #333; background: #1e1e1e; color: white; outline: none; transition: 0.3s; }
         #aramaCubugu:focus { border-color: #ff4444; box-shadow: 0 0 10px rgba(255, 68, 68, 0.3); }
-
         .liste { list-style: none; padding: 0; width: 100%; max-width: 500px; }
         .oyuncu-kart { background: #1e1e1e; margin-bottom: 15px; padding: 15px; border-radius: 12px; border-left: 6px solid #ff4444; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: 0.2s; }
         .oyuncu-kart:hover { transform: translateY(-2px); }
@@ -31,76 +28,12 @@
     </div>
 
     <ul class="liste" id="yasakliListesi">
-        <!-- xmaster77 -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">xmaster77</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51217572196</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e ADK (Ailevi Değerlere Küfür)</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- ZFR Vortex -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ZFR Vortex</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">52270108599</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Küfür / Hakaret</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- 33xKeis7 -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">33xKeis7</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5691491291</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Artistlik Taslamak</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- KZP Narkoz -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">KZP Narkoz</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51877298389</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">ADK (Ailevi Değerlere Küfür)</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- xMONTANA7 -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">xMONTANA7</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5704013206</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Resul'e Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- ERKAN -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ERKAN</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51439360174</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e ADK (Ailevi Değerlere Küfür)</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Wuner -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Wuner</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51765653391</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">KZP'lerle Hasımım Demesi ve Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Garez -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Garez</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51495912182</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Küfür + Herkese Küfür + ADK (Ailevi Değerlere Küfür)</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
         <!-- Reacher -->
         <li class="oyuncu-kart">
             <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Reacher</span></div>
             <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5682100152</span></div>
             <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Teaming + Şahısa Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">29.03.2026</span></div>
         </li>
 
         <!-- HAWK -->
@@ -108,6 +41,64 @@
             <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">HAWK</span></div>
             <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5909332084</span></div>
             <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Teaming + Şahısa Küfür</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">29.03.2026</span></div>
+        </li>
+
+        <!-- ERKAN -->
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ERKAN</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51439360174</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e ADK (Ailevi Değerlere Küfür)</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">26.03.2026</span></div>
+        </li>
+
+        <!-- Diğer Oyuncular -->
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">xmaster77</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51217572196</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e ADK (Ailevi Değerlere Küfür)</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+        </li>
+
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ZFR Vortex</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">52270108599</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Küfür / Hakaret</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+        </li>
+
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">33xKeis7</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5691491291</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Artistlik Taslamak</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+        </li>
+
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">KZP Narkoz</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51877298389</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">ADK (Ailevi Değerlere Küfür)</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+        </li>
+
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">xMONTANA7</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5704013206</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Resul'e Küfür</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+        </li>
+
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Wuner</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51765653391</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">KZP'lerle Hasımım Demesi ve Küfür</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
+        </li>
+
+        <li class="oyuncu-kart">
+            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Garez</span></div>
+            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51495912182</span></div>
+            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Küfür + Herkese Küfür + ADK (Ailevi Değerlere Küfür)</span></div>
             <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
         </li>
     </ul>
@@ -119,7 +110,6 @@
             filter = input.value.toUpperCase();
             ul = document.getElementById("yasakliListesi");
             li = ul.getElementsByTagName("li");
-
             for (i = 0; i < li.length; i++) {
                 txtValue = li[i].textContent || li[i].innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -130,6 +120,5 @@
             }
         }
     </script>
-
 </body>
 </html>
