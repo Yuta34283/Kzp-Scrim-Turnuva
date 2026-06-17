@@ -1,257 +1,57 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yasaklı Oyuncu Listesi</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        h1 { color: #ff4444; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .arama-konteynir { width: 100%; max-width: 500px; margin-bottom: 25px; }
-        #aramaCubugu { width: 100%; padding: 12px; border-radius: 25px; border: 2px solid #333; background: #1e1e1e; color: white; outline: none; transition: 0.3s; }
-        #aramaCubugu:focus { border-color: #ff4444; box-shadow: 0 0 10px rgba(255, 68, 68, 0.3); }
-        .liste { list-style: none; padding: 0; width: 100%; max-width: 500px; }
-        .oyuncu-kart { background: #1e1e1e; margin-bottom: 15px; padding: 15px; border-radius: 12px; border-left: 6px solid #ff4444; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: 0.2s; }
-        .oyuncu-kart:hover { transform: translateY(-2px); }
-        .bilgi-satiri { margin-bottom: 6px; display: flex; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
-        .etiket { font-weight: bold; color: #888; width: 80px; font-size: 0.9em; }
-        .deger { color: #fff; font-weight: 500; }
-        .id-numarasi { color: #ffbb33; font-family: monospace; }
-        
-        /* YouTube Buton Stili */
-        .yt-buton {
-            background-color: #ff0000;
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
-        }
-        .yt-buton:hover {
-            background-color: #cc0000;
-            transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUBG Scrim Turnuva Kaydı</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: #fff; padding: 20px; display: flex; justify-content: center; }
+    .form-container { background: #2d2d2d; padding: 30px; border-radius: 8px; width: 100%; max-width: 500px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border-top: 4px solid #f39c12; }
+    h2 { text-align: center; color: #f39c12; margin-bottom: 25px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; color: #bdc3c7; }
+    input[type="text"], input[type="email"], textarea { width: 100%; padding: 10px; border: 1px solid #444; background: #222; color: #fff; border-radius: 4px; box-sizing: border-box; }
+    input:focus, textarea:focus { border-color: #f39c12; outline: none; }
+    button { width: 100%; padding: 12px; background: #f39c12; border: none; color: #fff; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+    button:hover { background: #e67e22; }
+  </style>
 </head>
 <body>
 
-    <h1>BAN LİSTESİ</h1>
-
-    <!-- YouTube Kanal Linki -->
-    <a href="https://www.youtube.com/@tahaalkanYT" target="_blank" class="yt-buton">
-        <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-        TAHA ALKAN YOUTUBE
-    </a>
-
-    <div class="arama-konteynir">
-        <input type="text" id="aramaCubugu" onkeyup="ara()" placeholder="Oyuncu adı veya ID ara...">
+<div class="form-container">
+  <h2>PUBG Scrim Turnuva Kaydı</h2>
+  
+  <!-- Formspree linkin buraya entegre edildi -->
+  <form action="https://formspree.io/f/xqeoownn" method="POST">
+    
+    <div class="form-group">
+      <label>Takım Adı:</label>
+      <input type="text" name="Takım Adı" required placeholder="Örn: Espor Esports">
+    </div>
+    
+    <div class="form-group">
+      <label>Kaptan Discord ID:</label>
+      <input type="text" name="Kaptan Discord" required placeholder="Örn: Ahmet#1234">
     </div>
 
-    <ul class="liste" id="yasakliListesi">
-         <!-- CWxEMİR YT -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">CWxEMİR YT</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">52149597559</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">taha alkanla 1v1 atarken hile oldu tespit edildi</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">06.05.2026</span></div>
-        </li>
-        <!-- Renpi -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Renpi</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">eklencek</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">hawkla yakınlık</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">08.05.2026</span></div>
-        </li>
-         <!-- ARDILxLeon -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Takamoz</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5928246268</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Hawk ile yakınlık + kzplilere argo</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">04.04.2026</span></div>
-        </li>
-        <!-- ARDILxLeon -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ARDILxLeon</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">52447074755</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Klandan izinsiz çıkma</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
+    <div class="form-group">
+      <label>Kaptan E-posta Adresi:</label>
+      <input type="email" name="_replyto" required placeholder="Örn: ahmet@gmail.com">
+    </div>
+    
+    <div class="form-group">
+      <label>Oyuncular (ID ve Nickler):</label>
+      <textarea name="Oyuncu Listesi" rows="4" required placeholder="1- Oyuncu1 (ID)&#10;2- Oyuncu2 (ID)&#10;3- Oyuncu3 (ID)&#10;4- Oyuncu4 (ID)"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label>Ödeme Dekont Linki (Hızlıresim vb.):</label>
+      <input type="text" name="Dekont Linki" required placeholder="Dekont linkini buraya yapıştırın">
+    </div>
+    
+    <button type="submit">Kaydı Tamamla ve Gönder</button>
+  </form>
+</div>
 
-        <!-- ARDILxMIND -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ARDILxMIND</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5180144363</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">İzinsiz klandan çıktı</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- HAKTAN -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">HAKTAN</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51485230985</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">KZP klan liderliğini kötüye kullanma + Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- KZP Narkoz -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">KZP Narkoz</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51877298389</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">ADK + Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- SG2NARKOZ -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">SG2NARKOZ</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51275812579</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Alf Parsa -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Alf Parsa</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51819522684</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">KZP'lere Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- nw7 zehir -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">nw7 zehir</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">Bilinmiyor</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Küfür / Hakaret</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Cooper -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Cooper</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5360165114</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Sony'e ADK + Yalan İftira</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- ERKAN -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ERKAN</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51439360174</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e ADK</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- deltaferhat -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">deltaferhat</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51510352022</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- UCS Jack -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">UCS Jack</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5415684313</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Küfür + Taha Alkanla Dalga Geçme</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- AlfYusuf -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">AlfYusuf</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">570991552</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Macroya ADK + Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Garez -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Garez</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51495912182</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Küfür + Herkese Küfür + ADK</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Reacher -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Reacher</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5682100152</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Teaming + Şahısa Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- HAWK -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">HAWK</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5909332084</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Teaming + Şahısa Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- xmaster77 -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">xmaster77</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51217572196</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Nagy'e ADK</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- ZFR Vortex -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">ZFR Vortex</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">52270108599</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Küfür / Hakaret</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- 33xKeis7 -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">33xKeis7</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5691491291</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Taha Abi'ye Artistlik Taslamak</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- xMONTANA7 -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">xMONTANA7</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">5704013206</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">Resul'e Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-
-        <!-- Wuner -->
-        <li class="oyuncu-kart">
-            <div class="bilgi-satiri"><span class="etiket">İsim:</span><span class="deger">Wuner</span></div>
-            <div class="bilgi-satiri"><span class="etiket">ID:</span><span class="deger id-numarasi">51765653391</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Sebep:</span><span class="deger">KZP'lerle Hasımım Demesi ve Küfür</span></div>
-            <div class="bilgi-satiri"><span class="etiket">Tarih:</span><span class="deger">05.05.2026</span></div>
-        </li>
-    </ul>
-
-    <script>
-        function ara() {
-            var input, filter, ul, li, i, txtValue;
-            input = document.getElementById("aramaCubugu");
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("yasakliListesi");
-            li = ul.getElementsByTagName("li");
-            for (i = 0; i < li.length; i++) {
-                txtValue = li[i].textContent || li[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-    </script>
 </body>
 </html>
