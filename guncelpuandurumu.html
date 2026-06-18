@@ -52,7 +52,7 @@
     /* 📊 SAĞ PANEL: Kalan %60 Alan */
     .right-panel {
       width: 60%;
-      margin-left: 40%; /* Sol panelin üzerine binmesin diye tam sol panel genişliği kadar boşluk */
+      margin-left: 40%; 
       padding: 30px;
       background: #0f0f0f;
       box-sizing: border-box;
@@ -69,7 +69,6 @@
       text-align: left; 
     }
 
-    /* Tablonun taşmasını önleyen kutu */
     .table-container { 
       width: 100%; 
       overflow-x: auto; 
@@ -128,12 +127,19 @@
       padding: 12px 15px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      justify-content: space-between; /* İçerikleri sağa ve sola yaslar */
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
 
     .mvp-card.player { border-color: #f1c40f; } 
     .mvp-card.team { border-color: #3498db; }  
+
+    /* Sol taraftaki logo ve isim alanı */
+    .mvp-left-block {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
     .mvp-avatar {
       width: 50px;
@@ -157,12 +163,26 @@
     .mvp-info .name { font-size: 17px; font-weight: bold; text-transform: uppercase; margin: 0; }
     .mvp-info .name.player-color { color: #f1c40f; }
     .mvp-info .name.team-color { color: #3498db; }
-    .mvp-info .score { font-size: 12px; color: #bbb; margin: 4px 0 0 0; text-transform: uppercase; font-weight: bold; }
+
+    /* 🎯 Sağ Taraftaki İstatistik Blokları */
+    .mvp-stats {
+      text-align: right; /* Skor bilgilerini sağa yaslar */
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mvp-stats .score-line { 
+      font-size: 12px; 
+      color: #bbb; 
+      text-transform: uppercase; 
+      font-weight: bold; 
+      margin: 0;
+    }
 
     .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; font-size: 14px; border: 1px solid #34495e; transition: 0.2s; }
     .btn:hover { background: #34495e; }
 
-    /* 📱 MOBİL UYUMLULUK: Ekran küçülünce alt alta sorunsuz dizilir */
+    /* 📱 MOBİL UYUMLULUK */
     @media (max-width: 850px) {
       .container { flex-direction: column; }
       .left-panel { position: relative; width: 100%; min-height: 420px; padding: 30px 20px; border-right: none; border-bottom: 3px solid #3498db; }
@@ -183,12 +203,16 @@
       <div>
         <div class="mvp-section-title">Günün MVP Oyuncusu:</div>
         <div class="mvp-card player">
-          <div class="mvp-avatar">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/user-male-circle.png" alt="Profil">
+          <div class="mvp-left-block">
+            <div class="mvp-avatar">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/user-male-circle.png" alt="Profil">
+            </div>
+            <div class="mvp-info">
+              <div class="name player-color">NICKNAME</div>
+            </div>
           </div>
-          <div class="mvp-info">
-            <div class="name player-color">Yuta</div>
-            <div class="score">KILL: 96</div>
+          <div class="mvp-stats" style="align-self: flex-start; margin-top: 2px;">
+            <p class="score-line">KILL: 10</p>
           </div>
         </div>
       </div>
@@ -196,13 +220,18 @@
       <div>
         <div class="mvp-section-title">Günün MVP Takımı:</div>
         <div class="mvp-card team">
-          <div class="mvp-avatar">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/shield.png" alt="Takım">
+          <div class="mvp-left-block">
+            <div class="mvp-avatar">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/shield.png" alt="Takım">
+            </div>
+            <div class="mvp-info">
+              <div class="name team-color">TEAM NAME</div>
+            </div>
           </div>
-          <div class="mvp-info">
-            <div class="name team-color">TEAM NAME</div>
-            <div class="score">S.Puan: 100 <div>
-            <div class="score">Kıll: 100 </div>
+          <div class="mvp-stats" style="align-self: flex-end; margin-bottom: 2px;">
+            <p class="score-line">S.PUANI: 10</p>
+            <p class="score-line">KILL: 12</p>
+            <p class="score-line" style="color:#25D366;">TOTAL: 22</p>
           </div>
         </div>
       </div>
@@ -272,7 +301,7 @@
           <tr><td>2</td><td style="text-align: left;">Takım 2</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
           <tr><td>3</td><td style="text-align: left;">Takım 3</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
           <tr><td>4</td><td style="text-align: left;">Takım 4</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
-          <tr><td>5</td><td style="text-align: left;">Takm 5</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>5</td><td style="text-align: left;">Takım 5</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
           <tr><td>6</td><td style="text-align: left;">Takım 6</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
           <tr><td>7</td><td style="text-align: left;">Takım 7</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
           <tr><td>8</td><td style="text-align: left;">Takım 8</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
