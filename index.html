@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KZP PUBG Scrim Turnuva Kaydı</title>
   <style>
-    /* 💥 Arka Plan: Gönderdiğin Tam Ekran Anka Kuşu Görseli */
+    /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
       background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
-      background-size: cover; /* Görseli ekrana tam milimetrik oturtur */
+      background-size: cover; 
       color: #fff; 
       padding: 40px 20px; 
       display: flex; 
@@ -20,7 +20,7 @@
       box-sizing: border-box;
     }
     
-    /* 💥 Atmosfer: Görselin arkada efsane durması için hafif koyuluk katmanı */
+    /* 💥 Atmosfer Katmanı: Arka planı hafif karartarak yazıları öne çıkarır */
     body::before {
       content: "";
       position: fixed;
@@ -29,7 +29,7 @@
       z-index: -1;
     }
 
-    /* Form Kutusu: Şeffaf neon siyah ve kırmızı çizgili */
+    /* Form Kutusu: Şeffaf neon kırmızı çizgili */
     .form-container { 
       background: rgba(15, 15, 15, 0.85); 
       padding: 30px; 
@@ -39,7 +39,7 @@
       box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
       border: 1px solid #e74c3c;
       margin-bottom: 20px;
-      backdrop-filter: blur(6px); /* Formun arkasını hafif buzlu yapar, yazılar rahat okunur */
+      backdrop-filter: blur(6px); 
     }
     
     h2 { 
@@ -98,7 +98,7 @@
       box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
     }
     
-    /* Sosyal Medya Alt Buton Alanı */
+    /* Alt Sosyal Medya Butonları */
     .social-wrapper {
       width: 100%;
       max-width: 500px;
@@ -134,15 +134,20 @@
 <div class="form-container">
   <h2>KZP Scrim Turnuva Kaydı</h2>
   
-  <!-- Kurallar sayfasına giden buton bağlantısı -->
-  <a href="kurallar.html" style="display: block; text-align: center; color: #f1c40f; text-decoration: none; font-weight: bold; margin-bottom: 25px; font-size: 14px; text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);">
+  <!-- Kurallar Butonu -->
+  <a href="kurallar.html" style="display: block; text-align: center; color: #f1c40f; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px; text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);">
     ⚠️ Kayıt olmadan önce turnuva kurallarını okumak için TIKLAYIN!
   </a>
+
+  <!-- Puan Durumu Sayfasına Giden Buton Bağlantısı -->
+  <a href="puan.html" style="display: block; text-align: center; color: #3498db; text-decoration: none; font-weight: bold; margin-bottom: 25px; font-size: 14px; text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);">
+    📊 Güncel Puan Durumunu Görmek İçin TIKLAYIN!
+  </a>
   
-  <!-- Yeni Formspree endpointiniz eklendi -->
+  <!-- Aktif ve Onaylı Formspree Endpoint'iniz -->
   <form action="https://formspree.io/f/meewbqow" method="POST">
     
-    <!-- Form başarıyla gönderildikten sonra oyuncuyu Instagram kanalına atar -->
+    <!-- Başarılı gönderimden sonra Instagram Kanalına yönlendirir -->
     <input type="hidden" name="_next" value="https://www.instagram.com/channel/AbaVNHociQVJQ7h_/">
     
     <div class="form-group">
