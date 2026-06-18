@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turnuva Kayıt Formu | KZP PUBG Scrim</title>
+  <title>Kabul Edilen Takımlar | KZP PUBG Scrim</title>
   <style>
-    /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
+    /* 💥 Arka Plan: Ana Sayfadaki Anka Kuşu Teması */
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
       background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
@@ -38,15 +38,15 @@
       margin-bottom: 10px;
     }
 
-    /* Form Kutusu */
-    .form-container { 
+    /* Liste Kutusu */
+    .list-container { 
       background: rgba(15, 15, 15, 0.85); 
       padding: 30px; 
       border-radius: 12px; 
       width: 100%; 
       max-width: 500px; 
-      box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
-      border: 1px solid #e74c3c;
+      box-shadow: 0 0 30px rgba(46, 204, 113, 0.2); 
+      border: 1px solid #2ecc71;
       margin-bottom: 20px;
       backdrop-filter: blur(6px); 
       box-sizing: border-box;
@@ -54,104 +54,66 @@
     
     h1 { 
       text-align: center; 
-      color: #e74c3c; 
+      color: #2ecc71; 
       margin-top: 0;
       margin-bottom: 25px; 
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 20px;
-      text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+      text-shadow: 0 0 12px rgba(46, 204, 113, 0.6);
+      border-bottom: 2px solid #2ecc71;
+      padding-bottom: 10px;
     }
-    
-    .form-group { margin-bottom: 15px; }
-    label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
-    
-    /* Girdi Alanları */
-    input[type="text"], input[type="email"], textarea { 
-      width: 100%; 
-      padding: 12px; 
-      border: 1px solid #2c2c2c; 
-      background: rgba(8, 8, 8, 0.9); 
-      color: #fff; 
-      border-radius: 6px; 
-      box-sizing: border-box; 
-      transition: all 0.3s;
-      font-size: 14px;
+
+    /* Takım Satırları */
+    .team-item {
+      background: rgba(26, 26, 26, 0.7);
+      border: 1px solid #333;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
     }
-    
-    input:focus, textarea:focus { 
-      border-color: #e74c3c; 
-      outline: none; 
-      box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
-      background: #000;
+
+    .team-item:hover {
+      border-color: #2ecc71;
+      background: rgba(46, 204, 113, 0.1);
     }
-    
-    /* Kayıt Butonu */
-    .btn-submit { 
-      width: 100%; 
-      padding: 14px; 
-      background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); 
-      border: none; 
-      color: #fff; 
-      font-size: 16px; 
-      font-weight: bold; 
-      border-radius: 6px; 
-      cursor: pointer; 
-      transition: all 0.2s; 
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
-      letter-spacing: 1px;
-    }
-    
-    .btn-submit:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
+
+    .check-icon {
+      color: #2ecc71;
     }
   </style>
 </head>
 <body>
 
   <div class="nav-container">
-    <a href="index.html" style="display: inline-block; text-align: center; color: #ffffff; background-color: #2c3e50; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; border-radius: 5px; border-left: 4px solid #e74c3c; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#34495e'; this.style.color='#e74c3c';" onmouseout="this.style.backgroundColor='#2c3e50'; this.style.color='#ffffff';">
+    <a href="index.html" style="display: inline-block; text-align: center; color: #ffffff; background-color: #2c3e50; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; border-radius: 5px; border-left: 4px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#34495e'; this.style.color='#2ecc71';" onmouseout="this.style.backgroundColor='#2c3e50'; this.style.color='#ffffff';">
         ⬅️ Ana Sayfaya Dön
     </a>
   </div>
 
-  <div class="form-container">
-    <h1>KZP Scrim Turnuva Kaydı</h1>
-    
-    <form action="https://formspree.io/f/meewbqow" method="POST">
-      
-      <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">
-      
-      <div class="form-group">
-        <label>Takım Adı:</label>
-        <input type="text" name="Takım Adı" required placeholder="Örn: KZP Esports">
-      </div>
-      
-      <div class="form-group">
-        <label>Kaptan Instagram Kullanıcı Adı:</label>
-        <input type="text" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt">
-      </div>
+  <div class="list-container">
+    <h1>KABUL EDİLEN TAKIMLAR</h1>
 
-      <div class="form-group">
-        <label>Kaptan E-posta Adresi:</label>
-        <input type="email" name="_replyto" required placeholder="Örn: taha@gmail.com">
-      </div>
-      
-      <div class="form-group">
-        <label>Oyuncular (ID ve Nickler):</label>
-        <textarea name="Oyuncu Listesi" rows="4" required placeholder="1- Oyuncu1 (ID)&#10;2- Oyuncu2 (ID)&#10;3- Oyuncu3 (ID)&#10;4- Oyuncu4 (ID)"></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label>Banka Dekont Ücret Açıklaması:</label>
-        <input type="text" name="Banka Dekont Açıklaması" required placeholder="Örn: Dekonta yazılan isim veya takım adı">
-      </div>
-      
-      <button type="submit" class="btn-submit">Kaydı Tamamla ve Gönder</button>
-    </form>
-  </div>
+    <div class="team-item">
+      <span class="check-icon">✓</span> 1. Örnek Takım Esport
+    </div>
+
+    <div class="team-item">
+      <span class="check-icon">✓</span> 2. Diğer Onaylanan Takım
+    </div>
+
+    <div class="team-item">
+      <span class="check-icon">✓</span> 3. KZP Elite Team
+    </div>
+
+    </div>
 
 </body>
 </html>
