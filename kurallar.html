@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KZP PUBG Scrim - Turnuva Kuralları</title>
+  <style>
+    /* 💥 Arka Plan: Ana sayfa ile birebir aynı Anka Kuşu görseli */
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      background-size: cover; 
+      color: #fff; 
+      padding: 40px 20px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      min-height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    /* 💥 Atmosfer Katmanı */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+      z-index: -1;
+    }
+
+    /* Kurallar Kutusu: Şeffaf neon kırmızı çizgili */
+    .rules-container { 
+      background: rgba(15, 15, 15, 0.85); 
+      padding: 30px; 
+      border-radius: 12px; 
+      width: 100%; 
+      max-width: 600px; 
+      box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
+      border: 1px solid #e74c3c;
+      margin-bottom: 20px;
+      backdrop-filter: blur(6px);
+    }
+    
+    h2 { 
+      text-align: center; 
+      color: #e74c3c; 
+      margin-top: 0;
+      margin-bottom: 25px; 
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 22px;
+      text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+    }
+
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+
+    .rules-list li {
+      background: rgba(8, 8, 8, 0.6);
+      border-left: 4px solid #e74c3c;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    .rules-list li strong {
+      color: #e74c3c;
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    /* Geri Dön / Kayıt Ol Butonu */
+    .btn-action { 
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      width: 100%; 
+      padding: 14px; 
+      background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); 
+      border: none; 
+      color: #fff; 
+      font-size: 16px; 
+      font-weight: bold; 
+      border-radius: 6px; 
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      transition: all 0.2s;
+    }
+    
+    .btn-action:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
+    }
+
+    .warning-text {
+      text-align: center;
+      color: #f1c40f;
+      font-size: 13px;
+      margin-top: 15px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="rules-container">
+  <h2>Turnuva Kuralları & Detayları</h2>
+  
+  <ul class="rules-list">
+    <li>
+      <strong>1. Genel Davranış Kuralları</strong>
+      Turnuva esnasında tüm oyuncuların birbirine saygılı olması zorunludur. Hakaret, küfür, toxic davranışlar ve sportmenlik dışı hareketler takımın direkt diskalifiye edilmesine sebep olur.
+    </li>
+    
+    <li>
+      <strong>2. Hile ve İllegal Yazılım</strong>
+      Üçüncü parti yazılım (Wallhack, Aimbot vb.), sekmeme configleri, klavye-fare emülatörleri veya oyun dosyalarıyla oynamak kesinlikle yasaktır. Tespit edilen takımlar kalıcı olarak KZP turnuvalarından banlanır.
+    </li>
+    
+    <li>
+      <strong>3. Kayıt ve Dekont Kontrolü</strong>
+      Kayıt formunu doldururken banka dekont açıklamanızı eksiksiz girmeniz gerekir. Ücreti onaylanmayan takımlar odalara dahil edilmeyecektir.
+    </li>
+    
+    <li>
+      <strong>4. Oda Bilgileri ve Zamanlama</strong>
+      Oda ID ve Şifreleri, turnuva başlamadan 15 dakika önce Kaptan Instagram gruplarından veya kanalımızdan paylaşılacaktır. Zamanında gelmeyen takımlar beklenmez, maç start alır.
+    </li>
+
+    <li>
+      <strong>5. Takım Kadroları</strong>
+      Formda belirtilen oyuncu ID'leri dışında başka bir oyuncunun oda slotuna girmesi yasaktır. Slot ihlali yapan takımlar o maçtan puan alamaz.
+    </li>
+  </ul>
+  
+  <!-- Bu buton oyuncuyu tekrar senin kayıt formuna (index.html) götürür -->
+  <a href="index.html" class="btn-action">Kuralları Okudum, Kayıt Ol</a>
+  
+  <p class="warning-text">⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları kabul etmiş sayılır.</p>
+</div>
+
+</body>
+</html>
