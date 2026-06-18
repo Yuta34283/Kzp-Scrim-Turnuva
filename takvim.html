@@ -65,83 +65,17 @@
       padding-bottom: 10px;
     }
 
-    /* Etkinlik Listesi Satırları */
-    .event-card {
-      background: rgba(44, 62, 80, 0.6);
+    /* Boş Durum Bildirimi */
+    .no-event {
+      background: rgba(44, 62, 80, 0.4);
       border-left: 5px solid #e74c3c;
       border-radius: 6px;
-      padding: 15px;
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .event-card:hover {
-      transform: scale(1.02);
-      background: rgba(52, 73, 94, 0.8);
-      box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
-    }
-
-    /* Canlı/Aktif Etkinlik Vurgusu */
-    .event-card.live {
-      border-left-color: #25D366;
-      box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
-    }
-
-    .event-info {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .event-title {
-      font-weight: bold;
-      font-size: 16px;
-      color: #fff;
-    }
-
-    .event-detail {
-      font-size: 13px;
-      color: #ccc;
-    }
-
-    .event-date {
-      background: #1a1a1a;
-      border: 1px solid #f39c12;
-      color: #f39c12;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 13px;
+      padding: 20px;
       text-align: center;
-      min-width: 90px;
-    }
-
-    .live-badge {
-      background: #25D366;
-      color: #000;
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: bold;
-      width: fit-content;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-    }
-
-    /* Mobil Düzen */
-    @media (max-width: 480px) {
-      .event-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-      .event-date {
-        width: 100%;
-        box-sizing: border-box;
-      }
+      font-size: 15px;
+      color: #dddddd;
+      line-height: 1.6;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
     }
   </style>
 </head>
@@ -156,35 +90,9 @@
   <div class="calendar-container">
     <h1>TURNUVA & SCRIM TAKVİMİ</h1>
 
-    <div class="event-card live">
-      <div class="event-info">
-        <span class="live-badge">Kayıtlar Açık</span>
-        <span class="event-title">🔥 Haftalık Büyük Scrim Sezonu</span>
-        <span class="event-detail">Mod: Erangel - Miramar (TPP) | Ödüllü</span>
-      </div>
-      <div class="event-date">
-        Kayıt Dönemi
-      </div>
-    </div>
-
-    <div class="event-card">
-      <div class="event-info">
-        <span class="event-title">🏆 KZP Solo King Turnuvası</span>
-        <span class="event-detail">Bireysel Tekli Mücadele | Harita: Sanhok</span>
-      </div>
-      <div class="event-date">
-        22:00 / Cumartesi
-      </div>
-    </div>
-
-    <div class="event-card">
-      <div class="event-info">
-        <span class="event-title">🦅 Klanlar Arası Özel Maç</span>
-        <span class="event-detail">Davetli seçkin takımların kapışması</span>
-      </div>
-      <div class="event-date">
-        21:30 / Pazar
-      </div>
+    <div class="no-event">
+      📢 <b>Şu an aktif belirlenmiş bir turnuva veya scrim bulunmamaktadır.</b> <br>
+      Yeni sezon ve özel turnuva tarihleri netleştiğinde takvimimiz güncellenecektir. Duyurular için resmi kanallarımızı takipte kalın!
     </div>
 
   </div>
