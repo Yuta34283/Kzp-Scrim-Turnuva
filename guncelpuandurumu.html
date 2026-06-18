@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KZP PUBG Scrim - Anlık Maç Sonuçları</title>
+  <style>
+    /* 💥 Arka Plan: Ana sayfa ile birebir aynı Anka Kuşu görseli */
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      background-size: cover; 
+      color: #fff; 
+      padding: 40px 20px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      min-height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    /* 💥 Atmosfer Katmanı */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+      z-index: -1;
+    }
 
+    /* Genel Kutu Tasarımı */
+    .leaderboard-container { 
+      background: rgba(15, 15, 15, 0.85); 
+      padding: 30px; 
+      border-radius: 12px; 
+      width: 100%; 
+      max-width: 650px; 
+      box-shadow: 0 0 30px rgba(52, 152, 219, 0.3); 
+      border: 1px solid #3498db;
+      margin-bottom: 20px;
+      backdrop-filter: blur(6px);
+    }
+    
+    h2 { 
+      text-align: center; 
+      color: #3498db; 
+      margin-top: 0;
+      margin-bottom: 5px; 
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 22px;
+      text-shadow: 0 0 12px rgba(52, 152, 219, 0.6);
+    }
+
+    .update-time {
+      text-align: center;
+      color: #aaaaaa;
+      font-size: 12px;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    /* Tablo Tasarımı (Anlık Maç Mavisi) */
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(8, 8, 8, 0.6);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .leaderboard-table th, .leaderboard-table td {
+      padding: 12px 10px;
+      text-align: center;
+      border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+      font-size: 14px;
+    }
+
+    .leaderboard-table th {
+      background: rgba(52, 152, 219, 0.2);
+      color: #3498db;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .leaderboard-table tr:hover {
+      background: rgba(52, 152, 219, 0.1);
+    }
+
+    .rank-1 { color: #f1c40f; font-weight: bold; } 
+    .rank-2 { color: #d2d2d2; font-weight: bold; } 
+    .rank-3 { color: #cd7f32; font-weight: bold; } 
+    
+    .match-point {
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    /* Navigasyon ve WhatsApp Butonları */
+    .btn-action { 
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      width: 100%; 
+      padding: 14px; 
+      color: #fff; 
+      font-size: 15px; 
+      font-weight: bold; 
+      border-radius: 6px; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      transition: all 0.2s;
+      margin-top: 15px;
+    }
+    .btn-back { background: linear-gradient(135deg, #1e272e 0%, #2f3640 100%); border: 1px solid #3d3d3d; }
+    .btn-back:hover { transform: translateY(-2px); background: #2f36
