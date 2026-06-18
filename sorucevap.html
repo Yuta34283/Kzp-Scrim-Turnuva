@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KZP PUBG Scrim - Soru & Cevap</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      background-size: cover; 
+      color: #fff; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      margin: 0;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .box { 
+      background: rgba(15, 15, 15, 0.95); 
+      padding: 25px; 
+      border-radius: 10px; 
+      width: 100%; 
+      max-width: 650px; 
+      border: 1px solid #3498db;
+      box-sizing: border-box;
+      margin-top: 20px;
+    }
+    h2 { text-align: center; color: #3498db; text-transform: uppercase; font-size: 22px; margin-top: 5px; }
+    p.subtitle { text-align: center; color: #aaa; font-size: 14px; margin-bottom: 25px; }
+    
+    /* 💬 Tartışma Alanı Kutusu */
+    #disqus_thread {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #222;
+      margin-top: 20px;
+    }
+    
+    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; font-size: 14px; transition: 0.2s; }
+    .btn:hover { background: #34495e; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>💬 KZP SCRIM - SORU KUTUSU</h2>
+  <p class="subtitle">Scrimler, turnuva kuralları veya takımlarla ilgili merak ettiğiniz her şeyi sorun, cevaplayalım!</p>
+
+  <div id="disqus_thread"></div>
+  
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;  
+      this.page.identifier = window.location.pathname; 
+    };
+    
+    (function() { 
+      var d = document, s = d.createElement('script');
+      // 🔥 DİKKAT: Aşağıdaki 'kzp-scrim' yerini birazdan kendi kısa adınla değiştireceğiz!
+      s.src = 'https://kzp-scrim.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Yorumları görebilmek için lütfen JavaScript'i etkinleştirin.</noscript>
+
+  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn" style="background:#25D366;">🟢 WhatsApp Kanalımız</a>
+  <a href="index.html" class="btn">⬅️ Ana Sayfaya Dön</a>
+</div>
+
+</body>
+</html>
