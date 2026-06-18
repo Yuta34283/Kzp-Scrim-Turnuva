@@ -29,7 +29,7 @@
       z-index: -1;
     }
 
-    /* Kurallar Kutusu: Şeffaf neon kırmızı çizgili */
+    /* Kurallar Kutusu */
     .rules-container { 
       background: rgba(15, 15, 15, 0.85); 
       padding: 30px; 
@@ -53,29 +53,47 @@
       text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
     }
 
+    h3 {
+      color: #f1c40f;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      border-bottom: 1px dashed rgba(241, 196, 15, 0.3);
+      padding-bottom: 5px;
+      letter-spacing: 1px;
+    }
+
     .rules-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 25px 0;
+      margin: 0;
     }
 
     .rules-list li {
       background: rgba(8, 8, 8, 0.6);
       border-left: 4px solid #e74c3c;
-      padding: 15px;
-      margin-bottom: 12px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
       border-radius: 0 6px 6px 0;
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #e0e0e0;
     }
 
-    .rules-list li strong {
-      color: #e74c3c;
-      display: block;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      font-size: 15px;
+    /* Yasaklar için sol çizgiyi kırmızı/turuncu yapalım */
+    .ban-list li {
+      border-left-color: #ff3f34;
+    }
+
+    /* Cezalar için sol çizgiyi tam kırmızı yapalım */
+    .penalty-list li {
+      border-left-color: #d63031;
+      font-weight: bold;
+    }
+
+    .highlight {
+      color: #ff3f34;
     }
 
     /* Geri Dön / Kayıt Ol Butonu */
@@ -96,6 +114,7 @@
       text-transform: uppercase;
       box-sizing: border-box;
       transition: all 0.2s;
+      margin-top: 30px;
     }
     
     .btn-action:hover { 
@@ -115,39 +134,41 @@
 <body>
 
 <div class="rules-container">
-  <h2>Turnuva Kuralları & Detayları</h2>
+  <h2>KZP Scrim Turnuva Kuralları</h2>
   
+  <!-- OYUN İÇİ KURALLAR -->
+  <h3>⚔️ Oyun İçi Kurallar</h3>
   <ul class="rules-list">
-    <li>
-      <strong>1. Genel Davranış Kuralları</strong>
-      Turnuva esnasında tüm oyuncuların birbirine saygılı olması zorunludur. Hakaret, küfür, toxic davranışlar ve sportmenlik dışı hareketler takımın direkt diskalifiye edilmesine sebep olur.
-    </li>
-    
-    <li>
-      <strong>2. Hile ve İllegal Yazılım</strong>
-      Üçüncü parti yazılım (Wallhack, Aimbot vb.), sekmeme configleri, klavye-fare emülatörleri veya oyun dosyalarıyla oynamak kesinlikle yasaktır. Tespit edilen takımlar kalıcı olarak KZP turnuvalarından banlanır.
-    </li>
-    
-    <li>
-      <strong>3. Kayıt ve Dekont Kontrolü</strong>
-      Kayıt formunu doldururken banka dekont açıklamanızı eksiksiz girmeniz gerekir. Ücreti onaylanmayan takımlar odalara dahil edilmeyecektir.
-    </li>
-    
-    <li>
-      <strong>4. Oda Bilgileri ve Zamanlama</strong>
-      Oda ID ve Şifreleri, turnuva başlamadan 15 dakika önce Kaptan Instagram gruplarından veya kanalımızdan paylaşılacaktır. Zamanında gelmeyen takımlar beklenmez, maç start alır.
-    </li>
+    <li>Oyuncular arasında saygılı iletişim kurulması zorunludur.</li>
+    <li>Her maç sonu <strong>ekran görüntüsü (SS)</strong> almak zorunludur.</li>
+    <li>Yapılan tüm itirazlar, alınan maç sonu SS'leri ile değerlendirilir.</li>
+    <li>Rondo haritasında ölen takım arkadaşlarını geri çağırmak/kaldırmak serbesttir.</li>
+  </ul>
 
-    <li>
-      <strong>5. Takım Kadroları</strong>
-      Formda belirtilen oyuncu ID'leri dışında başka bir oyuncunun oda slotuna girmesi yasaktır. Slot ihlali yapan takımlar o maçtan puan alamaz.
-    </li>
+  <!-- YASAKLAR -->
+  <h3>🚫 Yasaklar</h3>
+  <ul class="rules-list ban-list">
+    <li><strong>30 seviye altı</strong> oyuncuların turnuvaya katılması yasaktır.</li>
+    <li><strong>Emülatör</strong> kullanımı kesinlikle yasaktır.</li>
+    <li>Maç esnasında rakiplere veya yönetime küfür/hakaret etmek yasaktır.</li>
+    <li>Küfür ve hakaret durumlarında itirazlar sadece <strong>video kaydı</strong> ile yapılır. Video kaydı olmadan yapılan itirazlar kabul edilmez.</li>
+    <li><strong>Şok Cihazı</strong> kullanımı yasaktır. Envanterinde şok cihazı bulunduran takım <span class="highlight">-5 puan</span> ceza alır.</li>
+    <li><strong>Havan Topu</strong> kullanımı kesinlikle yasaktır.</li>
+    <li>Bıçak, tava ve yumruk ile öldürmek yasaktır. <i>(Yalnızca iki taraf da silahsızken vurulması serbesttir.)</i></li>
+    <li><strong>Acil Tahliye</strong> (Balon) kullanımı yasaktır.</li>
+  </ul>
+
+  <!-- CEZALAR -->
+  <h3>🚨 İhlal Cezaları</h3>
+  <ul class="rules-list penalty-list">
+    <li>📌 1. İhlalde: Takımdan <span class="highlight">5 puan (-5 Puan)</span> düşülür.</li>
+    <li>📌 2. İhlalde: Takım doğrudan <span class="highlight">turnuvadan men (diskalifiye)</span> edilir.</li>
   </ul>
   
-  <!-- Bu buton oyuncuyu tekrar senin kayıt formuna (index.html) götürür -->
+  <!-- Kayıt formuna yönlendiren buton -->
   <a href="index.html" class="btn-action">Kuralları Okudum, Kayıt Ol</a>
   
-  <p class="warning-text">⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları kabul etmiş sayılır.</p>
+  <p class="warning-text">⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları peşinen kabul etmiş sayılır.</p>
 </div>
 
 </body>
