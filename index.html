@@ -5,55 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KZP PUBG Scrim Turnuva Kaydı</title>
   <style>
-    /* 💥 Arka plan: KZP Logosunun kendisi ve Koyu Tema */
+    /* 💥 Arka Plan: Gönderdiğin Tam Ekran Anka Kuşu Görseli */
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      /* Arka plan resmin olarak senin logonun linki */
-      background: #080000 url('https://i.hizliresim.com/3t8gb9y.png') no-repeat center center fixed; 
-      background-size: 60% auto; /* Logoyu devasa yapar ama dengeli durur */
+      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      background-size: cover; /* Görseli ekrana tam milimetrik oturtur */
       color: #fff; 
-      padding: 20px; 
+      padding: 40px 20px; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
       min-height: 100vh;
       margin: 0;
+      box-sizing: border-box;
     }
     
-    /* 💥 Atmosfer: Kırmızı Neon Karartma ve Bulanıklık Katmanı */
+    /* 💥 Atmosfer: Görselin arkada efsane durması için hafif koyuluk katmanı */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      /* radial-gradient arka plandaki logoya asalet ve neon parlama verir */
-      background: radial-gradient(circle, rgba(15,0,0,0.7) 0%, rgba(0,0,0,0.95) 100%);
-      backdrop-filter: blur(8px); /* 💥 Arka plandaki dev logoyu hafif bulanıklaştırarak yazıları öne çıkarır */
+      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
       z-index: -1;
     }
 
-    /* Üst Logo (Eski temsili görsel kaldırıldı) */
-    .header-logo {
-      width: 160px;
-      height: auto;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 15px rgba(231, 76, 60, 0.6));
-    }
-
-    /* Form Kutusu: Logonun renkleriyle uyumlu kırmızı-siyah neon tema */
+    /* Form Kutusu: Şeffaf neon siyah ve kırmızı çizgili */
     .form-container { 
-      background: rgba(15, 15, 15, 0.9); 
+      background: rgba(15, 15, 15, 0.85); 
       padding: 30px; 
       border-radius: 12px; 
       width: 100%; 
       max-width: 500px; 
-      box-shadow: 0 0 30px rgba(231, 76, 60, 0.25); 
+      box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
       border: 1px solid #e74c3c;
       margin-bottom: 20px;
+      backdrop-filter: blur(6px); /* Formun arkasını hafif buzlu yapar, yazılar rahat okunur */
     }
     
     h2 { 
       text-align: center; 
       color: #e74c3c; 
+      margin-top: 0;
       margin-bottom: 25px; 
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -69,7 +61,7 @@
       width: 100%; 
       padding: 12px; 
       border: 1px solid #2c2c2c; 
-      background: rgba(8, 8, 8, 0.95); 
+      background: rgba(8, 8, 8, 0.9); 
       color: #fff; 
       border-radius: 6px; 
       box-sizing: border-box; 
@@ -84,7 +76,7 @@
       background: #000;
     }
     
-    /* Kayıt Butonu (KZP Kırmızısı) */
+    /* Kayıt Butonu (Ateş Kırmızısı) */
     .btn-submit { 
       width: 100%; 
       padding: 14px; 
@@ -129,16 +121,9 @@
 
     .btn-channel { background: #1e272e; border: 1px solid #3d3d3d; }
     .btn-channel:hover { background: #2f3640; box-shadow: 0 0 15px rgba(231, 76, 60, 0.3); }
-
-    /* Mobil cihazlar için arka plan optimizasyonu */
-    @media (max-width: 768px) {
-      body { background-size: 85% auto; }
-    }
   </style>
 </head>
 <body>
-
-<img src="https://i.hizliresim.com/3t8gb9y.png" alt="KZP Logo" class="header-logo">
 
 <div class="form-container">
   <h2>KZP Scrim Turnuva Kaydı</h2>
