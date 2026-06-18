@@ -7,7 +7,7 @@
   <style>
     body { 
       font-family: Arial, sans-serif; 
-      background: #0d0d0d;
+      background: #0a0a0a;
       color: #fff; 
       margin: 0;
       padding: 0;
@@ -15,118 +15,292 @@
       box-sizing: border-box;
     }
 
-    /* 💥 Ana Kapsayıcı: Ekranı Sol ve Sağ olarak ikiye böler */
+    /* 💥 Ana Ekran Bölücü */
     .container {
       display: flex;
       width: 100%;
       min-height: 100vh;
     }
 
-    /* 🔥 SOL TARAF: Anka Kuşu ve MVP Alanı Sabit */
+    /* 🔥 SOL PANEL: Sabit Genişlik %40 */
     .left-panel {
-      flex: 1;
-      max-width: 45%;
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center;
-      background-size: cover;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end; /* İçerikleri alt tarafa toplar */
-      box-sizing: border-box;
-      border-right: 2px solid #3498db;
-      position: fixed; /* Ekran kaydırılsa bile burası sabit kalır */
+      width: 40%;
+      position: fixed;
       top: 0;
       left: 0;
       bottom: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center;
+      background-size: cover;
+      padding: 40px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; 
+      box-sizing: border-box;
+      border-right: 3px solid #3498db;
+      z-index: 10;
     }
 
     .left-panel h2 {
-      font-size: 24px;
+      font-size: 26px;
       color: #fff;
       text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(241, 196, 15, 0.6);
-      margin-bottom: 20px;
+      text-shadow: 0 0 12px rgba(241, 196, 15, 0.7);
+      margin-bottom: 30px;
       letter-spacing: 1px;
     }
 
-    /* 📊 SAĞ TARAF: Puan Durumu Tablolarının Kaydığı Alan */
+    /* 📊 SAĞ PANEL: Kalan %60 Alan */
     .right-panel {
-      flex: 1;
-      margin-left: 45%; /* Sol panel sabit olduğu için sağa boşluk verdik */
+      width: 60%;
+      margin-left: 40%; /* Sol panelin üzerine binmesin diye tam sol panel genişliği kadar boşluk */
       padding: 30px;
-      background: rgba(10, 10, 10, 0.95);
+      background: #0f0f0f;
       box-sizing: border-box;
+      min-height: 100vh;
     }
 
-    h3 { color: #f1c40f; text-transform: uppercase; margin-top: 25px; border-bottom: 2px solid #3498db; padding-bottom: 5px; font-size: 16px; text-align: left; }
-    .table-container { width: 100%; overflow-x: auto; margin-bottom: 15px; }
-    table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.6); min-width: 450px; }
-    th, td { padding: 12px 10px; text-align: center; border: 1px solid #2c3e50; font-size: 14px; }
-    th { background: #3498db; color: #fff; text-transform: uppercase; font-size: 12px; }
-    tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+    h3 { 
+      color: #f1c40f; 
+      text-transform: uppercase; 
+      margin-top: 30px; 
+      border-bottom: 2px solid #3498db; 
+      padding-bottom: 8px; 
+      font-size: 16px; 
+      text-align: left; 
+    }
 
-    /* 🌟 MVP Kutuları Tasarımı (Tam Tasarımdaki Gibi) */
+    /* Tablonun taşmasını önleyen kutu */
+    .table-container { 
+      width: 100%; 
+      overflow-x: auto; 
+      margin-bottom: 25px; 
+      background: rgba(0,0,0,0.4);
+      border-radius: 6px;
+      border: 1px solid #222;
+    }
+
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      min-width: 500px; 
+    }
+
+    th, td { 
+      padding: 10px 8px; 
+      text-align: center; 
+      border: 1px solid #2c3e50; 
+      font-size: 14px; 
+    }
+
+    th { 
+      background: #3498db; 
+      color: #fff; 
+      text-transform: uppercase; 
+      font-size: 12px; 
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+    /* 🌟 MVP Kutuları Stili */
     .mvp-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
       width: 100%;
-      max-width: 400px;
+      max-width: 380px;
     }
     
     .mvp-section-title {
-      font-size: 12px;
+      font-size: 13px;
       color: #f1c40f;
       text-transform: uppercase;
       font-weight: bold;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       letter-spacing: 1px;
+      text-align: left;
     }
 
     .mvp-card {
-      background: rgba(20, 20, 20, 0.9);
+      background: rgba(15, 15, 15, 0.95);
       border: 2px solid #333;
-      border-radius: 4px;
-      padding: 10px 15px;
+      border-radius: 6px;
+      padding: 12px 15px;
       display: flex;
       align-items: center;
       gap: 15px;
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
 
-    .mvp-card.player { border-color: #f1c40f; } /* Oyuncu sarı çerçeve */
-    .mvp-card.team { border-color: #3498db; }  /* Takım mavi çerçeve */
+    .mvp-card.player { border-color: #f1c40f; } 
+    .mvp-card.team { border-color: #3498db; }  
 
     .mvp-avatar {
       width: 50px;
       height: 50px;
-      background: #111;
-      border: 1px solid #441;
+      background: #222;
+      border-radius: 4px;
+      border: 1px solid #444;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
     
     .mvp-avatar img {
-      width: 80%;
-      height: 80%;
+      width: 70%;
+      height: 70%;
       object-fit: contain;
-      opacity: 0.6;
     }
 
     .mvp-info { text-align: left; }
-    .mvp-info .name { font-size: 18px; font-weight: bold; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+    .mvp-info .name { font-size: 17px; font-weight: bold; text-transform: uppercase; margin: 0; }
     .mvp-info .name.player-color { color: #f1c40f; }
     .mvp-info .name.team-color { color: #3498db; }
-    .mvp-info .score { font-size: 12px; color: #aaa; margin: 2px 0 0 0; text-transform: uppercase; }
+    .mvp-info .score { font-size: 12px; color: #bbb; margin: 4px 0 0 0; text-transform: uppercase; font-weight: bold; }
 
-    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; font-size: 14px; }
+    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; font-size: 14px; border: 1px solid #34495e; transition: 0.2s; }
+    .btn:hover { background: #34495e; }
 
-    /* 📱 RESPONSIVE: Telefonlarda düzenin bozulmaması için eski haline döner */
-    @media (max-width: 900px) {
+    /* 📱 MOBİL UYUMLULUK: Ekran küçülünce alt alta sorunsuz dizilir */
+    @media (max-width: 850px) {
       .container { flex-direction: column; }
-      .left-panel { position: relative; max-width: 100%; width: 100%; min-height: 400px; justify-content: center; align-items: center; border-right: none; border-bottom: 2px solid #3498db; }
-      .right-panel { margin-left: 0; width: 100%; }
+      .left-panel { position: relative; width: 100%; min-height: 420px; padding: 30px 20px; border-right: none; border-bottom: 3px solid #3498db; }
+      .right-panel { width: 100%; margin-left: 0; padding: 20px; }
+      .mvp-wrapper { max-width: 100%; }
     }
   </style>
-</head
+</head>
+<body>
+
+<div class="container">
+
+  <div class="left-panel">
+    <h2>KZP SCRIM<br>LİDER TABLOSU</h2>
+    
+    <div class="mvp-wrapper">
+      
+      <div>
+        <div class="mvp-section-title">Günün MVP Oyuncusu:</div>
+        <div class="mvp-card player">
+          <div class="mvp-avatar">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/user-male-circle.png" alt="Profil">
+          </div>
+          <div class="mvp-info">
+            <div class="name player-color">NICKNAME</div>
+            <div class="score">KILLSH: 10</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mvp-section-title">Günün MVP Takımı:</div>
+        <div class="mvp-card team">
+          <div class="mvp-avatar">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/shield.png" alt="Takım">
+          </div>
+          <div class="mvp-info">
+            <div class="name team-color">TEAM NAME</div>
+            <div class="score">OVERALL SCORE: 310</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="right-panel">
+    
+    <h3>⏱| En Son Oynanan Maç Sonucu</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Sıra</th>
+            <th>Takım Adı</th>
+            <th>S.Puanı</th>
+            <th>Kill</th>
+            <th>Maç Puanı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align: left; font-weight: bold; color: #f1c40f;">Takım 1</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>2</td><td style="text-align: left;">Takım 2</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>3</td><td style="text-align: left;">Takım 3</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>4</td><td style="text-align: left;">Takım 4</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>5</td><td style="text-align: left;">Takım 5</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>6</td><td style="text-align: left;">Takım 6</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>7</td><td style="text-align: left;">Takım 7</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>8</td><td style="text-align: left;">Takım 8</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>9</td><td style="text-align: left;">Takım 9</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>10</td><td style="text-align: left;">Takım 10</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>11</td><td style="text-align: left;">Takım 11</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>12</td><td style="text-align: left;">Takım 12</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>13</td><td style="text-align: left;">Takım 13</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>14</td><td style="text-align: left;">Takım 14</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>15</td><td style="text-align: left;">Takım 15</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>16</td><td style="text-align: left;">Takım 16</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>17</td><td style="text-align: left;">Takım 17</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>18</td><td style="text-align: left;">Takım 18</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>19</td><td style="text-align: left;">Takım 19</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>20</td><td style="text-align: left;">Takım 20</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>21</td><td style="text-align: left;">Takım 21</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>22</td><td style="text-align: left;">Takım 22</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>23</td><td style="text-align: left;">Takım 23</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>24</td><td style="text-align: left;">Takım 24</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+          <tr><td>25</td><td style="text-align: left;">Takım 25</td><td>0</td><td>0</td><td style="color:#3498db; font-weight:bold;">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h3>🏆| Genel Puan Durumu (Toplam Skor)</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Sıra</th>
+            <th>Takım Adı</th>
+            <th>OM</th>
+            <th>S.Puanı</th>
+            <th>Kill</th>
+            <th>Toplam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align: left; font-weight: bold; color: #f1c40f;">Takım 1</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>2</td><td style="text-align: left;">Takım 2</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>3</td><td style="text-align: left;">Takım 3</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>4</td><td style="text-align: left;">Takım 4</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>5</td><td style="text-align: left;">Takm 5</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>6</td><td style="text-align: left;">Takım 6</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>7</td><td style="text-align: left;">Takım 7</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>8</td><td style="text-align: left;">Takım 8</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>9</td><td style="text-align: left;">Takım 9</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>10</td><td style="text-align: left;">Takım 10</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>11</td><td style="text-align: left;">Takım 11</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>12</td><td style="text-align: left;">Takım 12</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>13</td><td style="text-align: left;">Takım 13</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>14</td><td style="text-align: left;">Takım 14</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>15</td><td style="text-align: left;">Takım 15</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>16</td><td style="text-align: left;">Takım 16</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>17</td><td style="text-align: left;">Takım 17</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>18</td><td style="text-align: left;">Takım 18</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>19</td><td style="text-align: left;">Takım 19</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>20</td><td style="text-align: left;">Takım 20</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>21</td><td style="text-align: left;">Takım 21</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>22</td><td style="text-align: left;">Takım 22</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>23</td><td style="text-align: left;">Takım 23</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>24</td><td style="text-align: left;">Takım 24</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+          <tr><td>25</td><td style="text-align: left;">Takım 25</td><td>1</td><td>0</td><td>0</td><td style="color:#25D366; font-weight:bold;">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn" style="background:#25D366;">🟢 WhatsApp Kanalımız</a>
+    <a href="index.html" class="btn">⬅️ Ana Sayfaya Dön</a>
+  </div>
+
+</div>
+
+</body>
+</html>
