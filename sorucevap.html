@@ -1,76 +1,143 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KZP PUBG Scrim - Soru & Cevap</title>
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
-      background-size: cover; 
-      color: #fff; 
-      padding: 15px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      margin: 0;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    .box { 
-      background: rgba(15, 15, 15, 0.95); 
-      padding: 25px; 
-      border-radius: 10px; 
-      width: 100%; 
-      max-width: 650px; 
-      border: 1px solid #3498db;
-      box-sizing: border-box;
-      margin-top: 20px;
-    }
-    h2 { text-align: center; color: #3498db; text-transform: uppercase; font-size: 22px; margin-top: 5px; }
-    p.subtitle { text-align: center; color: #aaa; font-size: 14px; margin-bottom: 25px; }
-    
-    /* 💬 Disqus Tartışma Alanı */
-    #disqus_thread {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px;
-      border-radius: 6px;
-      border: 1px solid #222;
-      margin-top: 20px;
-    }
-    
-    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; font-size: 14px; transition: 0.2s; }
-    .btn:hover { background: #34495e; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soru & Cevap | PUBG Turnuva Organizasyonu</title>
+    <style>
+        :root {
+            --primary-color: #f39c12; /* PUBG Turuncusu */
+            --bg-color: #1a1a1a;
+            --card-bg: #2c3e50;
+            --text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .faq-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: #34495e;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: #243342;
+            color: #dcdde1;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; 
+            padding: 20px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: "▲";
+            color: var(--primary-color);
+        }
+
+        .faq-question::after {
+            content: "▼";
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .contact-box {
+            margin-top: 40px;
+            text-align: center;
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-color);
+            width: 100%;
+            max-width: 760px;
+        }
+
+        .contact-box a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .disqus-container {
+            max-width: 800px; 
+            width: 100%; 
+            margin: 40px auto; 
+            background: #222; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+            border-left: 5px solid var(--primary-color);
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
 
-<div class="box">
-  <h2>💬 KZP SCRIM - SORU KUTUSU</h2>
-  <p class="subtitle">Scrimler, turnuva kuralları veya takımlarla ilgili merak ettiğiniz her şeyi sorun, cevaplayalım!</p>
+    <h1>SORU & CEVAP (SSS)</h1>
 
-  <div id="disqus_thread"></div>
-  
-  <script>
-    var disqus_config = function () {
-      this.page.url = window.location.href;  
-      this.page.identifier = window.location.pathname; 
-    };
-    
-    (function() { 
-      var d = document, s = d.createElement('script');
-      // ⚠️ Buradaki 'kzp-scrim' alanını kendi Disqus shortname'inle değiştirmeyi unutma kral
-      s.src = 'https://kzp-scrim.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Yorumları görebilmek için lütfen JavaScript'i etkinleştirin.</noscript>
+    <div class="faq-container">
 
-  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn" style="background:#25D366;">🟢 WhatsApp Kanalımız</a>
-  <a href="index.html" class="btn">⬅️ Ana Sayfaya Dön</a>
-</div>
+        <div class="faq-item">
+            <div class="faq-question">Turnuvaya katılım ücretli mi? Ödül havuzu nedir?</div>
+            <div class="faq-answer">
+                Turnuvalarımızın katılım şartları (ücretli/ücretsiz) her etkinlik dönemine göre değişiklik gösterir. Güncel ödül havuzu ve detaylar ana sayfamızda ve Discord sunucumuzda ilan edilmektedir.
+            </div>
+        </div>
 
-</body>
-</html>
+        <div class="faq-item">
+            <div class="faq-question">Hile koruması (Anti-Cheat) nasıl sağlanıyor?</div>
+            <div class="faq-answer">
+                Turnuvalarımızda oyuncuların temiz bir oyun deneyimi yaşaması için oyun içi izleyiciler (hakemler) aktif olacaktır. Ayrıca şüpheli durumlarda oyun sonu kayıtları (replay) talep edilir. Hile kullanan takımlar kalıcı olarak banlanır.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Emülatör (PC) oyuncuları turnuvaya katılabilir mi?</div>
+            <div class="faq-answer">
+                Turnuvalarımız aksi
