@@ -3,37 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KZP PUBG Scrim - Anlık Durum</title>
+  <title>KZP PUBG Scrim - Canlı Panel</title>
   <style>
     body { 
-      font-family: sans-serif; 
-      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      font-family: Arial, sans-serif; 
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
       background-size: cover; 
       color: #fff; 
-      padding: 20px; 
+      padding: 15px; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-    }
-    body::before {
-      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8); z-index: -1;
+      margin: 0;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
     .box { 
-      background: rgba(15, 15, 15, 0.9); 
+      background: rgba(15, 15, 15, 0.95); 
       padding: 20px; 
       border-radius: 10px; 
       width: 100%; 
       max-width: 600px; 
       border: 1px solid #3498db;
       box-sizing: border-box;
+      margin-top: 10px;
     }
-    h2 { text-align: center; color: #3498db; text-transform: uppercase; }
-    h3 { color: #f1c40f; text-transform: uppercase; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 5px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: rgba(0,0,0,0.5); }
-    th, td { padding: 10px; text-align: center; border-bottom: 1px solid #222; font-size: 14px; }
-    th { background: #3498db; color: #fff; }
-    .btn { display: block; text-align: center; background: #222; color: #fff; padding: 10px; text-decoration: none; border-radius: 5px; margin-top: 10px; border: 1px solid #444; }
+    h2 { text-align: center; color: #3498db; text-transform: uppercase; font-size: 20px; }
+    h3 { color: #f1c40f; text-transform: uppercase; margin-top: 25px; border-bottom: 2px solid #3498db; padding-bottom: 5px; font-size: 16px; }
+    .table-container { width: 100%; overflow-x: auto; margin-bottom: 15px; }
+    table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.6); min-width: 450px; }
+    th, td { padding: 10px 8px; text-align: center; border: 1px solid #2c3e50; font-size: 14px; }
+    th { background: #3498db; color: #fff; text-transform: uppercase; font-size: 12px; }
+    tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 12px; font-weight: bold; font-size: 14px; }
   </style>
 </head>
 <body>
@@ -41,84 +43,69 @@
 <div class="box">
   <h2>⏱️ KZP SCRIM CANLI PANEL</h2>
 
-  <!-- ========================================== -->
-  <!-- TABLO 1: ANLIK MAÇ DURUMU (ÖRN: 1. MAÇ) -->
-  <!-- ========================================== -->
   <h3>⏱️ En Son Oynanan Maç Sonucu</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Sıra</th>
-        <th>Takım Adı</th>
-        <th>S.Puanı</th>
-        <th>Kill</th>
-        <th>Maç Puanı</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <!-- BİR TAKIM EKLEMEK İÇİN AŞAĞIDAKİ TR SATIRINI DEĞİŞTİR -->
-      <tr>
-        <td>1</td> <!-- Sırası -->
-        <td>KZP Esports</td> <!-- Takım Adı -->
-        <td>10</td> <!-- Sıralama Puanı -->
-        <td>12</td> <!-- Kill Sayısı -->
-        <td>22</td> <!-- Toplam Maç Puanı -->
-      </tr>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Sıra</th>
+          <th>Takım Adı</th>
+          <th>S.Puanı</th>
+          <th>Kill</th>
+          <th>Maç Puanı</th>
+        </tr>
+      </thead>
+      <tbody>
 
-      <tr>
-        <td>2</td>
-        <td>Team Alpha</td>
-        <td>6</td>
-        <td>5</td>
-        <td>11</td>
-      </tr>
+        <tr>
+          <td>1</td> <td style="text-align: left; font-weight: bold; color: #f1c40f;">TAKIM ADI BURAYA</td> 
+          <td>0</td> <td>0</td> <td style="color:#3498db; font-weight:bold;">0</td> </tr>
 
-    </tbody>
-  </table>
+        <tr>
+          <td>2</td>
+          <td style="text-align: left;">İKİNCİ TAKIM ADI</td>
+          <td>0</td>
+          <td>0</td>
+          <td style="color:#3498db; font-weight:bold;">0</td>
+        </tr>
+
+        </tbody>
+    </table>
+  </div>
   
-  
-  <!-- ========================================== -->
-  <!-- TABLO 2: GENEL PUAN DURUMU (TOPLAM SKOR) -->
-  <!-- ========================================== -->
-  <h3>🏆 Genel Puan Durumu (Toplam Sıralama)</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Sıra</th>
-        <th>Takım Adı</th>
-        <th>OM</th>
-        <th>Toplam S.Puanı</th>
-        <th>Toplam Kill</th>
-        <th>Genel Toplam</th>
-      </tr>
-    </thead>
-    <tbody>
+  <h3>🏆 Genel Puan Durumu (Toplam Skor)</h3>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Sıra</th>
+          <th>Takım Adı</th>
+          <th>OM</th>
+          <th>S.Puanı</th>
+          <th>Kill</th>
+          <th>Toplam</th>
+        </tr>
+      </thead>
+      <tbody>
 
-      <!-- GENEL PUANLARI DA BURAYA YAZACAKSIN KANKİ -->
-      <tr>
-        <td>1</td> <!-- Genel Sırası -->
-        <td>KZP Esports</td> <!-- Takım Adı -->
-        <td>1</td> <!-- Oynadığı Maç Sayısı -->
-        <td>10</td> <!-- Tüm Maçların Toplam Sıralama Puanı -->
-        <td>12</td> <!-- Tüm Maçların Toplam Killi -->
-        <td style="color:#f1c40f; font-weight:bold;">22</td> <!-- Genel Toplam Puanı -->
-      </tr>
+        <tr>
+          <td>1</td> <td style="text-align: left; font-weight: bold; color: #f1c40f;">TAKIM ADI BURAYA</td>
+          <td>1</td> <td>0</td> <td>0</td> <td style="color:#25D366; font-weight:bold;">0</td> </tr>
 
-      <tr>
-        <td>2</td>
-        <td>Team Alpha</td>
-        <td>1</td>
-        <td>6</td>
-        <td>5</td>
-        <td style="color:#f1c40f; font-weight:bold;">11</td>
-      </tr>
+        <tr>
+          <td>2</td>
+          <td style="text-align: left;">İKİNCİ TAKIM ADI</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td style="color:#25D366; font-weight:bold;">0</td>
+        </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- Yönlendirme Butonları -->
-  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn" style="background:#25D366; border:none;">🟢 WhatsApp Kanalımız</a>
+  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn" style="background:#25D366;">🟢 WhatsApp Kanalımız</a>
   <a href="index.html" class="btn">⬅️ Ana Sayfaya Dön</a>
 </div>
 
