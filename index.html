@@ -110,7 +110,7 @@
     .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; }
     .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; }
     
-    .btn-half { width: 50%; }
+    .btn-half { width: 50%; box-sizing: border-box; }
     .btn-full { width: 100%; box-sizing: border-box; }
 
     .btn-youtube { background: #ff0000; border: 1px solid #cc0000; }
@@ -119,7 +119,7 @@
     .btn-instagram { background: #e1306c; border: 1px solid #b82254; }
     .btn-instagram:hover { background: #b82254; box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); }
 
-    /* ✅ Kabul Edilen Takımlar Buton CSS */
+    /* Kabul Edilen Takımlar Buton CSS */
     .btn-kabul { 
       background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); 
       border: 1px solid #2ecc71; 
@@ -129,7 +129,7 @@
       box-shadow: 0 0 15px rgba(46, 204, 113, 0.7); 
     }
 
-    /* ✌️ Vatan Game Buton CSS */
+    /* Vatan Game Buton CSS (Link Eklendi) */
     .btn-vatangame { 
       background: linear-gradient(135deg, #0056b3 0%, #003366 100%); 
       border: 1px solid #ffcc00; 
@@ -141,7 +141,7 @@
       color: #ffffff; 
     }
 
-    /* 📅 Takvim Buton CSS */
+    /* Takvim Buton CSS */
     .btn-takvim { 
       background: #1a1a1a; 
       border: 1px solid #f39c12; 
@@ -151,6 +151,18 @@
       background: #2c3e50; 
       color: #f1c40f;
       box-shadow: 0 0 15px rgba(243, 156, 18, 0.7); 
+    }
+
+    /* Yenilenen Sohbet / Soru-Cevap Buton CSS */
+    .btn-sorucevap { 
+      background: #2c3e50; 
+      border: 1px solid #34495e; 
+      color: #ffffff; 
+    }
+    .btn-sorucevap:hover { 
+      background: #34495e; 
+      color: #f1c40f; 
+      box-shadow: 0 0 15px rgba(52, 152, 219, 0.5); 
     }
 
     .btn-channel { background: #1e272e; border: 1px solid #3d3d3d; }
@@ -219,9 +231,6 @@
     <a href="https://www.youtube.com/@tahaalkanYT" target="_blank" class="btn-social btn-half btn-youtube">
       🔴 YouTube
     </a>
-    <a href="sorucevap.html" style="display: block; text-align: center; color: #f39c12; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px; text-shadow: 0 0 8px rgba(243, 156, 18, 0.5); transition: all 0.3s ease;" onmouseover="this.style.textShadow='0 0 15px rgba(243, 156, 18, 0.9)'; this.style.color='#f1c40f';" onmouseout="this.style.textShadow='0 0 8px rgba(243, 156, 18, 0.5)'; this.style.color='#f39c12';">
-      💬 Merak ettiğiniz sorular ve Canlı Destek için TIKLAYIN!
-    </a>
     <a href="https://www.instagram.com/tahaalkanyt/" target="_blank" class="btn-social btn-half btn-instagram">
       📸 Instagram
     </a>
@@ -239,6 +248,10 @@
     📅 Turnuva & Scrim Takvimi İçin TIKLAYIN!
   </a>
 
+  <a href="sorucevap.html" class="btn-social btn-full btn-sorucevap">
+    💬 Oyuncu Soru-Cevap & Canlı Destek Alanı İçin TIKLAYIN!
+  </a>
+  
   <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn-social btn-full btn-whatsapp">
     🟢 Resmi WhatsApp Kanalımız
   </a>
