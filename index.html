@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KZP PUBG Scrim Turnuva Kaydı</title>
   <style>
-    /* Arka plan: KZP Logosu ve Koyu Tema */
+    /* 💥 Arka plan: KZP Logosunun kendisi ve Koyu Tema */
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      /* Arka plan resmin olarak senin logonun linki */
       background: #080000 url('https://i.hizliresim.com/3t8gb9y.png') no-repeat center center fixed; 
-      background-size: 50% auto; /* Arka plandaki logoyu devasa ama dengeli yapar */
+      background-size: 60% auto; /* Logoyu devasa yapar ama dengeli durur */
       color: #fff; 
       padding: 20px; 
       display: flex; 
@@ -19,24 +20,26 @@
       margin: 0;
     }
     
-    /* Karartma ve Kırmızı Neon Atmosfer Katmanı */
+    /* 💥 Atmosfer: Kırmızı Neon Karartma ve Bulanıklık Katmanı */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(15,0,0,0.75) 0%, rgba(0,0,0,0.96) 100%);
+      /* radial-gradient arka plandaki logoya asalet ve neon parlama verir */
+      background: radial-gradient(circle, rgba(15,0,0,0.7) 0%, rgba(0,0,0,0.95) 100%);
+      backdrop-filter: blur(8px); /* 💥 Arka plandaki dev logoyu hafif bulanıklaştırarak yazıları öne çıkarır */
       z-index: -1;
     }
 
-    /* Üst Logo (KZP Kendi Logon) */
+    /* Üst Logo (Eski temsili görsel kaldırıldı) */
     .header-logo {
       width: 160px;
       height: auto;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 0 15px rgba(231, 76, 60, 0.6)); /* Logoya dışarıdan kırmızı parlama verir */
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px rgba(231, 76, 60, 0.6));
     }
 
-    /* Form Kutusu: Tamamen senin logonun renklerine özel kırmızı-siyah neon */
+    /* Form Kutusu: Logonun renkleriyle uyumlu kırmızı-siyah neon tema */
     .form-container { 
       background: rgba(15, 15, 15, 0.9); 
       padding: 30px; 
@@ -46,7 +49,6 @@
       box-shadow: 0 0 30px rgba(231, 76, 60, 0.25); 
       border: 1px solid #e74c3c;
       margin-bottom: 20px;
-      backdrop-filter: blur(5px);
     }
     
     h2 { 
@@ -130,7 +132,7 @@
 
     /* Mobil cihazlar için arka plan optimizasyonu */
     @media (max-width: 768px) {
-      body { background-size: 80% auto; }
+      body { background-size: 85% auto; }
     }
   </style>
 </head>
