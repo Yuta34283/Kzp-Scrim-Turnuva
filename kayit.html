@@ -3,187 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KZP PUBG Scrim - Kayıtlı Takımlar</title>
+  <title>Turnuva Kayıt Formu | KZP PUBG Scrim</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
-    
-    * { box-sizing: border-box; }
+    /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
     body { 
-      font-family: 'Krona One', sans-serif; 
-      background: linear-gradient(rgba(10, 5, 5, 0.93), rgba(0, 0, 0, 0.98)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
       background-size: cover; 
       color: #fff; 
-      padding: 15px; 
+      padding: 40px 20px; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      margin: 0;
       min-height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    /* 💥 Atmosfer Katmanı */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+      z-index: -1;
     }
 
-    .box { 
-      background: rgba(15, 10, 10, 0.97); 
+    /* Üst Menü / Buton Alanı */
+    .nav-container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+
+    /* Form Kutusu */
+    .form-container { 
+      background: rgba(15, 15, 15, 0.85); 
       padding: 30px; 
       border-radius: 12px; 
       width: 100%; 
-      max-width: 700px; 
-      border: 3px solid #e74c3c;
-      box-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
+      max-width: 500px; 
+      box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
+      border: 1px solid #e74c3c;
+      margin-bottom: 20px;
+      backdrop-filter: blur(6px); 
       box-sizing: border-box;
-      margin-top: 30px;
-      margin-bottom: 30px;
     }
-
-    h2 { 
+    
+    h1 { 
       text-align: center; 
       color: #e74c3c; 
-      text-transform: uppercase; 
-      font-size: 24px; 
-      margin-top: 5px; 
+      margin-top: 0;
+      margin-bottom: 25px; 
+      text-transform: uppercase;
       letter-spacing: 2px;
-      text-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
-      border-bottom: 2px solid #e74c3c;
-      padding-bottom: 10px;
+      font-size: 20px;
+      text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
     }
-
-    p.subtitle { 
-      text-align: center; 
-      color: #bbb; 
-      font-size: 12px; 
-      margin-bottom: 30px; 
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .table-container {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    table { 
+    
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
+    
+    /* Girdi Alanları */
+    input[type="text"], input[type="email"], textarea { 
       width: 100%; 
-      border-collapse: separate; 
-      border-spacing: 0 8px; 
-      min-width: 450px;
-    }
-
-    th { 
-      color: #f1c40f; 
-      text-transform: uppercase; 
-      font-size: 12px; 
-      padding: 10px;
-      letter-spacing: 1.5px;
-      text-align: center;
-    }
-
-    td { 
-      padding: 15px; 
-      text-align: center; 
-      font-size: 14px; 
-      background: rgba(25, 15, 15, 0.9);
-      border-top: 1px solid #331111;
-      border-bottom: 1px solid #331111;
-    }
-
-    td:first-child {
-      border-left: 1px solid #331111;
-      border-radius: 8px 0 0 8px;
-      font-weight: bold;
-      color: #e74c3c;
-    }
-
-    td:last-child {
-      border-right: 1px solid #331111;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .team-name { 
-      text-align: left; 
+      padding: 12px; 
+      border: 1px solid #2c2c2c; 
+      background: rgba(8, 8, 8, 0.9); 
       color: #fff; 
-      font-size: 15px;
+      border-radius: 6px; 
+      box-sizing: border-box; 
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+    
+    input:focus, textarea:focus { 
+      border-color: #e74c3c; 
+      outline: none; 
+      box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+      background: #000;
+    }
+    
+    /* Kayıt Butonu */
+    .btn-submit { 
+      width: 100%; 
+      padding: 14px; 
+      background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); 
+      border: none; 
+      color: #fff; 
+      font-size: 16px; 
+      font-weight: bold; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      transition: all 0.2s; 
       text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
       letter-spacing: 1px;
     }
-
-    .slot-status {
-      font-weight: bold;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .slot-filled { color: #2ecc71; text-shadow: 0 0 8px rgba(46, 204, 113, 0.6); } 
-    .slot-empty { color: #888; } 
-
-    .btn-back { 
-      display: block; 
-      text-align: center; 
-      background: #1a1a1a; 
-      color: #aaa; 
-      padding: 12px; 
-      text-decoration: none; 
-      border-radius: 5px; 
-      margin-top: 25px; 
-      font-weight: bold; 
-      font-size: 13px; 
-      text-transform: uppercase;
-      border: 1px solid #333;
-      transition: 0.2s; 
-    }
-    .btn-back:hover { 
-      background: #252525; 
-      color: #fff;
-      border-color: #555;
+    
+    .btn-submit:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
     }
   </style>
 </head>
 <body>
 
-<div class="box">
-  <h2>🔥 KZP SCRIM - TAKIM LİSTESİ</h2>
-  <p class="subtitle">Onaylanan takımlar ve slot durumu</p>
-
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 15%;">SLOT</th>
-          <th style="text-align: left;">TAKIM ADI</th>
-          <th style="width: 30%;">DURUM</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>01</td><td class="team-name" style="color: #f1c40f;">Takım 1</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
-        <tr><td>02</td><td class="team-name">Takım 2</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
-        <tr><td>03</td><td class="team-name">Takım 3</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
-        <tr><td>04</td><td class="team-name">Takım 4</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
-        
-        <tr><td>05</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>06</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>07</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>08</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>09</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>10</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>11</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>12</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>13</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>14</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>15</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>16</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>17</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>18</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>19</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>20</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>21</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>22</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>23</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>24</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-        <tr><td>25</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
-      </tbody>
-    </table>
+  <div class="nav-container">
+    <a href="index.html" style="display: inline-block; text-align: center; color: #ffffff; background-color: #2c3e50; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; border-radius: 5px; border-left: 4px solid #e74c3c; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#34495e'; this.style.color='#e74c3c';" onmouseout="this.style.backgroundColor='#2c3e50'; this.style.color='#ffffff';">
+        ⬅️ Ana Sayfaya Dön
+    </a>
   </div>
 
-  <a href="index.html" class="btn-back">⬅️ Ana Sayfaya Dön</a>
-</div>
+  <div class="form-container">
+    <h1>KZP Scrim Turnuva Kaydı</h1>
+    
+    <form action="https://formspree.io/f/meewbqow" method="POST">
+      
+      <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">
+      
+      <div class="form-group">
+        <label>Takım Adı:</label>
+        <input type="text" name="Takım Adı" required placeholder="Örn: KZP Esports">
+      </div>
+      
+      <div class="form-group">
+        <label>Kaptan Instagram Kullanıcı Adı:</label>
+        <input type="text" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt">
+      </div>
+
+      <div class="form-group">
+        <label>Kaptan E-posta Adresi:</label>
+        <input type="email" name="_replyto" required placeholder="Örn: taha@gmail.com">
+      </div>
+      
+      <div class="form-group">
+        <label>Oyuncular (ID ve Nickler):</label>
+        <textarea name="Oyuncu Listesi" rows="4" required placeholder="1- Oyuncu1 (ID)&#10;2- Oyuncu2 (ID)&#10;3- Oyuncu3 (ID)&#10;4- Oyuncu4 (ID)"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Banka Dekont Ücret Açıklaması:</label>
+        <input type="text" name="Banka Dekont Açıklaması" required placeholder="Örn: Dekonta yazılan isim veya takım adı">
+      </div>
+      
+      <button type="submit" class="btn-submit">Kaydı Tamamla ve Gönder</button>
+    </form>
+  </div>
 
 </body>
 </html>
