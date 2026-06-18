@@ -3,118 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KZP PUBG Scrim - Anlık Maç Sonuçları</title>
+  <title>KZP PUBG Scrim - Anlık Durum</title>
   <style>
-    /* 💥 Arka Plan: Ana sayfa ile birebir aynı Anka Kuşu görseli */
     body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      font-family: sans-serif; 
       background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
       background-size: cover; 
       color: #fff; 
-      padding: 40px 20px; 
+      padding: 20px; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      min-height: 100vh;
-      margin: 0;
-      box-sizing: border-box;
     }
-    
-    /* 💥 Atmosfer Katmanı */
     body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
-      z-index: -1;
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); z-index: -1;
     }
-
-    /* Genel Kutu Tasarımı */
-    .leaderboard-container { 
-      background: rgba(15, 15, 15, 0.85); 
-      padding: 30px; 
-      border-radius: 12px; 
+    .box { 
+      background: rgba(15, 15, 15, 0.9); 
+      padding: 20px; 
+      border-radius: 10px; 
       width: 100%; 
-      max-width: 650px; 
-      box-shadow: 0 0 30px rgba(52, 152, 219, 0.3); 
+      max-width: 600px; 
       border: 1px solid #3498db;
-      margin-bottom: 20px;
-      backdrop-filter: blur(6px);
-    }
-    
-    h2 { 
-      text-align: center; 
-      color: #3498db; 
-      margin-top: 0;
-      margin-bottom: 5px; 
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 22px;
-      text-shadow: 0 0 12px rgba(52, 152, 219, 0.6);
-    }
-
-    .update-time {
-      text-align: center;
-      color: #aaaaaa;
-      font-size: 12px;
-      margin-bottom: 25px;
-      font-style: italic;
-    }
-
-    /* Tablo Tasarımı (Anlık Maç Mavisi) */
-    .leaderboard-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(8, 8, 8, 0.6);
-      border-radius: 6px;
-      overflow: hidden;
-      margin-bottom: 25px;
-    }
-
-    .leaderboard-table th, .leaderboard-table td {
-      padding: 12px 10px;
-      text-align: center;
-      border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-      font-size: 14px;
-    }
-
-    .leaderboard-table th {
-      background: rgba(52, 152, 219, 0.2);
-      color: #3498db;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .leaderboard-table tr:hover {
-      background: rgba(52, 152, 219, 0.1);
-    }
-
-    .rank-1 { color: #f1c40f; font-weight: bold; } 
-    .rank-2 { color: #d2d2d2; font-weight: bold; } 
-    .rank-3 { color: #cd7f32; font-weight: bold; } 
-    
-    .match-point {
-      color: #3498db;
-      font-weight: bold;
-    }
-
-    /* Navigasyon ve WhatsApp Butonları */
-    .btn-action { 
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      width: 100%; 
-      padding: 14px; 
-      color: #fff; 
-      font-size: 15px; 
-      font-weight: bold; 
-      border-radius: 6px; 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      letter-spacing: 1px;
-      text-transform: uppercase;
       box-sizing: border-box;
-      transition: all 0.2s;
-      margin-top: 15px;
     }
-    .btn-back { background: linear-gradient(135deg, #1e272e 0%, #2f3640 100%); border: 1px solid #3d3d3d; }
-    .btn-back:hover { transform: translateY(-2px); background: #2f36
+    h2 { text-align: center; color: #3498db; text-transform: uppercase; }
+    h3 { color: #f1c40f; text-transform: uppercase; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: rgba(0,0,0,0.5); }
+    th, td { padding: 10px; text-align: center; border-bottom: 1px solid #222; font-size: 14px; }
+    th { background: #3498db; color: #fff; }
+    .btn { display: block; text-align: center; background: #222; color: #fff; padding: 10px; text-decoration: none; border-radius: 5px; margin-top: 10px; border: 1px solid #444; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>⏱️ KZP SCRIM CANLI PANEL</h2>
+
+  <!-- ========================================== -->
+  <!-- TABLO 1: ANLIK MAÇ DURUMU (ÖRN: 1. MAÇ) -->
+  <!-- ========================================== -->
+  <h3>⏱️ En Son Oynanan Maç Sonucu</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Sıra</th>
+        <th>Takım Adı</th>
+        <th>S.Puanı</th>
+        <th>Kill</th>
+        <th>Maç Puanı</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <!-- BİR TAKIM EKLEMEK İÇİN AŞAĞIDAKİ TR SATIRINI DEĞİŞTİR -->
+      <tr>
+        <td>1</td> <!-- Sırası -->
+        <td>KZP Esports</td> <!-- Takım Adı -->
+        <td>10</td> <!-- Sıralama Puanı -->
+        <td>12</td> <!-- Kill Sayısı -->
+        <td>22</td> <!-- Toplam Maç Puanı -->
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>Team Alpha</td>
+        <td>6</td>
+        <td>5</td>
+        <td>11</td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+  
+  <!-- ========================================== -->
+  <!-- TABLO 2: GENEL PUAN DURUMU (TOPLAM SKOR) -->
+  <!-- ========================================== -->
+  <h3>🏆 Genel Puan Durumu (Toplam Sıralama)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Sıra</th>
+        <th>Takım Adı</th>
+        <th>OM</th>
+        <th>Toplam S.Puanı</th>
+        <th>Toplam Kill</th>
+        <th>Genel Toplam</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- GENEL PUANLARI DA BURAYA YAZACAKSIN KANKİ -->
+      <tr>
+        <td>1</td> <!-- Genel Sırası -->
+        <td>KZP Esports</td> <!-- Takım Adı -->
+        <td>1</td> <!-- Oynadığı Maç Sayısı -->
+        <td>10</td> <!-- Tüm Maçların Toplam Sıralama Puanı -->
+        <td>12</td> <!-- Tüm Maçların Toplam Killi -->
+        <td style="color:#f1c40f; font-weight:bold;">22</td> <!-- Genel Toplam Puanı -->
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>Team Alpha</td>
+        <td>1</td>
+        <td>6</td>
+        <td>5</td>
+        <td style="color:#f1c40f; font-weight:bold;">11</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Yönlendirme Butonları -->
+  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn" style="background:#25D366; border:none;">🟢 WhatsApp Kanalımız</a>
+  <a href="index.html" class="btn">⬅️ Ana Sayfaya Dön</a>
+</div>
+
+</body>
+</html>
