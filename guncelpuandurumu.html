@@ -29,41 +29,59 @@
       margin-top: 10px;
     }
     h2 { text-align: center; color: #3498db; text-transform: uppercase; font-size: 20px; }
-    h3 { color: #f1c40f; text-transform: uppercase; margin-top: 25px; border-bottom: 2px solid #3498db; padding-bottom: 5px; font-size: 16px; }
+    h3 { color: #f1c40f; text-transform: uppercase; margin-top: 25px; border-bottom: 2px solid #3498db; padding-bottom: 5px; font-size: 16px; text-align: left; width: 100%; }
     .table-container { width: 100%; overflow-x: auto; margin-bottom: 15px; }
     table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.6); min-width: 500px; }
     th, td { padding: 10px 8px; text-align: center; border: 1px solid #2c3e50; font-size: 14px; }
     th { background: #3498db; color: #fff; text-transform: uppercase; font-size: 12px; }
     tr:nth-child(even) { background: rgba(255,255,255,0.03); }
     
-    /* 🌟 MVP Kart Tasarımları */
+    /* 🌟 MVP Kapsayıcı: Yan yana dizilim için esnek yapı */
     .mvp-wrapper {
       display: flex;
-      flex-direction: column;
+      flex-direction: row; /* Geniş ekranda yan yana */
       gap: 15px;
       margin-top: 15px;
+      width: 100%;
     }
+    
+    /* MVP Kartları sola yaslı ve eşit genişlikte */
     .mvp-card {
+      flex: 1;
       background: rgba(241, 196, 15, 0.08);
       border: 1px solid #f1c40f;
       border-radius: 8px;
       padding: 15px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 15px;
       box-shadow: 0 0 10px rgba(241, 196, 15, 0.1);
+      justify-content: flex-start; /* İçeriği sola yaslar */
     }
+    
     .mvp-avatar {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       border: 2px solid #f1c40f;
       background: #222;
       object-fit: cover;
     }
-    .mvp-info p { margin: 4px 0; font-size: 14px; }
     
-    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 12px; font-weight: bold; font-size: 14px; }
+    .mvp-info {
+      text-align: left; /* Yazıları tamamen sola yaslar */
+    }
+    
+    .mvp-info p { margin: 4px 0; font-size: 13px; }
+    
+    .btn { display: block; text-align: center; background: #2c3e50; color: #fff; padding: 12px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; font-size: 14px; }
+
+    /* 📱 Telefonlar İçin Ekran Ayarı (Üst üste binmesin diye) */
+    @media (max-width: 600px) {
+      .mvp-wrapper {
+        flex-direction: column; /* Mobilde dikey sıraya geçer */
+      }
+    }
   </style>
 </head>
 <body>
@@ -162,7 +180,7 @@
     <div class="mvp-card">
       <img class="mvp-avatar" src="https://i.hizliresim.com/d9fo3b9.png" alt="MVP">
       <div class="mvp-info">
-        <p style="color: #f1c40f; font-weight: bold; font-size: 15px;">🏅 Günün MVP Oyuncusu</p>
+        <p style="color: #f1c40f; font-weight: bold; font-size: 14px;">🏅 Günün MVP Oyuncusu</p>
         <p><strong>Oyuncu Adı:</strong> GÜNÜN_OYUNCU_NICKİ</p>
         <p><strong>Takımı:</strong> OYUNCUNUN_TAKIMI</p>
         <p><strong>Toplam Kill:</strong> 0</p>
@@ -172,7 +190,7 @@
     <div class="mvp-card">
       <img class="mvp-avatar" src="https://i.hizliresim.com/d9fo3b9.png" alt="MVP">
       <div class="mvp-info">
-        <p style="color: #f1c40f; font-weight: bold; font-size: 15px;">🔥 Günün MVP Takımı</p>
+        <p style="color: #f1c40f; font-weight: bold; font-size: 14px;">🔥 Günün MVP Takımı</p>
         <p><strong>Takım Adı:</strong> GÜNÜN_MVP_TAKIMI</p>
         <p><strong>Toplam Maç Kill:</strong> 0</p>
         <p><strong>Aldığı WWCD:</strong> 0 Çorba</p>
