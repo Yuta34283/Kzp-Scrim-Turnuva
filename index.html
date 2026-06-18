@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KZP PUBG Scrim Turnuva Kaydı</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+    
     /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
     body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      font-family: 'Krona One', sans-serif; 
       background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
       background-size: cover; 
       color: #fff; 
@@ -29,16 +31,16 @@
       z-index: -1;
     }
 
-    /* Form Kutusu */
+    /* 🔥 Havalı Form Kutusu */
     .form-container { 
-      background: rgba(15, 15, 15, 0.85); 
-      padding: 30px; 
+      background: rgba(15, 10, 10, 0.95); 
+      padding: 35px 30px; 
       border-radius: 12px; 
       width: 100%; 
-      max-width: 500px; 
-      box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
-      border: 1px solid #e74c3c;
-      margin-bottom: 20px;
+      max-width: 550px; 
+      box-shadow: 0 0 35px rgba(231, 76, 60, 0.5); 
+      border: 3px solid #e74c3c;
+      margin-bottom: 25px;
       backdrop-filter: blur(6px); 
     }
     
@@ -49,85 +51,88 @@
       margin-bottom: 25px; 
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: 20px;
-      text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+      font-size: 22px;
+      text-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+      border-bottom: 2px solid #e74c3c;
+      padding-bottom: 12px;
     }
     
-    .form-group { margin-bottom: 15px; }
-    label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; font-weight: bold; color: #e74c3c; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
     
     /* Girdi Alanları */
     input[type="text"], input[type="email"], textarea { 
       width: 100%; 
-      padding: 12px; 
-      border: 1px solid #2c2c2c; 
-      background: rgba(8, 8, 8, 0.9); 
+      padding: 14px; 
+      border: 1px solid #331111; 
+      background: rgba(20, 10, 10, 0.85); 
       color: #fff; 
       border-radius: 6px; 
       box-sizing: border-box; 
       transition: all 0.3s;
       font-size: 14px;
+      font-family: Arial, sans-serif; /* Form içi metinler rahat okunsun diye */
     }
     
     input:focus, textarea:focus { 
       border-color: #e74c3c; 
       outline: none; 
-      box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
-      background: #000;
+      box-shadow: 0 0 12px rgba(231, 76, 60, 0.5);
+      background: rgba(30, 15, 15, 0.95);
     }
     
-    /* Kayıt Butonu */
+    /* 🔴 Kayıt Butonu */
     .btn-submit { 
       width: 100%; 
-      padding: 14px; 
-      background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); 
+      padding: 16px; 
+      background: #e74c3c; 
       border: none; 
       color: #fff; 
-      font-size: 16px; 
+      font-size: 15px; 
       font-weight: bold; 
+      font-family: 'Krona One', sans-serif;
       border-radius: 6px; 
       cursor: pointer; 
-      transition: all 0.2s; 
+      transition: all 0.3s; 
       text-transform: uppercase;
       box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
       letter-spacing: 1px;
     }
     
     .btn-submit:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
+      background: #c0392b;
+      box-shadow: 0 6px 25px rgba(231, 76, 60, 0.7);
     }
     
     /* Alt Sosyal Medya Butonları */
     .social-wrapper {
       width: 100%;
-      max-width: 500px;
+      max-width: 550px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; }
-    .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; }
+    .social-container { display: flex; justify-content: space-between; gap: 12px; width: 100%; }
+    .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 15px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.6); text-align: center; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
     
     .btn-half { width: 50%; box-sizing: border-box; }
     .btn-full { width: 100%; box-sizing: border-box; }
 
     .btn-youtube { background: #ff0000; border: 1px solid #cc0000; }
-    .btn-youtube:hover { background: #cc0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+    .btn-youtube:hover { background: #cc0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); }
     
     .btn-instagram { background: #e1306c; border: 1px solid #b82254; }
-    .btn-instagram:hover { background: #b82254; box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); }
+    .btn-instagram:hover { background: #b82254; box-shadow: 0 0 15px rgba(225, 48, 108, 0.6); }
 
     .btn-vatangame { 
-      background: linear-gradient(135deg, #0056b3 0%, #003366 100%); 
+      background: #0056b3; 
       border: 1px solid #ffcc00; 
       color: #ffcc00; 
     }
     .btn-vatangame:hover { 
-      background: linear-gradient(135deg, #003366 0%, #001f3f 100%); 
+      background: #003366; 
       box-shadow: 0 0 15px rgba(255, 204, 0, 0.6); 
-      color: #ffffff; 
     }
 
     .btn-takvim { 
@@ -136,23 +141,37 @@
       color: #f39c12; 
     }
     .btn-takvim:hover { 
-      background: #2c3e50; 
-      color: #f1c40f;
-      box-shadow: 0 0 15px rgba(243, 156, 18, 0.7); 
+      background: #252525; 
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.6); 
     }
 
-    .btn-sorucevap { background: #2c3e50; border: 1px solid #f39c12; color: #f39c12; }
-    .btn-sorucevap:hover { background: #34495e; color: #f1c40f; box-shadow: 0 0 15px rgba(243, 156, 18, 0.6); }
+    .btn-sorucevap { background: #2c3e50; border: 1px solid #3498db; color: #3498db; }
+    .btn-sorucevap:hover { background: #1f2d3d; box-shadow: 0 0 15px rgba(52, 152, 219, 0.6); }
 
-    .btn-channel { background: #1e272e; border: 1px solid #3d3d3d; }
-    .btn-channel:hover { background: #2f3640; box-shadow: 0 0 15px rgba(231, 76, 60, 0.3); }
+    .btn-channel { background: #1e272e; border: 1px solid #3d3d3d; color: #aaa; }
+    .btn-channel:hover { background: #2f3640; box-shadow: 0 0 15px rgba(231, 76, 60, 0.4); color: #fff; }
     
-    .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); border: 1px solid #128C7E; }
-    .btn-whatsapp:hover { box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); }
+    .btn-whatsapp { background: #25D366; border: 1px solid #128C7E; }
+    .btn-whatsapp:hover { background: #20bd59; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); }
+
+    .top-link {
+      display: block; 
+      text-align: center; 
+      text-decoration: none; 
+      font-weight: bold; 
+      margin-bottom: 12px; 
+      font-size: 12px; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: 0.2s;
+    }
+    .top-link:hover {
+      filter: brightness(1.2);
+    }
 
     /* Mobil Cihazlar İçin Uyum */
     @media (max-width: 480px) {
-      .social-container { flex-direction: column; }
+      .social-container { flex-direction: column; gap: 12px; }
       .btn-half { width: 100%; }
     }
   </style>
@@ -162,14 +181,14 @@
 <div class="form-container">
   <h2>KZP Scrim Turnuva Kaydı</h2>
   
-  <a href="kurallar.html" style="display: block; text-align: center; color: #f1c40f; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px; text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);">
-    ⚠️ Kayıt olmadan önce turnuva kurallarını okumak için TIKLAYIN!
+  <a href="kurallar.html" class="top-link" style="color: #f1c40f; text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);">
+    ⚠️ Turnuva Kurallarını Okumak İçin TIKLAYIN!
   </a>
-  <a href="puan.html" style="display: block; text-align: center; color: #e74c3c; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px;">
-    📊 Resmi Puanlama Sistemini Görmek İçin TIKLAYIN!
+  <a href="puan.html" class="top-link" style="color: #e67e22;">
+    📊 Resmi Puanlama Sistemi İçin TIKLAYIN!
   </a>
-  <a href="guncelpuandurumu.html" style="display: block; text-align: center; color: #3498db; text-decoration: none; font-weight: bold; margin-bottom: 25px; font-size: 14px; text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);">
-    📊 Canlı Maç Sonuçları ve Güncel Puan Durumu İçin TIKLAYIN!
+  <a href="guncelpuandurumu.html" class="top-link" style="color: #3498db; margin-bottom: 25px; text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);">
+    📊 Canlı Sonuçlar & Puan Durumu İçin TIKLAYIN!
   </a>
   
   <form action="https://formspree.io/f/meewbqow" method="POST">
@@ -216,15 +235,15 @@
   </div>
   
   <a href="https://vatangame.com/" target="_blank" class="btn-social btn-full btn-vatangame">
-    ✌️ Vatan Game Üzerinden Kayıt Olmak İçin TIKLAYIN!
+    ✌️ Vatan Game Üzerinden Kayıt Ol
   </a>
 
   <a href="takvim.html" class="btn-social btn-full btn-takvim">
-    📅 Turnuva & Scrim Takvimi İçin TIKLAYIN!
+    📅 Turnuva & Scrim Takvimi
   </a>
 
   <a href="sorucevap.html" class="btn-social btn-full btn-sorucevap">
-    💬 Oyuncu Soru-Cevap & Tartışma Alanı İçin TIKLAYIN!
+    💬 Soru-Cevap & Tartışma Alanı
   </a>
   
   <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn-social btn-full btn-whatsapp">
