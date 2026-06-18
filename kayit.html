@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KZP PUBG Scrim - Kayıtlı Takımlar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+    
+    * { box-sizing: border-box; }
+    body { 
+      font-family: 'Krona One', sans-serif; 
+      background: linear-gradient(rgba(10, 5, 5, 0.93), rgba(0, 0, 0, 0.98)), url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      background-size: cover; 
+      color: #fff; 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .box { 
+      background: rgba(15, 10, 10, 0.97); 
+      padding: 30px; 
+      border-radius: 12px; 
+      width: 100%; 
+      max-width: 700px; 
+      border: 3px solid #e74c3c;
+      box-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
+      box-sizing: border-box;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    h2 { 
+      text-align: center; 
+      color: #e74c3c; 
+      text-transform: uppercase; 
+      font-size: 24px; 
+      margin-top: 5px; 
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+      border-bottom: 2px solid #e74c3c;
+      padding-bottom: 10px;
+    }
+
+    p.subtitle { 
+      text-align: center; 
+      color: #bbb; 
+      font-size: 12px; 
+      margin-bottom: 30px; 
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table { 
+      width: 100%; 
+      border-collapse: separate; 
+      border-spacing: 0 8px; 
+      min-width: 450px;
+    }
+
+    th { 
+      color: #f1c40f; 
+      text-transform: uppercase; 
+      font-size: 12px; 
+      padding: 10px;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+
+    td { 
+      padding: 15px; 
+      text-align: center; 
+      font-size: 14px; 
+      background: rgba(25, 15, 15, 0.9);
+      border-top: 1px solid #331111;
+      border-bottom: 1px solid #331111;
+    }
+
+    td:first-child {
+      border-left: 1px solid #331111;
+      border-radius: 8px 0 0 8px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    td:last-child {
+      border-right: 1px solid #331111;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .team-name { 
+      text-align: left; 
+      color: #fff; 
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .slot-status {
+      font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .slot-filled { color: #2ecc71; text-shadow: 0 0 8px rgba(46, 204, 113, 0.6); } 
+    .slot-empty { color: #888; } 
+
+    .btn-back { 
+      display: block; 
+      text-align: center; 
+      background: #1a1a1a; 
+      color: #aaa; 
+      padding: 12px; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      margin-top: 25px; 
+      font-weight: bold; 
+      font-size: 13px; 
+      text-transform: uppercase;
+      border: 1px solid #333;
+      transition: 0.2s; 
+    }
+    .btn-back:hover { 
+      background: #252525; 
+      color: #fff;
+      border-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>🔥 KZP SCRIM - TAKIM LİSTESİ</h2>
+  <p class="subtitle">Onaylanan takımlar ve slot durumu</p>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">SLOT</th>
+          <th style="text-align: left;">TAKIM ADI</th>
+          <th style="width: 30%;">DURUM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td class="team-name" style="color: #f1c40f;">Takım 1</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
+        <tr><td>02</td><td class="team-name">Takım 2</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
+        <tr><td>03</td><td class="team-name">Takım 3</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
+        <tr><td>04</td><td class="team-name">Takım 4</td><td class="slot-status slot-filled">ONAYLANDI</td></tr>
+        
+        <tr><td>05</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>06</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>07</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>08</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>09</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>10</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>11</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>12</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>13</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>14</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>15</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>16</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>17</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>18</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>19</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>20</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>21</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>22</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>23</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>24</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+        <tr><td>25</td><td class="team-name">-</td><td class="slot-status slot-empty">BOŞ SLOT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="index.html" class="btn-back">⬅️ Ana Sayfaya Dön</a>
+</div>
+
+</body>
+</html>
