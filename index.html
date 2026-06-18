@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PUBG Scrim Turnuva Kaydı</title>
+  <title>KZP PUBG Scrim Turnuva Kaydı</title>
   <style>
-    /* Arka plan ve genel tema (Kırmızı & Siyah) */
+    /* Arka plan: Büyük Ateşli Anka Kuşu */
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
       background: #0d0000 url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop') no-repeat center center fixed; 
@@ -19,7 +19,7 @@
       margin: 0;
     }
     
-    /* Karartma katmanı (Görselin arkada asil durması için) */
+    /* Karartma katmanı ve neon efektler */
     body::before {
       content: "";
       position: fixed;
@@ -28,7 +28,13 @@
       z-index: -1;
     }
 
-    /* Form Kutusu (Görseldeki gibi şeffaf siyah ve kırmızı neon çizgili) */
+    /* Üst Logo (KZP Anka Kuşu) */
+    .header-logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    /* Form Kutusu: Şeffaf siyah, kırmızı neon çizgili */
     .form-container { 
       background: rgba(20, 20, 20, 0.85); 
       padding: 30px; 
@@ -92,27 +98,43 @@
       box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
     }
     
-    /* Sosyal Medya Alt Butonları */
-    .social-container { display: flex; justify-content: space-between; gap: 15px; width: 100%; max-width: 500px; }
-    .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; width: 50%; text-align: center; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    /* Sosyal Medya Alt Buton Alanı */
+    .social-wrapper {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; }
+    .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; }
     
+    .btn-half { width: 50%; }
+    .btn-full { width: 100%; box-sizing: border-box; }
+
     .btn-youtube { background: #ff0000; border: 1px solid #cc0000; }
     .btn-youtube:hover { background: #cc0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
     
     .btn-instagram { background: #e1306c; border: 1px solid #b82254; }
     .btn-instagram:hover { background: #b82254; box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); }
+
+    .btn-channel { background: #2f3542; border: 1px solid #57606f; }
+    .btn-channel:hover { background: #57606f; box-shadow: 0 0 15px rgba(87, 96, 111, 0.5); }
   </style>
 </head>
 <body>
 
+<img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964" alt="KZP Logo" class="header-logo">
+
 <div class="form-container">
-  <h2>PUBG Scrim Turnuva Kaydı</h2>
+  <h2>KZP Scrim Turnuva Kaydı</h2>
   
   <form action="https://formspree.io/f/xqeoownn" method="POST">
     
     <div class="form-group">
       <label>Takım Adı:</label>
-      <input type="text" name="Takım Adı" required placeholder="Örn: Kızıl Pençe Espor">
+      <input type="text" name="Takım Adı" required placeholder="Örn: KZP Esports">
     </div>
     
     <div class="form-group">
@@ -127,7 +149,7 @@
     
     <div class="form-group">
       <label>Oyuncular (ID ve Nickler):</label>
-      <textarea name="Oyuncu Listesi" rows="4" required placeholder="1- Oyuncu1 (ID)&#10;2- Oyuncu2 (ID)&#10;3- Oyuncu3 (ID)&#10;4- Oyuncu4 (ID)"></textarea>
+      <textarea name="Oyuncu Listesi" rows="4" required placeholder="1- Oyuncu1 (ID)&#10;2- Oyuncu2 (ID)"></textarea>
     </div>
     
     <div class="form-group">
@@ -139,13 +161,17 @@
   </form>
 </div>
 
-<!-- Sosyal Medya Butonları -->
-<div class="social-container">
-  <a href="https://www.youtube.com/@tahaalkanYT" target="_blank" class="btn-social btn-youtube">
-    🔴 YouTube
-  </a>
-  <a href="https://www.instagram.com/tahaalkanyt/" target="_blank" class="btn-social btn-instagram">
-    📸 Instagram
+<div class="social-wrapper">
+  <div class="social-container">
+    <a href="https://www.youtube.com/@tahaalkanYT" target="_blank" class="btn-social btn-half btn-youtube">
+      🔴 YouTube
+    </a>
+    <a href="https://www.instagram.com/tahaalkanyt/" target="_blank" class="btn-social btn-half btn-instagram">
+      📸 Instagram
+    </a>
+  </div>
+  <a href="https://www.instagram.com/channel/AbaVNHociQVJQ7h_/" target="_blank" class="btn-social btn-full btn-channel">
+    📢 Instagram Kanalımız
   </a>
 </div>
 
