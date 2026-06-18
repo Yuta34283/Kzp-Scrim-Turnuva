@@ -81,19 +81,8 @@
       color: #e0e0e0;
     }
 
-    /* Yasaklar için sol çizgiyi kırmızı/turuncu yapalım */
-    .ban-list li {
-      border-left-color: #ff3f34;
-    }
-
-    /* Cezalar için sol çizgiyi tam kırmızı yapalım */
-    .penalty-list li {
-      border-left-color: #d63031;
-      font-weight: bold;
-    }
-
-    .highlight {
-      color: #ff3f34;
+    .rules-list li strong {
+      color: #e74c3c;
     }
 
     /* Geri Dön / Kayıt Ol Butonu */
@@ -136,36 +125,38 @@
 <div class="rules-container">
   <h2>KZP Scrim Turnuva Kuralları</h2>
   
-  <!-- OYUN İÇİ KURALLAR -->
-  <h3>⚔️ Oyun İçi Kurallar</h3>
+  <!-- 1. GENEL KURALLAR & KATILIM -->
+  <h3>📋 1. Genel Kurallar & Katılım</h3>
   <ul class="rules-list">
-    <li>Oyuncular arasında saygılı iletişim kurulması zorunludur.</li>
-    <li>Her maç sonu <strong>ekran görüntüsü (SS)</strong> almak zorunludur.</li>
-    <li>Yapılan tüm itirazlar, alınan maç sonu SS'leri ile değerlendirilir.</li>
-    <li>Rondo haritasında ölen takım arkadaşlarını geri çağırmak/kaldırmak serbesttir.</li>
-  </ul>
-
-  <!-- YASAKLAR -->
-  <h3>🚫 Yasaklar</h3>
-  <ul class="rules-list ban-list">
-    <li><strong>30 seviye altı</strong> oyuncuların turnuvaya katılması yasaktır.</li>
-    <li><strong>Emülatör</strong> kullanımı kesinlikle yasaktır.</li>
-    <li>Maç esnasında rakiplere veya yönetime küfür/hakaret etmek yasaktır.</li>
-    <li>Küfür ve hakaret durumlarında itirazlar sadece <strong>video kaydı</strong> ile yapılır. Video kaydı olmadan yapılan itirazlar kabul edilmez.</li>
-    <li><strong>Şok Cihazı</strong> kullanımı yasaktır. Envanterinde şok cihazı bulunduran takım <span class="highlight">-5 puan</span> ceza alır.</li>
-    <li><strong>Havan Topu</strong> kullanımı kesinlikle yasaktır.</li>
-    <li>Bıçak, tava ve yumruk ile öldürmek yasaktır. <i>(Yalnızca iki taraf da silahsızken vurulması serbesttir.)</i></li>
-    <li><strong>Acil Tahliye</strong> (Balon) kullanımı yasaktır.</li>
-  </ul>
-
-  <!-- CEZALAR -->
-  <h3>🚨 İhlal Cezaları</h3>
-  <ul class="rules-list penalty-list">
-    <li>📌 1. İhlalde: Takımdan <span class="highlight">5 puan (-5 Puan)</span> düşülür.</li>
-    <li>📌 2. İhlalde: Takım doğrudan <span class="highlight">turnuvadan men (diskalifiye)</span> edilir.</li>
+    <li><strong>Kayıt ve Slot:</strong> Tüm takımlar scrim saatinden en az 15 dakika önce kendilerine ayrılan oda slotuna (lobideki yerlerine) geçmek zorundadır. Rastgele slotlara oturan takımlar uyarılmadan odadan atılır.</li>
+    <li><strong>Oyuncu Değişikliği:</strong> Maçlar başladıktan sonra, aktif maç esnasında oyuncu değişikliği yapılamaz. Yedek oyuncular sadece maç aralarında (lobi ekranında) takıma dahil olabilir.</li>
+    <li><strong>Takım İsimleri:</strong> Oyuncuların oyun içi isimlerinin (IGN), kayıt yaptırdıkları klan/takım tagıyla uyumlu olması zorunludur.</li>
   </ul>
   
-  <!-- Kayıt formuna yönlendiren buton -->
+  <!-- 2. YASAKLAR & CEZALAR -->
+  <h3>🚫 2. Yasaklar & Cezalar</h3>
+  <ul class="rules-list">
+    <li><strong>Cihaz Kısıtlaması (Emülatör):</strong> Turnuvamız sadece mobil cihazlar içindir. Emülatör (PC) üzerinden katılım sağlamak kesinlikle yasaktır.</li>
+    <li><strong>Üçüncü Parti Yazılım ve Hile:</strong> Oyun dosyalarını değiştirmek, hile veya her türlü üçüncü parti yazılım kullanmak süresiz men sebebidir. Küfür/hakaret içeren durumlarda ya da hile iddialarında itirazların geçerli sayılması için net bir <strong>video kaydı (POV)</strong> sunulması şarttır; video kaydı olmayan şikayetler kesinlikle işleme alınmaz.</li>
+    <li><strong>Centilmenlik Dışı Öldürmeler:</strong> Maç esnasında rakipleri bilerek tava, yumruk veya bıçak ile infaz etmek yasaktır. <i>(Yalnızca iki tarafın da tamamen silahsız olduğu maç başı durumlarında yumruk/bıçakla vurulması serbesttir.)</i></li>
+    <li><strong>Teaming ve İllegal İttifak:</strong> Farklı takımların birbiriyle anlaşarak oynaması, haritada birbirini görmezden gelmesi veya birlikte hareket etmesi kesinlikle yasaktır.</li>
+  </ul>
+
+  <!-- 3. ŞİKAYETLER VE KANIT GÖSTERME -->
+  <h3>📸 3. Şikayetler ve Kanıt Gösterme</h3>
+  <ul class="rules-list">
+    <li><strong>SS / Video Zorunluluğu:</strong> Hile, teaming veya kural ihlali iddialarında, şikayetçi olan takımın elinde net video kaydı (POV/Ekran Kaydı) veya ekran görüntüsü olmalıdır. Kanıtsız şikayetler dikkate alınmaz.</li>
+    <li><strong>İtiraz Süresi:</strong> Maç bittikten sonraki 15 dakika içinde yetkililere (kaptanlar/moderatörler kanalı üzerinden) iletilmeyen itirazlar geçersiz sayılır.</li>
+  </ul>
+
+  <!-- 4. DAVRANIŞ VE CENTİLMENLİK -->
+  <h3>🤝 4. Davranış ve Centilmenlik</h3>
+  <ul class="rules-list">
+    <li><strong>Saygı:</strong> Oyun içi genel sohbette (All Chat), lobi ekranında veya Discord'da diğer oyunculara, klan liderlerine veya organizatörlere küfür, hakaret ve kışkırtma içeren söylemler yasaktır. İlk ihlalde uyarı, tekrarında scrimden men cezası uygulanır.</li>
+    <li><strong>Odayı Sabote Etmek:</strong> Maçın başlama süresini geciktirmek veya lobiyi gereksiz yere meşgul etmek takım puanından düşüşe sebep olabilir.</li>
+  </ul>
+  
+  <!-- Kayıt formuna geri dönüş butonu -->
   <a href="index.html" class="btn-action">Kuralları Okudum, Kayıt Ol</a>
   
   <p class="warning-text">⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları peşinen kabul etmiş sayılır.</p>
