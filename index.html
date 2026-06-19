@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KZP PUBG Scrim Turnuva Kaydı</title>
+  
+  <link rel="icon" type="image/png" href="https://i.hizliresim.com/6nk32h1.png">
+
   <style>
     /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
     body { 
@@ -304,7 +307,6 @@
       const currentLine = lines[i];
 
       // 1. KONTROL: Oyun içi isim (Nick) var mı ve klan tagıyla mı başlıyor?
-      // Takım adını büyük harfe çevirip kural esnekliği sağlıyoruz
       if (!currentLine.toUpperCase().includes(teamNameInput.toUpperCase())) {
         e.preventDefault();
         errorBox.innerHTML = `❌ Kayıt Başarısız!<br>Tüm oyuncuların başında <b>"${teamNameInput}"</b> klan tagı olmak zorundadır. Örn: ${teamNameInput} Yuta`;
@@ -314,9 +316,8 @@
       }
 
       // 2. KONTROL: Sadece ID mi yazılmış? Hem isim (Harf) hem ID (Sayı) kontrolü
-      const hasNumbers = /\d+/.test(currentLine); // ID içeriyor mu?
+      const hasNumbers = /\d+/.test(currentLine);
       
-      // Sadece sayılardan mı oluşuyor yoksa harf/isim eksik mi kontrolü
       if (!hasNumbers) {
         e.preventDefault();
         errorBox.innerHTML = `❌ Kayıt Başarısız!<br>Oyuncuların yanına <b>Sayısal Hesap ID'sini</b> yazmak zorunludur.`;
