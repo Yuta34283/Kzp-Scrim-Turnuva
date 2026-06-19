@@ -78,6 +78,23 @@
       box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
       background: #000;
     }
+
+    /* 🖼️ İsteğe Bağlı Dosya Yükleme Alanı CSS */
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      background: rgba(8, 8, 8, 0.9);
+      border: 1px dashed rgba(231, 76, 60, 0.5);
+      color: #fff;
+      border-radius: 6px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    
+    input[type="file"]:hover {
+      border-color: #e74c3c;
+      background: #000;
+    }
         
     /* Kayıt Butonu */
     .btn-submit { 
@@ -215,7 +232,7 @@
 
   <div id="errorBox" class="error-message"></div>
   
-  <form id="scrimForm" action="https://formspree.io/f/meewbqow" method="POST">        
+  <form id="scrimForm" action="https://formspree.io/f/meewbqow" method="POST" enctype="multipart/form-data">        
     <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">        
     
     <div class="form-group">      
@@ -237,6 +254,11 @@
       <label>Oyuncular (Hem Taglı İsim Hem ID Şarttır):</label>      
       <textarea id="playerList" name="Oyuncu Listesi" rows="5" required placeholder="Örn:&#10;1- KZP Yuta (512345678)&#10;2- KZP Nick2 (587654321)&#10;3- KZP Nick3 (522334455)&#10;4- KZP Nick4 (566778899)"></textarea>
     </div>        
+
+    <div class="form-group">
+      <label>Klan / Takım Logosu (İsteğe Bağlı):</label>
+      <input type="file" name="Klan Logosu" accept="image/*">
+    </div>
     
     <div class="form-group">      
       <label>Banka Dekont Ücret Açıklaması:</label>      
@@ -287,13 +309,11 @@
     const playerListInput = document.getElementById('playerList').value;
     const errorBox = document.getElementById('errorBox');
     
-    // Satırları tek tek ayır, boş satırları ele
     const lines = playerListInput.split('\n').map(line => line.trim()).filter(line => line.length > 0);
     
     errorBox.style.display = "none";
     errorBox.innerText = "";
 
-    // En az 4 oyuncu girilme kontrolü
     if (lines.length < 4) {
       e.preventDefault();
       errorBox.innerText = "❌ Kayıt Başarısız! En az 4 oyuncu yazmanız zorunludur.";
@@ -302,11 +322,9 @@
       return;
     }
 
-    // Her satırı tek tek denetle
     for (let i = 0; i < lines.length; i++) {
       const currentLine = lines[i];
 
-      // 1. KONTROL: Oyun içi isim (Nick) var mı ve klan tagıyla mı başlıyor?
       if (!currentLine.toUpperCase().includes(teamNameInput.toUpperCase())) {
         e.preventDefault();
         errorBox.innerHTML = `❌ Kayıt Başarısız!<br>Tüm oyuncuların başında <b>"${teamNameInput}"</b> klan tagı olmak zorundadır. Örn: ${teamNameInput} Yuta`;
@@ -315,7 +333,6 @@
         return;
       }
 
-      // 2. KONTROL: Sadece ID mi yazılmış? Hem isim (Harf) hem ID (Sayı) kontrolü
       const hasNumbers = /\d+/.test(currentLine);
       
       if (!hasNumbers) {
