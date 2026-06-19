@@ -39,7 +39,7 @@
       overflow: hidden;
     }
 
-    /* 🔥 SOL PANEL: Başlık ve MVP Alanları */
+    /* 🔥 SOL PANEL */
     .left-panel {
       flex: 1;
       max-width: 400px;
@@ -50,13 +50,42 @@
       flex-direction: column;
     }
 
+    /* 🏠 Yakışıklı Geri Dön Butonu */
+    .back-to-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(26, 188, 156, 0.1);
+      border: 1px solid #1abc9c;
+      color: #1abc9c;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      align-self: flex-start; /* Butonun kendi boyutu kadar yer kaplaması için */
+      box-shadow: 0 0 10px rgba(26, 188, 156, 0.1);
+    }
+
+    .back-to-home:hover {
+      background: #1abc9c;
+      color: #060608;
+      box-shadow: 0 0 20px rgba(26, 188, 156, 0.4);
+      transform: translateX(-3px); /* Hafif sola kayma efekti */
+      cursor: pointer;
+    }
+
     .scrim-title {
       font-size: 26px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #fff;
-      margin: 10px 0 25px 0;
+      margin: 0 0 25px 0;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 15px;
@@ -201,6 +230,8 @@
   <div class="scrim-container">
     
     <div class="left-panel">
+      
+      <a href="index.html" class="back-to-home">🏠 Ana Sayfaya Dön</a>
       
       <div class="scrim-title">KZP SCRIM<br>LİDER TABLOSU</div>
 
