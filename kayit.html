@@ -47,19 +47,53 @@
       margin-bottom: 20px;
       backdrop-filter: blur(6px); 
       box-sizing: border-box;
+      position: relative; /* Üst köşe hizalaması için gerekli */
     }
     
     h1 { 
       text-align: center; 
       color: #2ecc71; 
       margin-top: 0;
-      margin-bottom: 25px; 
+      margin-bottom: 15px; 
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 20px;
       text-shadow: 0 0 12px rgba(46, 204, 113, 0.6);
       border-bottom: 2px solid #2ecc71;
       padding-bottom: 10px;
+    }
+
+    /* 📸 SAĞ ÜST KÖŞE INSTAGRAM ALANI */
+    .instagram-header-box {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(46, 204, 113, 0.4);
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .instagram-link:hover {
+      background: rgba(46, 204, 113, 0.15);
+      border-color: #2ecc71;
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+    }
+
+    .instagram-link img {
+      width: 16px;
+      height: 16px;
     }
 
     .team-group {
@@ -124,14 +158,43 @@
     }
 
     .player-name {
-      padding: 6px 10px;
+      padding: 8px 10px;
       font-size: 14px;
       color: #ccc;
       border-left: 2px solid #2ecc71;
       margin-bottom: 4px;
       background: rgba(255,255,255,0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .player-name:last-child { margin-bottom: 0; }
+
+    /* ✨ KAPTAN YAZISI PARILTI EFEKTİ (NEON GREEN) */
+    .captain-badge {
+      font-size: 11px;
+      font-weight: bold;
+      color: #2ecc71;
+      background: rgba(46, 204, 113, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #2ecc71;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: neonGlow 1.5s ease-in-out infinite alternate;
+      user-select: none;
+    }
+
+    @keyframes neonGlow {
+      from {
+        text-shadow: 0 0 2px #fff, 0 0 4px #2ecc71, 0 0 10px #2ecc71;
+        box-shadow: 0 0 2px rgba(46, 204, 113, 0.4), inset 0 0 2px rgba(46, 204, 113, 0.4);
+      }
+      to {
+        text-shadow: 0 0 4px #fff, 0 0 8px #2ecc71, 0 0 15px #2ecc71;
+        box-shadow: 0 0 8px rgba(46, 204, 113, 0.8), inset 0 0 4px rgba(46, 204, 113, 0.8);
+      }
+    }
   </style>
 </head>
 <body>
@@ -145,16 +208,23 @@
   <div class="list-container">
     <h1>KAYIT OLAN TAKIMLAR</h1>
 
+    <div class="instagram-header-box">
+      <a href="https://instagram.com/kzp_pubg" target="_blank" class="instagram-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+        <span>@kzp_pubg</span>
+      </a>
+    </div>
+
     <div class="team-group">
       <div class="team-header" onclick="toggleTeams(this)">
         <div class="team-title"><span class="check-icon">✓</span> 1. Takım İsmi Buraya</div>
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -164,10 +234,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -177,10 +247,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -190,10 +260,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 KZP•LEON77 (52032893069)</div>
-        <div class="player-name">👤 KZP•WIND  (51801446363)</div>
-        <div class="player-name">👤 KZP•LEONARDO (52447074755)</div>
-        <div class="player-name">👤 KZP•BALCK (5704143083)</div>
+        <div class="player-name"><span>👤 KZP•LEON77 (52032893069)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 KZP•WIND  (51801446363)</span></div>
+        <div class="player-name"><span>👤 KZP•LEONARDO (52447074755)</span></div>
+        <div class="player-name"><span>👤 KZP•BALCK (5704143083)</span></div>
       </div>
     </div>
 
@@ -203,10 +273,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 NeoNRúžXx7ツ (5816122778)</div>
-        <div class="player-name">👤 NeoNYuSuFツ (51234431114)</div>
-        <div class="player-name">👤 NeoNCleaMツ (51370096634)</div>
-        <div class="player-name">👤 NeoNKroxxx77k (61681907829)</div>
+        <div class="player-name"><span>👤 NeoNRúžXx7ツ (5816122778)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 NeoNYuSuFツ (51234431114)</span></div>
+        <div class="player-name"><span>👤 NeoNCleaMツ (51370096634)</span></div>
+        <div class="player-name"><span>👤 NeoNKroxxx77k (61681907829)</span></div>
       </div>
     </div>
 
@@ -216,10 +286,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 S7Reaflex (51702971416)</div>
-        <div class="player-name">👤 S7Kaizen (52061585650)</div>
-        <div class="player-name">👤 S7Fighter (5617354026)</div>
-        <div class="player-name">👤 S7Sezar (5500866128)</div>
+        <div class="player-name"><span>👤 S7Reaflex (51702971416)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 S7Kaizen (52061585650)</span></div>
+        <div class="player-name"><span>👤 S7Fighter (5617354026)</span></div>
+        <div class="player-name"><span>👤 S7Sezar (5500866128)</span></div>
       </div>
     </div>
 
@@ -229,10 +299,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 FLEX・BERZANツ (52482854801)</div>
-        <div class="player-name">👤 FLEX・Barışツ (51479847362)</div>
-        <div class="player-name">👤 FLEX・Memoツ (51816494411)</div>
-        <div class="player-name">👤 FLEX・Mamiツ (51921950061)</div>
+        <div class="player-name"><span>👤 FLEX・BERZANツ (52482854801)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 FLEX・Barışツ (51479847362)</span></div>
+        <div class="player-name"><span>👤 FLEX・Memoツ (51816494411)</span></div>
+        <div class="player-name"><span>👤 FLEX・Mamiツ (51921950061)</span></div>
       </div>
     </div>
 
@@ -242,11 +312,11 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 『BCS』Resul (51681473922)</div>
-        <div class="player-name">👤 『BCS』SønnyW (5345503800)</div>
-        <div class="player-name">👤 『BCS』WindS (51511539665)</div>
-        <div class="player-name">👤 『BCS』Rolex (52168881073)</div>
-        <div class="player-name">👤 Yedek=『BCS』Soufly (51479896045)</div>
+        <div class="player-name"><span>👤 『BCS』Resul (51681473922)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 『BCS』SønnyW (5345503800)</span></div>
+        <div class="player-name"><span>👤 『BCS』WindS (51511539665)</span></div>
+        <div class="player-name"><span>👤 『BCS』Rolex (52168881073)</span></div>
+        <div class="player-name"><span>👤 Yedek=『BCS』Soufly (51479896045)</span></div>
       </div>
     </div>
 
@@ -256,10 +326,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 APEX REACHER (5682100152)</div>
-        <div class="player-name">👤 APEX HAWK (5909332084)</div>
-        <div class="player-name">👤 APEX EAGLE (51538708676)</div>
-        <div class="player-name">👤 APEX TAKAMOZ (5928246268)</div>
+        <div class="player-name"><span>👤 APEX REACHER (5682100152)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 APEX HAWK (5909332084)</span></div>
+        <div class="player-name"><span>👤 APEX EAGLE (51538708676)</span></div>
+        <div class="player-name"><span>👤 APEX TAKAMOZ (5928246268)</span></div>
       </div>
     </div>
 
@@ -269,10 +339,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -282,10 +352,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -295,10 +365,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -308,10 +378,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -321,10 +391,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -334,10 +404,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -347,10 +417,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -360,10 +430,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -373,10 +443,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -386,10 +456,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -399,10 +469,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -412,10 +482,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -425,10 +495,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -438,10 +508,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -451,10 +521,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
@@ -464,10 +534,10 @@
         <div class="arrow-icon">▼</div>
       </div>
       <div class="players-panel">
-        <div class="player-name">👤 Oyuncu 1 (ID)</div>
-        <div class="player-name">👤 Oyuncu 2 (ID)</div>
-        <div class="player-name">👤 Oyuncu 3 (ID)</div>
-        <div class="player-name">👤 Oyuncu 4 (ID)</div>
+        <div class="player-name"><span>👤 Oyuncu 1 (ID)</span> <span class="captain-badge">👑 Kaptan</span></div>
+        <div class="player-name"><span>👤 Oyuncu 2 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 3 (ID)</span></div>
+        <div class="player-name"><span>👤 Oyuncu 4 (ID)</span></div>
       </div>
     </div>
 
