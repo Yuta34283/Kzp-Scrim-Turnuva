@@ -19,7 +19,7 @@
       margin: 0;
       box-sizing: border-box;
     }
-    
+        
     /* 💥 Atmosfer Katmanı */
     body::before {
       content: "";
@@ -41,7 +41,7 @@
       margin-bottom: 20px;
       backdrop-filter: blur(6px); 
     }
-    
+        
     h2 { 
       text-align: center; 
       color: #e74c3c; 
@@ -52,10 +52,10 @@
       font-size: 20px;
       text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
     }
-    
+        
     .form-group { margin-bottom: 15px; }
     label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
-    
+        
     /* Girdi Alanları */
     input[type="text"], input[type="email"], textarea { 
       width: 100%; 
@@ -68,14 +68,14 @@
       transition: all 0.3s;
       font-size: 14px;
     }
-    
+        
     input:focus, textarea:focus { 
       border-color: #e74c3c; 
       outline: none; 
       box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
       background: #000;
     }
-    
+        
     /* Kayıt Butonu */
     .btn-submit { 
       width: 100%; 
@@ -92,12 +92,27 @@
       box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
       letter-spacing: 1px;
     }
-    
+        
     .btn-submit:hover { 
       transform: translateY(-2px);
       box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
     }
-    
+
+    /* 🚨 Dinamik Hata Mesaj Kutusu */
+    .error-message {
+      display: none;
+      background: rgba(231, 76, 60, 0.2);
+      border: 1px solid #e74c3c;
+      color: #ff9a9a;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 13.5px;
+      font-weight: bold;
+      line-height: 1.4;
+      text-align: center;
+    }
+        
     /* Alt Sosyal Medya Butonları */
     .social-wrapper {
       width: 100%;
@@ -109,13 +124,13 @@
 
     .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; }
     .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; }
-    
+        
     .btn-half { width: 50%; box-sizing: border-box; }
     .btn-full { width: 100%; box-sizing: border-box; }
 
     .btn-youtube { background: #ff0000; border: 1px solid #cc0000; }
     .btn-youtube:hover { background: #cc0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
-    
+        
     .btn-instagram { background: #e1306c; border: 1px solid #b82254; }
     .btn-instagram:hover { background: #b82254; box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); }
 
@@ -149,7 +164,7 @@
     }
     .btn-takvim:hover { 
       background: #2c3e50; 
-      color: #f1c40f;
+      color: #f1c40f; 
       box-shadow: 0 0 15px rgba(243, 156, 18, 0.7); 
     }
 
@@ -167,7 +182,7 @@
 
     .btn-channel { background: #1e272e; border: 1px solid #3d3d3d; }
     .btn-channel:hover { background: #2f3640; box-shadow: 0 0 15px rgba(231, 76, 60, 0.3); }
-    
+        
     .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); border: 1px solid #128C7E; }
     .btn-whatsapp:hover { box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); }
 
@@ -180,86 +195,138 @@
 </head>
 <body>
 
-<div class="form-container">
-  <h2>KZP Scrim Turnuva Kaydı</h2>
+<div class="form-container">  
+  <h2>KZP Scrim Turnuva Kaydı</h2>    
   
-  <a href="kurallar.html" style="display: block; text-align: center; color: #f1c40f; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px; text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);">
-    ⚠️ Kayıt olmadan önce turnuva kurallarını okumak için TIKLAYIN!
-  </a>
-  <a href="puan.html" style="display: block; text-align: center; color: #e74c3c; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px;">
-    📊 Resmi Puanlama Sistemini Görmek İçin TIKLAYIN!
-  </a>
-  <a href="guncelpuandurumu.html" style="display: block; text-align: center; color: #3498db; text-decoration: none; font-weight: bold; margin-bottom: 25px; font-size: 14px; text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);">
-    📊 Canlı Maç Sonuçları ve Güncel Puan Durumu İçin TIKLAYIN!
-  </a>
+  <a href='KURAL.html' style='display: block; text-align: center; color: #f1c40f; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px; text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);'>    
+    ⚠️ Kayıt olmadan önce turnuva kurallarını okumak için TIKLAYIN!  
+  </a>  
   
-  <form action="https://formspree.io/f/meewbqow" method="POST">
+  <a href='/puan' style='display: block; text-align: center; color: #e74c3c; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px;'>    
+    📊 Resmi Puanlama Sistemini Görmek İçin TIKLAYIN!  
+  </a>  
+  
+  <a href='/guncelpuandurumu' style='display: block; text-align: center; color: #3498db; text-decoration: none; font-weight: bold; margin-bottom: 25px; font-size: 14px; text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);'>    
+    📊 Canlı Maç Sonuçları ve Güncel Puan Durumu İçin TIKLAYIN!  
+  </a>    
+
+  <div id="errorBox" class="error-message"></div>
+  
+  <form id="scrimForm" action="https://formspree.io/f/meewbqow" method="POST">        
+    <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">        
     
-    <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">
+    <div class="form-group">      
+      <label>Takım Adı (Klan Tagı):</label>      
+      <input type="text" id="teamName" name="Takım Adı" required placeholder="Örn: KZP">    
+    </div>        
     
-    <div class="form-group">
-      <label>Takım Adı:</label>
-      <input type="text" name="Takım Adı" required placeholder="Örn: KZP Esports">
-    </div>
-    
-    <div class="form-group">
-      <label>Kaptan Instagram Kullanıcı Adı:</label>
-      <input type="text" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt">
+    <div class="form-group">      
+      <label>Kaptan Instagram Kullanıcı Adı:</label>      
+      <input type="text" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt">    
     </div>
 
-    <div class="form-group">
-      <label>Kaptan E-posta Adresi:</label>
-      <input type="email" name="_replyto" required placeholder="Örn: taha@gmail.com">
-    </div>
+    <div class="form-group">      
+      <label>Kaptan E-posta Adresi:</label>      
+      <input type="email" name="_replyto" required placeholder="Örn: taha@gmail.com">    
+    </div>        
     
-    <div class="form-group">
-      <label>Oyuncular (ID ve Nickler):</label>
-      <textarea name="Oyuncu Listesi" rows="4" required placeholder="1- Oyuncu1 (ID)&#10;2- Oyuncu2 (ID)&#10;3- Oyuncu3 (ID)&#10;4- Oyuncu4 (ID)"></textarea>
-    </div>
+    <div class="form-group">      
+      <label>Oyuncular (Hem Taglı İsim Hem ID Şarttır):</label>      
+      <textarea id="playerList" name="Oyuncu Listesi" rows="5" required placeholder="Örn:&#10;1- KZP Yuta (512345678)&#10;2- KZP Nick2 (587654321)&#10;3- KZP Nick3 (522334455)&#10;4- KZP Nick4 (566778899)"></textarea>
+    </div>        
     
-    <div class="form-group">
-      <label>Banka Dekont Ücret Açıklaması:</label>
-      <input type="text" name="Banka Dekont Açıklaması" required placeholder="Örn: Dekonta yazılan isim veya takım adı">
-    </div>
+    <div class="form-group">      
+      <label>Banka Dekont Ücret Açıklaması:</label>      
+      <input type="text" name="Banka Dekont Açıklaması" required placeholder="Örn: Dekonta yazılan isim veya takım adı">    
+    </div>        
     
-    <button type="submit" class="btn-submit">Kaydı Tamamla ve Gönder</button>
+    <button type="submit" class="btn-submit">Kaydı Tamamla ve Gönder</button>  
   </form>
 </div>
 
-<div class="social-wrapper">
-  <div class="social-container">
-    <a href="https://www.youtube.com/@tahaalkanYT" target="_blank" class="btn-social btn-half btn-youtube">
-      🔴 YouTube
-    </a>
-    <a href="https://www.instagram.com/tahaalkanyt/" target="_blank" class="btn-social btn-half btn-instagram">
-      📸 Instagram
-    </a>
-  </div>
+<div class="social-wrapper">  
+  <div class="social-container">    
+    <a href="https://www.youtube.com/@tahaalkanYT" target="_blank" class="btn-social btn-half btn-youtube">      
+      🔴 YouTube    
+    </a>    
+    <a href="https://www.instagram.com/tahaalkanyt/" target="_blank" class="btn-social btn-half btn-instagram">      
+      📸 Instagram    
+    </a>  </div>    
   
-  <a href="kayit.html" class="btn-social btn-full btn-kabul">
-    ✅ KAYIT OLAN TAKIMLAR LİSTESİ İÇİN TIKLAYIN!
-  </a>
-
-  <a href="https://vatangame.com/" target="_blank" class="btn-social btn-full btn-vatangame">
-    ✌️ Vatan Game Üzerinden Kayıt Olmak İçin TIKLAYIN!
-  </a>
-
-  <a href="takvim.html" class="btn-social btn-full btn-takvim">
-    📅 Turnuva & Scrim Takvimi İçin TIKLAYIN!
-  </a>
-
-  <a href="sorucevap.html" class="btn-social btn-full btn-sorucevap">
-    💬 Oyuncu Soru-Cevap & Canlı Destek Alanı İçin TIKLAYIN!
+  <a class='btn-social btn-full btn-kabul' href='/kayit'>    
+    ✅ KAYIT OLAN TAKIMLAR LİSTESİ İÇİN TIKLAYIN!  
   </a>
   
-  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn-social btn-full btn-whatsapp">
-    🟢 Resmi WhatsApp Kanalımız
+  <a href="https://vatangame.com/" target="_blank" class="btn-social btn-full btn-vatangame">    
+    ✌️ Vatan Game Üzerinden Kayıt Olmak İçin TIKLAYIN!  
   </a>
-
-  <a href="https://www.instagram.com/channel/AbaVNHociQVJQ7h_/" target="_blank" class="btn-social btn-full btn-channel">
-    📢 Instagram Duyuru Kanalı
+  
+  <a class='btn-social btn-full btn-takvim' href='/takvim'>    
+    📅 Turnuva & Scrim Takvimi İçin TIKLAYIN!  
+  </a>
+  
+  <a class='btn-social btn-full btn-sorucevap' href='/sorucevap'>    
+    💬 Oyuncu Soru-Cevap & Canlı Destek Alanı İçin TIKLAYIN!  
+  </a>    
+  
+  <a href="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X" target="_blank" class="btn-social btn-full btn-whatsapp">    
+    🟢 Resmi WhatsApp Kanalımız  
+  </a>
+  
+  <a href="https://www.instagram.com/channel/AbaVNHociQVJQ7h_/" target="_blank" class="btn-social btn-full btn-channel">    
+    📢 Instagram Duyuru Kanalı  
   </a>
 </div>
+
+<script>
+  document.getElementById('scrimForm').addEventListener('submit', function(e) {
+    const teamNameInput = document.getElementById('teamName').value.trim();
+    const playerListInput = document.getElementById('playerList').value;
+    const errorBox = document.getElementById('errorBox');
+    
+    // Satırları tek tek ayır, boş satırları ele
+    const lines = playerListInput.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    
+    errorBox.style.display = "none";
+    errorBox.innerText = "";
+
+    // En az 4 oyuncu girilme kontrolü
+    if (lines.length < 4) {
+      e.preventDefault();
+      errorBox.innerText = "❌ Kayıt Başarısız! En az 4 oyuncu yazmanız zorunludur.";
+      errorBox.style.display = "block";
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    // Her satırı tek tek denetle
+    for (let i = 0; i < lines.length; i++) {
+      const currentLine = lines[i];
+
+      // 1. KONTROL: Oyun içi isim (Nick) var mı ve klan tagıyla mı başlıyor?
+      // Takım adını büyük harfe çevirip kural esnekliği sağlıyoruz
+      if (!currentLine.toUpperCase().includes(teamNameInput.toUpperCase())) {
+        e.preventDefault();
+        errorBox.innerHTML = `❌ Kayıt Başarısız!<br>Tüm oyuncuların başında <b>"${teamNameInput}"</b> klan tagı olmak zorundadır. Örn: ${teamNameInput} Yuta`;
+        errorBox.style.display = "block";
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      // 2. KONTROL: Sadece ID mi yazılmış? Hem isim (Harf) hem ID (Sayı) kontrolü
+      const hasNumbers = /\d+/.test(currentLine); // ID içeriyor mu?
+      
+      // Sadece sayılardan mı oluşuyor yoksa harf/isim eksik mi kontrolü
+      if (!hasNumbers) {
+        e.preventDefault();
+        errorBox.innerHTML = `❌ Kayıt Başarısız!<br>Oyuncuların yanına <b>Sayısal Hesap ID'sini</b> yazmak zorunludur.`;
+        errorBox.style.display = "block";
+        window.scrollTo(0, 0);
+        return;
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
