@@ -6,31 +6,63 @@
     <title>KZP PUBG Scrim Turnuva Kaydı</title>
     <link rel="icon" type="image/png" href="https://i.hizliresim.com/6nk32h1.png">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; background-size: cover; color: #fff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; box-sizing: border-box; }
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%); z-index: -1; }
+        /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-        .form-container { background: rgba(15, 15, 15, 0.85); padding: 30px; border-radius: 12px; width: 100%; max-width: 500px; box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); border: 1px solid #e74c3c; margin-bottom: 20px; backdrop-filter: blur(6px); }
-        h2 { text-align: center; color: #e74c3c; margin-top: 0; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-size: 20px; }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+            z-index: -1;
+        }
+
+        .form-container {
+            background: rgba(15, 15, 15, 0.85);
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(231, 76, 60, 0.3);
+            border: 1px solid #e74c3c;
+            margin-bottom: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        h2 { text-align: center; color: #e74c3c; margin-top: 0; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-size: 20px; text-shadow: 0 0 12px rgba(231, 76, 60, 0.6); }
 
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #2c2c2c; background: rgba(8, 8, 8, 0.9); color: #fff; border-radius: 6px; box-sizing: border-box; }
-
-        /* Butonlar arasına boşluk ekledim */
-        .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; margin-bottom: 15px; width: 100%; box-sizing: border-box; }
-
-        .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; }
-        .btn-half { width: 48%; box-sizing: border-box; margin-bottom: 15px; }
         
-        .btn-youtube { background: #ff0000; }
-        .btn-instagram { background: #e1306c; }
-        .btn-kabul { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); width: 100%; display: block; padding: 12px; border-radius: 6px; text-align: center; text-decoration: none; color: white; font-weight: bold; margin-bottom: 15px; }
+        /* 💥 BOŞLUK EKLEDİĞİM KISIMLAR */
+        .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; margin-bottom: 15px; width: 100%; box-sizing: border-box; }
+        
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; border: 1px solid #2c2c2c; background: rgba(8, 8, 8, 0.9); color: #fff; border-radius: 6px; box-sizing: border-box; }
+        
+        .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); border: none; color: #fff; font-weight: bold; border-radius: 6px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+
+        .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; margin-bottom: 15px; }
+        .btn-half { width: 48%; box-sizing: border-box; margin-bottom: 0; }
+        
+        /* Renklerin ve yapının kalanı aynı */
+        .btn-youtube { background: #ff0000; border: 1px solid #cc0000; }
+        .btn-instagram { background: #e1306c; border: 1px solid #b82254; }
         .btn-vatangame { background: linear-gradient(135deg, #0056b3 0%, #003366 100%); border: 1px solid #ffcc00; color: #ffcc00; }
         .btn-takvim { background: #1a1a1a; border: 1px solid #f39c12; color: #f39c12; }
-        .btn-sorucevap { background: #2c3e50; border: 1px solid #34495e; color: #ffffff; width: 100%; display: block; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 15px; text-decoration: none; font-weight: bold; }
         .btn-channel { background: #1e272e; border: 1px solid #3d3d3d; }
-        .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
-        .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); border: none; color: #fff; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); border: 1px solid #128C7E; }
     </style>
 </head>
 <body>
@@ -49,17 +81,15 @@
     </div>
 
     <form id="scrimForm" action="https://formspree.io/f/meewbqow" method="POST" enctype="multipart/form-data">
-        <div class="form-group"><label>Takım Adı:</label><input type="text" name="Takım Adı" required></div>
-        <div class="form-group"><label>Kaptan Instagram:</label><input type="text" name="Kaptan" required></div>
-        <div class="form-group"><label>Oyuncu Listesi:</label><textarea name="Oyuncular" rows="4" required></textarea></div>
+        <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">
+        <div class="form-group"><label>Takım Adı (Klan Tagı):</label><input type="text" id="teamName" name="Takım Adı" required placeholder="Örn: KZP"></div>
+        <div class="form-group"><label>Kaptan Instagram Kullanıcı Adı:</label><input type="text" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt"></div>
+        <div class="form-group"><label>Kaptan E-posta Adresi:</label><input type="email" name="_replyto" required placeholder="Örn: taha@gmail.com"></div>
+        <div class="form-group"><label>Oyuncular:</label><textarea id="playerList" name="Oyuncu Listesi" rows="5" required placeholder="1- ..."></textarea></div>
+        <div class="form-group"><label>Klan Logosu (İsteğe Bağlı):</label><input type="file" name="Klan Logosu Görseli" accept="image/*"></div>
+        <div class="form-group"><label>Banka Dekont Açıklaması:</label><input type="text" name="Banka Dekont Açıklaması" required></div>
         <button type="submit" class="btn-submit">Kaydı Tamamla ve Gönder</button>
     </form>
-</div>
-
-<div class="form-container">
-    <a class="btn-kabul" href="kayit.html">✅ KAYIT OLAN TAKIMLAR LİSTESİ İÇİN TIKLAYIN!</a>
-    <a class="btn-sorucevap" href="guncelpuandurumu.html">📊 Canlı Maç Sonuçları ve Güncel Puan Durumu</a>
-    <a class="btn-sorucevap" href="sorucevap.html">💬 Oyuncu Soru-Cevap & Canlı Destek Alanı</a>
 </div>
 
 </body>
