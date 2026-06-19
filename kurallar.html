@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KZP PUBG Scrim - Turnuva Kuralları</title>
+  <title>KZP Scrim Turnuva Kuralları</title>
   <style>
-    /* 💥 Arka Plan: Ana sayfa ile birebir aynı Anka Kuşu görseli */
+    /* 💥 Fütüristik Espor Teması */
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
+      background: #080302 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
       background-size: cover; 
       color: #fff; 
       padding: 40px 20px; 
@@ -20,153 +20,253 @@
       box-sizing: border-box;
     }
     
-    /* 💥 Atmosfer Katmanı */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+      background: linear-gradient(180deg, rgba(10, 5, 5, 0.45) 0%, rgba(5, 2, 2, 0.92) 100%);
       z-index: -1;
     }
 
-    /* Kurallar Kutusu */
-    .rules-container { 
-      background: rgba(15, 15, 15, 0.85); 
-      padding: 30px; 
-      border-radius: 12px; 
-      width: 100%; 
-      max-width: 600px; 
-      box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); 
-      border: 1px solid #e74c3c;
+    .nav-container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: flex-start;
       margin-bottom: 20px;
-      backdrop-filter: blur(6px);
+    }
+
+    /* 🏠 Üst Menü / Geri Dön Butonu */
+    .back-btn {
+      text-decoration: none;
+      color: #ffffff;
+      background: rgba(231, 76, 60, 0.1);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      border: 1px solid rgba(231, 76, 60, 0.4);
+      border-left: 4px solid #e74c3c;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .back-btn:hover {
+      background: #e74c3c;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+      transform: translateX(-3px);
+    }
+
+    /* 🛡️ Kurallar Ana Panel Konteyneri */
+    .rules-container { 
+      background: rgba(18, 11, 10, 0.92); 
+      padding: 45px; 
+      border-radius: 16px; 
+      width: 100%; 
+      max-width: 800px; 
+      box-shadow: 0 0 50px rgba(231, 76, 60, 0.15); 
+      border: 1px solid rgba(231, 76, 60, 0.25);
+      backdrop-filter: blur(12px); 
     }
     
-    h2 { 
+    h1 { 
       text-align: center; 
       color: #e74c3c; 
       margin-top: 0;
-      margin-bottom: 25px; 
+      margin-bottom: 35px; 
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 22px;
-      text-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+      letter-spacing: 3px;
+      font-size: 26px;
+      text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+      border-bottom: 2px solid rgba(231, 76, 60, 0.3);
+      padding-bottom: 20px;
     }
 
-    h3 {
-      color: #f1c40f;
-      text-transform: uppercase;
+    /* 📌 Kural Ana Başlıkları */
+    .rule-section {
+      margin-bottom: 35px;
+    }
+
+    .section-title {
       font-size: 16px;
-      margin-top: 25px;
-      margin-bottom: 15px;
-      border-bottom: 1px dashed rgba(241, 196, 15, 0.3);
-      padding-bottom: 5px;
-      letter-spacing: 1px;
-    }
-
-    .rules-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .rules-list li {
-      background: rgba(8, 8, 8, 0.6);
-      border-left: 4px solid #e74c3c;
-      padding: 12px 15px;
-      margin-bottom: 10px;
-      border-radius: 0 6px 6px 0;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #e0e0e0;
-    }
-
-    .rules-list li strong {
-      color: #e74c3c;
-    }
-
-    /* Geri Dön / Kayıt Ol Butonu */
-    .btn-action { 
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      width: 100%; 
-      padding: 14px; 
-      background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); 
-      border: none; 
-      color: #fff; 
-      font-size: 16px; 
-      font-weight: bold; 
-      border-radius: 6px; 
-      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
-      letter-spacing: 1px;
+      color: #f1c40f;
+      font-weight: 900;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(241, 196, 15, 0.07);
+      padding: 10px 18px;
+      border-radius: 6px;
+      border-left: 4px solid #f1c40f;
       text-transform: uppercase;
-      box-sizing: border-box;
-      transition: all 0.2s;
-      margin-top: 30px;
+      letter-spacing: 1px;
+    }
+
+    /* 📝 İçerik Kartları */
+    .rule-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-left: 3px solid #e74c3c;
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+      font-size: 14.5px;
+      color: #d1d5db;
+      transition: all 0.25s ease;
+    }
+
+    .rule-item:hover {
+      background: rgba(231, 76, 60, 0.05);
+      border-color: #e74c3c;
+      transform: translateY(-2px);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Kalın ve Renkli Vurgular */
+    .rule-item b {
+      color: #ff7675;
     }
     
-    .btn-action:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7);
+    .rule-item .highlight-red {
+      color: #ff7675;
+      font-weight: bold;
     }
 
-    .warning-text {
+    /* 🔴 Kayıt Ol Butonu */
+    .register-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(90deg, #c0392b 0%, #e74c3c 100%);
+      color: #fff;
       text-align: center;
-      color: #f1c40f;
-      font-size: 13px;
+      padding: 18px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 30px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .register-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 30px rgba(231, 76, 60, 0.7);
+      background: linear-gradient(90deg, #e74c3c 0%, #ff7675 100%);
+    }
+
+    /* ⚠️ Dipnot Alt Metin */
+    .footer-note {
+      text-align: center;
+      font-size: 12.5px;
+      color: #ff9f43;
       margin-top: 15px;
-      font-style: italic;
+      font-weight: 500;
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
 
-<div class="rules-container">
-  <h2>KZP Scrim Turnuva Kuralları</h2>
-  
-  <!-- 1. GENEL KURALLAR & KATILIM -->
-  <h3>📋 1. Genel Kurallar & Katılım</h3>
-  <ul class="rules-list">
-    <li><strong>Kayıt ve Slot:</strong> Tüm takımlar scrim saatinden en az 15 dakika önce kendilerine ayrılan oda slotuna (lobideki yerlerine) geçmek zorundadır. Rastgele slotlara oturan takımlar uyarılmadan odadan atılır.</li>
-    <li><strong>Oyuncu Değişikliği:</strong> Maçlar başladıktan sonra, aktif maç esnasında oyuncu değişikliği yapılamaz. Yedek oyuncular sadece maç aralarında (lobi ekranında) takıma dahil olabilir.</li>
-    <li><strong>Takım İsimleri:</strong> Oyuncuların oyun içi isimlerinin (IGN), kayıt yaptırdıkları klan/takım tagıyla uyumlu olması zorunludur.</li>
-    <li><strong>Silah ve Loot Oranları (Esports Modu):</strong> Haritalardaki silah, mermi ve sağlık malzemesi çıkma oranları (loot) normal klasik oyuna göre çok daha yüksektir. Amaç, oyuncuların şansa değil, tamamen bilek gücüne dayalı çarpışmasını sağlamaktır.
-    <li><strong>Mavi Alan (Alan Hızı):</strong> Resmi turnuva standartlarında olduğu gibi, Mavi Alanın daralma hızı ve bekleme süreleri normal klasik maça göre farklıdır. Alanlar, profesyonel takımların taktiksel rotasyonlar yapmasına izin verecek şekilde ayarlanır.
-  </ul>
-  
-  <!-- 2. YASAKLAR & CEZALAR -->
-  <h3>🚫 2. Yasaklar & Cezalar</h3>
-  <ul class="rules-list">
-    <li><strong>Cihaz Kısıtlaması (Emülatör):</strong> Turnuvamız sadece mobil cihazlar içindir. Emülatör (PC) üzerinden katılım sağlamak kesinlikle yasaktır.</li>
-    <li><strong>Üçüncü Parti Yazılım ve Hile:</strong> Oyun dosyalarını değiştirmek, hile veya her türlü üçüncü parti yazılım kullanmak süresiz men sebebidir. Küfür/hakaret içeren durumlarda ya da hile iddialarında itirazların geçerli sayılması için net bir <strong>video kaydı (POV)</strong> sunulması şarttır; video kaydı olmayan şikayetler kesinlikle işleme alınmaz.</li>
-    <li><strong>Etkinlik / Eğlence Ögeleri:</strong> Maç esnasında Acil Tahliye Balonu, Şok Cihazı, İşaret Fişeği ve Tank kullanımı kesinlikle yasaktır. Haritada denk gelinmesi durumunda Hovercraft kullanımı ise serbest bırakılmıştır.
-    <li><strong>Centilmenlik Dışı Öldürmeler:</strong> Maç esnasında rakipleri bilerek tava, yumruk veya bıçak ile infaz etmek yasaktır. <i>(Yalnızca iki tarafın da tamamen silahsız olduğu maç başı durumlarında yumruk/bıçakla vurulması serbesttir.)</i></li>
-    <li><strong>Teaming ve İllegal İttifak:</strong> Farklı takımların birbiriyle anlaşarak oynaması, haritada birbirini görmezden gelmesi veya birlikte hareket etmesi kesinlikle yasaktır.</li>
-    <li><strong>İhlali Cezası:</strong> Yukarıdaki kuralların ilk kez ihlal edilmesi durumunda, ilgili takımın o maçtaki toplam skorundan 5 Puan düşülür (-5 Puan).
-Tekrar Eden İhlal Cezası: Aynı turnuva/scrim süreci boyunca ikinci kez kural ihlali yaptığı tespit edilen takım, doğrudan turnuvadan men (diskalifiye) edilir.⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları peşinen kabul etmiş sayılır.</li>
-  </ul>
+  <div class="nav-container">
+    <a href="index.html" class="back-btn">🏠 Ana Sayfaya Dön</a>
+  </div>
 
-  <!-- 3. ŞİKAYETLER VE KANIT GÖSTERME -->
-  <h3>📸 3. Şikayetler ve Kanıt Gösterme</h3>
-  <ul class="rules-list">
-    <li><strong>SS / Video Zorunluluğu:</strong> Hile, teaming veya kural ihlali iddialarında, şikayetçi olan takımın elinde net video kaydı (POV/Ekran Kaydı) veya ekran görüntüsü olmalıdır. Kanıtsız şikayetler dikkate alınmaz.</li>
-    <li><strong>İtiraz Süresi:</strong> Maç bittikten sonraki 15 dakika içinde yetkililere (kaptanlar/moderatörler kanalı üzerinden) iletilmeyen itirazlar geçersiz sayılır.</li>
-  </ul>
+  <div class="rules-container">
+    <h1>KZP SCRİM TURNUVA KURALLARI</h1>
 
-  <!-- 4. DAVRANIŞ VE CENTİLMENLİK -->
-  <h3>🤝 4. Davranış ve Centilmenlik</h3>
-  <ul class="rules-list">
-    <li><strong>Saygı:</strong> Oyun içi genel sohbette (All Chat), lobi ekranında veya Discord'da diğer oyunculara, klan liderlerine veya organizatörlere küfür, hakaret ve kışkırtma içeren söylemler yasaktır. İlk ihlalde uyarı, tekrarında scrimden men cezası uygulanır.</li>
-    <li><strong>Odayı Sabote Etmek:</strong> Maçın başlama süresini geciktirmek veya lobiyi gereksiz yere meşgul etmek takım puanından düşüşe sebep olabilir.</li>
-  </ul>
+    <div class="rule-section">
+      <div class="section-title">📋 1. GENEL KURALLAR & KATILIM</div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Kayıt ve Slot:</span> Tüm takımlar scrim saatinden en az 15 dakika önce kendilerine ayrılan oda slotuna (lobideki yerlerine) geçmek zorundadır. Rastgele slotlara oturan takımlar uyarılmadan odadan atılır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Oyuncu Değişikliği:</span> Maçlar başladıktan sonra, aktif maç esnasında oyuncu değişikliği yapılamaz. Yedek oyuncular sadece maç aralarında (lobi ekranında) takıma dahil olabilir.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Takım İsimleri:</span> Oyuncuların oyun içi isimlerinin (IGN), kayıt yaptırdıkları klan/takım tagıyla uyumlu olması zorunludur.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Silah ve Loot Oranları (Esports Modu):</span> Haritalardaki silah, mermi ve sağlık malzemesi çıkma oranları (loot) normal klasik oyuna göre çok daha yüksektir. Amaç, oyuncuların şansa değil, tamamen bilek gücüne dayalı çarpışmasını sağlamaktır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Mavi Alan (Alan Hızı):</span> Resmi turnuva standartlarında olduğu gibi, Mavi Alanın daralma hızı ve bekleme süreleri normal klasik maça göre farklıdır. Alanlar, profesyonel takımların taktiksel rotasyonlar yapmasına izin verecek şekilde ayarlanır.
+      </div>
+    </div>
 
-  
-  <!-- Kayıt formuna geri dönüş butonu -->
-  <a href="index.html" class="btn-action">Kuralları Okudum, Kayıt Ol</a>
-  
-  <p class="warning-text">⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları peşinen kabul etmiş sayılır.</p>
-</div>
+    <div class="rule-section">
+      <div class="section-title">🚫 2. YASAKLAR & CEZALAR</div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Cihaz Kısıtlaması (Emülatör):</span> Turnuvamız sadece mobil cihazlar içindir. Emülatör (PC) üzerinden katılım sağlamak kesinlikle yasaktır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Üçüncü Party Yazılım ve Hile:</span> Oyun dosyalarını değiştirmek, hile veya her türlü üçüncü parti yazılım kullanmak süresiz men sebebidir. Küfür/hakaret içeren durumlarda ya da hile iddialarında itirazların geçerli sayılması için net bir <b>video kaydı (POV)</b> sunulması şarttır; video kaydı olmayan şikayetler kesinlikle işleme alınmaz.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Etkinlik / Eğlence Öğeleri:</span> Maç esnasında Acil Tahliye Balonu, Şok Cihazı, İşaret Fişeği ve Tank kullanımı kesinlikle yasaktır. Haritada denk gelinmesi durumunda Hovercraft kullanımı ise serbest bırakılmıştır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Centilmenlik Dışı Öldürmeler:</span> Maç esnasında rakipleri bilerek tava, yumruk veya bıçak ile öldürmek, kışkırtıcı hareketler yapmak yasaktır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Teaming ve İllegal İttifak:</span> Farklı takımların birbiriyle anlaşarak oynaması, haritada birbirini görmezden gelmesi veya birlikte hareket etmesi kesinlikle yasaktır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">İhlal Cezası:</span> Yukarıdaki kuralların ilk kez ihlal edilmesi durumunda, ilgili takımın o maçtaki toplam skorundan <b>5 Puan düşülür (-5 Puan)</b>. Tekrar Eden İhlal Cezası: Aynı turnuva/scrim süreci boyunca ikinci kez kural ihlali yaptığı tespit edilen takım, doğrudan turnuvadan men (diskalifiye) edilir.
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="section-title">📸 3. ŞİKAYETLER VE KANIT GÖSTERME</div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">SS / Video Zorunluluğu:</span> Hile, teaming veya kural ihlali iddialarında, şikayetçi olan takımın elinde net video kaydı (POV/Ekran Kaydı) veya ekran görüntüsü olmalıdır. Kanıtsız şikayetler dikkate alınmaz.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">İtiraz Süresi:</span> Maç bittikten sonraki <b>15 dakika</b> içinde yetkililere (kaptanlar/moderatörler kanalı üzerinden) iletilmeyen itirazlar geçersiz sayılır.
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="section-title">🤝 4. DAVRANIŞ VE CENTİLMENLİK</div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Saygı:</span> Oyun içi genel sohbette (All Chat), lobi ekranında veya Discord'da diğer oyunculara, klan liderlerine veya organizatörlere küfür, hakaret ve kışkırtma içeren söylemler yasaktır. İlk ihlalde uyarı, tekrarında scrimden men cezası uygulanır.
+      </div>
+      
+      <div class="rule-item">
+        <span class="highlight-red">Odayı Sabote Etmek:</span> Maçın başlama süresini geciktirmek veya lobiyi gereksiz yere meşgul etmek takım puanından düşüşe sebep olabilir.
+      </div>
+    </div>
+
+    <a href="https://discord.gg/LINKIN" class="register-btn">KURALLARI OKUDUM, KAYIT OL</a>
+    
+    <div class="footer-note">
+      ⚠️ Turnuvaya kayıt olan tüm takımlar yukarıdaki kuralları peşinen kabul etmiş sayılır.
+    </div>
+
+  </div>
 
 </body>
 </html>
