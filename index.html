@@ -18,9 +18,7 @@
         .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); border: none; color: #fff; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); letter-spacing: 1px; }
         .error-message { display: none; background: rgba(231, 76, 60, 0.2); border: 1px solid #e74c3c; color: #ff9a9a; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 13.5px; font-weight: bold; line-height: 1.4; text-align: center; }
         .social-wrapper { width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 10px; }
-        .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; margin-bottom: 15px; }
         .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; margin-bottom: 15px; }
-        .btn-half { width: 48%; box-sizing: border-box; }
         .btn-full { width: 100%; box-sizing: border-box; }
         .btn-kabul { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); border: 1px solid #2ecc71; display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 12px; color: white; font-weight: bold; border-radius: 6px; text-decoration: none; }
         .btn-vatangame { background: linear-gradient(135deg, #0056b3 0%, #003366 100%); border: 1px solid #ffcc00; color: #ffcc00; }
@@ -61,6 +59,7 @@
 </div>
 
 <script>
+    // Supabase Bağlantısı
     const supabase = supabase.createClient(
         'https://vmipcvmggqlzjnocpoacz.supabase.co', 
         'sb_publishable_fBbKMl-E5Zv-XsssTYCnuw_6j7kh14U'
