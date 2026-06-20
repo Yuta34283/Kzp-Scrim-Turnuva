@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KZP PUBG Scrim Turnuva Kaydı</title>
     <link rel="icon" type="image/png" href="https://i.hizliresim.com/6nk32h1.png">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         /* 💥 Arka Plan: Tam Ekran Anka Kuşu Görseli */
         body {
@@ -58,6 +57,8 @@
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
         
+        .optional-text { font-size: 12px; color: #aaaaaa; font-weight: normal; margin-left: 5px; }
+
         input[type="text"], input[type="email"], textarea {
             width: 100%;
             padding: 12px;
@@ -72,6 +73,14 @@
 
         input:focus, textarea:focus { border-color: #e74c3c; outline: none; box-shadow: 0 0 12px rgba(231, 76, 60, 0.6); background: #000; }
 
+        .file-upload-wrapper { position: relative; width: 100%; }
+
+        input[type="file"] {
+            width: 100%; padding: 12px; background: rgba(15, 5, 5, 0.9); border: 1px dashed #e74c3c; color: #ff9a9a; border-radius: 6px; box-sizing: border-box; cursor: pointer; transition: all 0.3s; font-size: 13px;
+        }
+
+        input[type="file"]:hover { border-color: #ff6b6b; background: #110000; box-shadow: 0 0 10px rgba(231, 76, 60, 0.4); }
+
         .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); border: none; color: #fff; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); letter-spacing: 1px; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(231, 76, 60, 0.7); }
 
@@ -81,6 +90,7 @@
 
         .social-container { display: flex; justify-content: space-between; gap: 10px; width: 100%; margin-bottom: 15px; }
         
+        /* 🔥 BURAYA MARGIN EKLEDİM (Tüm butonlar için boşluk) */
         .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; font-size: 14px; margin-bottom: 15px; }
 
         .btn-half { width: 48%; box-sizing: border-box; }
@@ -116,14 +126,14 @@
     </div>
     
     <div id="errorBox" class="error-message"></div>
-    <form id="scrimForm" action="https://formspree.io/f/mjgdnqnp" method="POST">
+    <form id="scrimForm" action="https://formspree.io/f/mjgdnqnp" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_next" value="https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X">
         <div class="form-group"><label>Takım Adı (Sadece kısaltılmış Tagınızı yazın):</label><input type="text" id="teamName" name="Takım Adı" required placeholder="Örn: KZP"></div>
-        <div class="form-group"><label>Kategori Seçimi (ESPORTS veya ACADEMY):</label><input type="text" id="kategori" name="Kategori" required placeholder="ESPORTS veya ACADEMY yazınız"></div>
-        <div class="form-group"><label>Kaptan Instagram Kullanıcı Adı:</label><input type="text" id="instagram" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt"></div>
-        <div class="form-group"><label>Kaptan E-posta Adresi:</label><input type="email" id="email" name="_replyto" required placeholder="Örn: taha@gmail.com"></div>
+        <div class="form-group"><label>Kategori Seçimi (ESPORTS veya ACADEMY):</label><input type="text" name="Kategori" required placeholder="ESPORTS veya ACADEMY yazınız"></div>
+        <div class="form-group"><label>Kaptan Instagram Kullanıcı Adı:</label><input type="text" name="Kaptan Instagram" required placeholder="Örn: @tahaalkanyt"></div>
+        <div class="form-group"><label>Kaptan E-posta Adresi:</label><input type="email" name="_replyto" required placeholder="Örn: taha@gmail.com"></div>
         <div class="form-group"><label>Oyuncular (Hem Taglı İsim Hem ID Şarttır):</label><textarea id="playerList" name="Oyuncu Listesi" rows="5" required placeholder="Örn:&#10;1- KZP Yuta (512345678)&#10;2- KZP Nick2 (587654321)&#10;3- KZP Nick3 (522334455)&#10;4- KZP Nick4 (566778899)"></textarea></div>
-        <div class="form-group"><label>Banka Dekont Ücret Açıklaması:</label><input type="text" id="dekont" name="Banka Dekont Açıklaması" required placeholder="Örn: Dekonta yazılan isim veya takım adı"></div>
+        <div class="form-group"><label>Banka Dekont Ücret Açıklaması:</label><input type="text" name="Banka Dekont Açıklaması" required placeholder="Örn: Dekonta yazılan isim veya takım adı"></div>
         <button type="submit" class="btn-submit">Kaydı Tamamla ve Gönder</button>
     </form>
 </div>
@@ -137,22 +147,13 @@
 </div>
 
 <script>
-    // SUPABASE BAĞLANTISI
-    const supabase = supabase.createClient(
-        'https://vmipcvmggqlzjnocpoacz.supabase.co', 
-        'sb_publishable_fBbKMl-E5Zv-XsssTYCnuw_6j7kh14U'
-    );
-
-    document.getElementById('scrimForm').addEventListener('submit', async function(e) {
+    document.getElementById('scrimForm').addEventListener('submit', function(e) {
         const teamNameInput = document.getElementById('teamName').value.trim();
         const playerListInput = document.getElementById('playerList').value;
         const errorBox = document.getElementById('errorBox');
         const lines = playerListInput.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-        
         errorBox.style.display = "none";
         errorBox.innerText = "";
-
-        // HATA KONTROLLERİ
         if (lines.length < 4) {
             e.preventDefault();
             errorBox.innerText = "❌ Kayıt Başarısız! En az 4 oyuncu yazmanız zorunludur.";
@@ -160,7 +161,6 @@
             window.scrollTo(0, 0);
             return;
         }
-
         for (let i = 0; i < lines.length; i++) {
             const currentLine = lines[i];
             if (!currentLine.toUpperCase().includes(teamNameInput.toUpperCase())) {
@@ -170,7 +170,8 @@
                 window.scrollTo(0, 0);
                 return;
             }
-            if (!/\d+/.test(currentLine)) {
+            const hasNumbers = /\d+/.test(currentLine);
+            if (!hasNumbers) {
                 e.preventDefault();
                 errorBox.innerHTML = `❌ Kayıt Başarısız!<br>Oyuncuların yanına <b>Sayısal Hesap ID'sini</b> yazmak zorunludur.`;
                 errorBox.style.display = "block";
@@ -178,16 +179,6 @@
                 return;
             }
         }
-
-        // SUPABASE'E VERİ GÖNDERME
-        await supabase.from('kayitlar').insert([{
-            isim: teamNameInput,
-            kategori: document.getElementById('kategori').value,
-            instagram: document.getElementById('instagram').value,
-            email: document.getElementById('email').value,
-            oyuncular: playerListInput,
-            dekont: document.getElementById('dekont').value
-        }]);
     });
 </script>
 </body>
