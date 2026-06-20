@@ -4,23 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KZP PUBG Scrim Turnuva Kaydı</title>
+    <link rel="icon" type="image/png" href="https://i.hizliresim.com/6nk32h1.png">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
     <style>
-        /* BURAYA ESKİ CSS TASARIMIN GELECEK */
-        /* Örnek olarak arka planı senin istediğin gibi ayarladım */
-        body { 
-            background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
-            background-size: cover; 
-            /* Diğer eski tasarım kodların buraya... */
-        }
+        /* CSS KODLARIN */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; background-size: cover; color: #fff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; box-sizing: border-box; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%); z-index: -1; }
+        .form-container { background: rgba(15, 15, 15, 0.85); padding: 30px; border-radius: 12px; width: 100%; max-width: 500px; box-shadow: 0 0 30px rgba(231, 76, 60, 0.3); border: 1px solid #e74c3c; margin-bottom: 20px; backdrop-filter: blur(6px); }
+        h2 { text-align: center; color: #e74c3c; margin-top: 0; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-size: 20px; text-shadow: 0 0 12px rgba(231, 76, 60, 0.6); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-weight: bold; color: #dddddd; font-size: 14px; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; border: 1px solid #2c2c2c; background: rgba(8, 8, 8, 0.9); color: #fff; border-radius: 6px; box-sizing: border-box; transition: all 0.3s; font-size: 14px; }
+        input:focus, textarea:focus { border-color: #e74c3c; outline: none; box-shadow: 0 0 12px rgba(231, 76, 60, 0.6); background: #000; }
+        .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%); border: none; color: #fff; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .error-message { display: none; background: rgba(231, 76, 60, 0.2); border: 1px solid #e74c3c; color: #ff9a9a; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 13.5px; font-weight: bold; text-align: center; }
+        .btn-social { display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 6px; margin-bottom: 15px; width: 100%; box-sizing: border-box; }
+        .btn-vatangame { background: linear-gradient(135deg, #0056b3 0%, #003366 100%); border: 1px solid #ffcc00; color: #ffcc00; }
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); border: 1px solid #128C7E; }
     </style>
 </head>
 <body>
 
-<form id="scrimForm">
-    <button type="submit">KAYDI GÖNDER</button>
-</form>
+<div class="form-container">
+    <h2>KZP Scrim Turnuva Kaydı</h2>
+    <div id="errorBox" class="error-message"></div>
+    <form id="scrimForm">
+        <div class="form-group"><label>Takım Adı:</label><input type="text" id="teamName" required></div>
+        <div class="form-group"><label>Kategori:</label><input type="text" id="kategori" required></div>
+        <div class="form-group"><label>Kaptan Instagram:</label><input type="text" id="instagram" required></div>
+        <div class="form-group"><label>E-posta:</label><input type="email" id="email" required></div>
+        <div class="form-group"><label>Oyuncular:</label><textarea id="playerList" rows="5" required></textarea></div>
+        <div class="form-group"><label>Banka Dekont Açıklaması:</label><input type="text" id="dekont" required></div>
+        <button type="submit" class="btn-submit">KAYDI TAMAMLA</button>
+    </form>
+</div>
 
 <script>
     // Supabase Bağlantısı
@@ -32,24 +49,35 @@
     document.getElementById('scrimForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Formundaki ID'leri buraya yaz (örn: document.getElementById('teamName').value)
+        // Senin Hata Kontrollerin
+        const teamNameInput = document.getElementById('teamName').value.trim();
+        const playerListInput = document.getElementById('playerList').value;
+        const errorBox = document.getElementById('errorBox');
+        const lines = playerListInput.split('\n').filter(l => l.trim() !== "");
+        
+        if (lines.length < 4) {
+            errorBox.innerText = "❌ En az 4 oyuncu yazmalısın!";
+            errorBox.style.display = "block";
+            return;
+        }
+
+        // Supabase Kaydı
         const { error } = await supabase.from('kayitlar').insert([{
-            isim: document.getElementById('teamName').value,
+            isim: teamNameInput,
             kategori: document.getElementById('kategori').value,
             instagram: document.getElementById('instagram').value,
             email: document.getElementById('email').value,
-            oyuncular: document.getElementById('playerList').value,
+            oyuncular: playerListInput,
             dekont: document.getElementById('dekont').value
         }]);
 
         if (error) {
             alert('Hata: ' + error.message);
         } else {
-            alert('✅ Kayıt başarıyla tamamlandı!');
+            alert('✅ Kayıt Başarılı!');
             window.location.href = "https://whatsapp.com/channel/0029Vb6MwEf8aKvQXZaeSo3X";
         }
     });
 </script>
-
 </body>
 </html>
