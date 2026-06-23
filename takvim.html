@@ -1,109 +1,44 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turnuva Takvimi | KZP PUBG Scrim</title>
-  <style>
-    /* 💥 Arka Plan: Ana Sayfadaki Anka Kuşu Teması */
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: #080000 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed; 
-      background-size: cover; 
-      color: #fff; 
-      padding: 40px 20px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      min-height: 100vh;
-      margin: 0;
-      box-sizing: border-box;
-    }
-    
-    /* 💥 Atmosfer Katmanı */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
-      z-index: -1;
-    }
+<!-- TURNUVA & SCRIM TAKVİMİ -->
+<div class="max-w-4xl mx-auto bg-[#121212]/90 border border-amber-500/30 rounded-xl p-6 shadow-2xl backdrop-blur-sm">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 tracking-wider uppercase mb-8">
+        TURNUVA & SCRIM TAKVİMİ
+    </h2>
 
-    /* Üst Menü / Buton Alanı */
-    .nav-container {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 10px;
-    }
+    <div class="space-y-6">
+        <!-- 1. ADIM: KAYIT DÖNEMİ -->
+        <div class="flex gap-4 p-5 bg-[#1a1a1a] rounded-lg border-l-4 border-amber-500 shadow-md">
+            <div class="flex-1">
+                <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2 mb-2">
+                    📢 📢 Kayıt Dönemi Başlıyor!
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Turnuva ve Scrim kayıtlarımız <span class="text-white font-semibold">25 Haziran 00:00</span> itibarıyla kapılarını açıyor! Son başvuru tarihi <span class="text-white font-semibold">1 Temmuz 23:59</span>'dur. Kontenjanlar dolmadan yerinizi ayırtmayı unutmayın.
+                </p>
+            </div>
+        </div>
 
-    /* Takvim Kutusu */
-    .calendar-container { 
-      background: rgba(15, 15, 15, 0.85); 
-      padding: 30px; 
-      border-radius: 12px; 
-      width: 100%; 
-      max-width: 600px; 
-      box-shadow: 0 0 30px rgba(243, 156, 18, 0.2); 
-      border: 1px solid #f39c12;
-      margin-bottom: 20px;
-      backdrop-filter: blur(6px); 
-      box-sizing: border-box;
-    }
-    
-    h1 { 
-      text-align: center; 
-      color: #f39c12; 
-      margin-top: 0;
-      margin-bottom: 25px; 
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 22px;
-      text-shadow: 0 0 12px rgba(243, 156, 18, 0.6);
-      border-bottom: 2px solid #f39c12;
-      padding-bottom: 10px;
-    }
+        <!-- 2. ADIM: ÖDEME VE KONTROL (Kayıt Süreci İçi) -->
+        <div class="flex gap-4 p-5 bg-[#1a1a1a] rounded-lg border-l-4 border-emerald-500 shadow-md">
+            <div class="flex-1">
+                <h3 class="text-lg font-bold text-emerald-400 flex items-center gap-2 mb-2">
+                    💵 💵 Katılım ve Slot Onayı
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Katılım ücreti takım başı 50 TL'dir. Kaydını yaptırıp onay almak veya ödemesini tamamlamak isteyen takımlar, ana sitedeki Instagram üzerinden <span class="text-white font-semibold">tahaalkanyt</span> hesabına DM atarak işlemlerini hızlıca tamamlayabilirler.
+                </p>
+            </div>
+        </div>
 
-    /* Boş Durum Bildirimi */
-    .no-event {
-      background: rgba(44, 62, 80, 0.4);
-      border-left: 5px solid #e74c3c;
-      border-radius: 6px;
-      padding: 20px;
-      text-align: center;
-      font-size: 15px;
-      color: #dddddd;
-      line-height: 1.6;
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-    }
-  </style>
-</head>
-<body>
-
-  <div class="nav-container">
-    <a href="index.html" style="display: inline-block; text-align: center; color: #ffffff; background-color: #2c3e50; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; border-radius: 5px; border-left: 4px solid #f39c12; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#34495e'; this.style.color='#f39c12';" onmouseout="this.style.backgroundColor='#2c3e50'; this.style.color='#ffffff';">
-        ⬅️ Ana Sayfaya Dön
-    </a>
-  </div>
-
-  <div class="calendar-container">
-    <h1>TURNUVA & SCRIM TAKVİMİ</h1>
-
-   <div class="no-event" style="border-left: 4px solid #e74c3c !important; box-shadow: 0 0 15px rgba(231, 76, 60, 0.2);">
-    📢 <b>📢 Kayıtlar Sona Erdi</b> <br>
-    Turnuva ve Scrim kayıtlarımız 22 Haziran 23:59 itibarıyla kapanmıştır. Gösterdiğiniz yoğun ilgi için teşekkür ederiz! Bugün sahneye çıkacak tüm takımlara başarılar dileriz.
+        <!-- 3. ADIM: MAÇ GÜNÜ -->
+        <div class="flex gap-4 p-5 bg-[#1a1a1a] rounded-lg border-l-4 border-orange-500 shadow-md">
+            <div class="flex-1">
+                <h3 class="text-lg font-bold text-orange-400 flex items-center gap-2 mb-2">
+                    🔥 ⚔️ 2 Temmuz: Büyük Mücadele!
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Beklenen gün geldi! Toplam <span class="text-white font-semibold">3 maçlık</span> nefes kesen turnuvamızda kozlar 2 Temmuz'da paylaşılıyor. Maç lobisi bilgileri ve ID-Şifre paylaşımları için duyuru kanalını pür dikkat takip edin. Skor tablosunda görüşmek üzere!
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-    <div class="no-event" style="border-left: 4px solid #2ecc71 !important; box-shadow: 0 0 15px rgba(231, 76, 60, 0.2); margin-top: 15px;">
-    🔥 <b>⚔️ 23 Haziran (Bugün): Mücadele Başlıyor!</b> <br>
-    Bugün 3 maçlık ÜCRETSİZ turnuvamızda kozlar paylaşılıyor! Maç lobi bilgileri ve ID-Şifre paylaşımları için duyuru kanalını pür dikkat takip edin. Skor tablosunda görüşmek üzere!
-</div>
-    <div class="no-event" style="border-left: 4px solid #2ecc71 !important; box-shadow: 0 0 15px rgba(231, 76, 60, 0.2); margin-top: 15px;">
-    💵 <b>💵 24 Haziran (Yarın): Son Slotlar ve Ödeme Kontrolü!</b> <br>
-    Katılım ücreti takım başı 50 TL. Kaydını yaptırıp henüz ödemesini tamamlamayan takımlar, ana sitedeki Instagram üzerinden tahaalkanyt'ye DM atarak parayı acilen iletebilirler!
-</div>
-    
-  </div>
-
-</body>
-</html>
