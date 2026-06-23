@@ -1,44 +1,71 @@
-<!-- TURNUVA & SCRIM TAKVİMİ -->
-<div class="max-w-4xl mx-auto bg-[#121212]/90 border border-amber-500/30 rounded-xl p-6 shadow-2xl backdrop-blur-sm">
-    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 tracking-wider uppercase mb-8">
-        TURNUVA & SCRIM TAKVİMİ
-    </h2>
+<!-- BURAYI SİTENİN HEAD KISMINA YA DA STİL DOSYANA EKLE (Alevli Arka Plan ve Genel Ayarlar İçin) -->
+<style>
+    body {
+        background-color: #0d0602;
+        /* Görseldeki arkadaki o alev detayını simüle eden gradyan background */
+        background-image: 
+            radial-gradient(circle at 50% -20%, rgba(249, 115, 22, 0.25), transparent 60%),
+            radial-gradient(circle at 10% 40%, rgba(234, 88, 12, 0.15), transparent 40%),
+            radial-gradient(circle at 90% 70%, rgba(249, 115, 22, 0.15), transparent 40%);
+        font-family: 'Inter', sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 40px 20px;
+    }
+</style>
 
-    <div class="space-y-6">
-        <!-- 1. ADIM: KAYIT DÖNEMİ -->
-        <div class="flex gap-4 p-5 bg-[#1a1a1a] rounded-lg border-l-4 border-amber-500 shadow-md">
-            <div class="flex-1">
-                <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2 mb-2">
+<!-- TURNUVA & SCRIM TAKVİMİ ANA PANEL -->
+<div style="max-w: 800px; margin: 0 auto;">
+    
+    <!-- Üst Buton (Ana Sayfaya Dön) -->
+    <div style="margin-bottom: 20px;">
+        <button style="background-color: #2a3b5c; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+            ⬅ Ana Sayfaya Dön
+        </button>
+    </div>
+
+    <!-- Görseldeki İnce Turuncu Çerçeveli Ana Kutu -->
+    <div style="background-color: rgba(18, 18, 18, 0.95); border: 2px solid #e2871c; border-radius: 12px; padding: 40px 30px; box-shadow: 0 0 30px rgba(226, 135, 28, 0.1);">
+        
+        <!-- Başlık Bölümü ve Altındaki Yatay Çizgi -->
+        <h2 style="color: #f7a22b; text-align: center; font-size: 26px; font-weight: 800; letter-spacing: 2px; margin: 0 0 20px 0; font-family: sans-serif;">
+            TURNUVA & SCRIM TAKVİMİ
+        </h2>
+        <div style="height: 1px; background: linear-gradient(to right, transparent, #e2871c, transparent); margin-bottom: 35px;"></div>
+
+        <!-- İÇERİK SATIRLARI (KUTULAR) -->
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+
+            <!-- SATIR 1: KAYIT DÖNEMİ (Kırmızı Kenar Çizgili) -->
+            <div style="background-color: #1a1f29; border-left: 4px solid #da4444; border-radius: 6px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                <div style="color: #ffffff; text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 12px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     📢 📢 Kayıt Dönemi Başlıyor!
-                </h3>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                    Turnuva ve Scrim kayıtlarımız <span class="text-white font-semibold">25 Haziran 00:00</span> itibarıyla kapılarını açıyor! Son başvuru tarihi <span class="text-white font-semibold">1 Temmuz 23:59</span>'dur. Kontenjanlar dolmadan yerinizi ayırtmayı unutmayın.
-                </p>
+                </div>
+                <div style="color: #b3b9c4; text-align: center; font-size: 15px; line-height: 1.6;">
+                    Turnuva ve Scrim kayıtlarımız <span style="color: #ffffff; font-weight: bold;">25 Haziran 00:00</span> itibarıyla kapılarını açıyor! Son başvuru tarihi <span style="color: #ffffff; font-weight: bold;">1 Temmuz 23:59</span>'dur. Kontenjanlar dolmadan yerinizi ayırtmayı unutmayın.
+                </div>
             </div>
-        </div>
 
-        <!-- 2. ADIM: ÖDEME VE KONTROL (Kayıt Süreci İçi) -->
-        <div class="flex gap-4 p-5 bg-[#1a1a1a] rounded-lg border-l-4 border-emerald-500 shadow-md">
-            <div class="flex-1">
-                <h3 class="text-lg font-bold text-emerald-400 flex items-center gap-2 mb-2">
+            <!-- SATIR 2: ÖDEME KONTROLÜ (Yeşil Kenar Çizgili) -->
+            <div style="background-color: #1a1f29; border-left: 4px solid #1aa361; border-radius: 6px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                <div style="color: #ffffff; text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 12px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     💵 💵 Katılım ve Slot Onayı
-                </h3>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                    Katılım ücreti takım başı 50 TL'dir. Kaydını yaptırıp onay almak veya ödemesini tamamlamak isteyen takımlar, ana sitedeki Instagram üzerinden <span class="text-white font-semibold">tahaalkanyt</span> hesabına DM atarak işlemlerini hızlıca tamamlayabilirler.
-                </p>
+                </div>
+                <div style="color: #b3b9c4; text-align: center; font-size: 15px; line-height: 1.6;">
+                    Katılım ücreti takım başı 50 TL'dir. Kaydını yaptırıp onay almak veya ödemesini tamamlamak isteyen takımlar, ana sitedeki Instagram üzerinden <span style="color: #ffffff; font-weight: bold;">tahaalkanyt</span> hesabına DM atarak işlemlerini hızlıca tamamlayabilirler.
+                </div>
             </div>
-        </div>
 
-        <!-- 3. ADIM: MAÇ GÜNÜ -->
-        <div class="flex gap-4 p-5 bg-[#1a1a1a] rounded-lg border-l-4 border-orange-500 shadow-md">
-            <div class="flex-1">
-                <h3 class="text-lg font-bold text-orange-400 flex items-center gap-2 mb-2">
-                    🔥 ⚔️ 2 Temmuz: Büyük Mücadele!
-                </h3>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                    Beklenen gün geldi! Toplam <span class="text-white font-semibold">3 maçlık</span> nefes kesen turnuvamızda kozlar 2 Temmuz'da paylaşılıyor. Maç lobisi bilgileri ve ID-Şifre paylaşımları için duyuru kanalını pür dikkat takip edin. Skor tablosunda görüşmek üzere!
-                </p>
+            <!-- SATIR 3: MAÇ GÜNÜ (Turuncu Kenar Çizgili) -->
+            <div style="background-color: #1a1f29; border-left: 4px solid #e2871c; border-radius: 6px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                <div style="color: #ffffff; text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 12px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    🔥 ⚔️ 2 Temmuz: Büyük Mücadele Başlıyor!
+                </div>
+                <div style="color: #b3b9c4; text-align: center; font-size: 15px; line-height: 1.6;">
+                    Beklenen gün geldi! Toplam <span style="color: #ffffff; font-weight: bold;">3 maçlık</span> nefes kesen turnuvamızda kozlar 2 Temmuz'da paylaşılıyor. Maç lobisi bilgileri ve ID-Şifre paylaşımları için duyuru kanalını pür dikkat takip edin. Skor tablosunda görüşmek üzere!
+                </div>
             </div>
+
         </div>
     </div>
 </div>
