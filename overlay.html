@@ -7,10 +7,11 @@
     body { margin: 0; background: transparent; font-family: Arial; }
     .overlay { position: fixed; top: 20px; right: 20px; width: 360px; background: rgba(15,15,15,0.95); border-radius: 10px; overflow: hidden; color: white; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
     .header { background: rgba(30,30,30,0.95); padding: 10px; font-size: 12px; font-weight: bold; text-align: center; letter-spacing: 1px; }
-    .row { display: grid; grid-template-columns: 40px 1fr 60px; padding: 6px 12px; font-size: 13px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .row { display: grid; grid-template-columns: 30px 1fr 60px 60px; padding: 6px 12px; font-size: 13px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .rank { color: #aaa; }
     .tag { font-weight: bold; }
-    .kills { text-align: right; color: #4cff7a; font-weight: bold; }
+    .alive { color: #4cff7a; font-weight: bold; }
+    .kills { text-align: right; color: #fff; }
 </style>
 </head>
 <body>
@@ -20,27 +21,33 @@
 </div>
 
 <script>
-const teams = [
-    {slot:3, tag:"KZP E SPORTS", kills:0}, {slot:4, tag:"KARA E SPORTS", kills:0},
-    {slot:5, tag:"ECEL E SPORTS", kills:0}, {slot:6, tag:"EMK E SPORTS", kills:0},
-    {slot:7, tag:"PNT E SPORTS", kills:0}, {slot:8, tag:"GOK TEAM", kills:0},
-    {slot:9, tag:"KZP ACADEMY", kills:0}, {slot:10, tag:"SVS E SPORTS", kills:0},
-    {slot:11, tag:"FLEX E SPORTS", kills:0}, {slot:12, tag:"PNT ACADEMY", kills:0},
-    {slot:13, tag:"SFP E SPORTS", kills:0}, {slot:14, tag:"HD E SPORTS", kills:0},
-    {slot:15, tag:"ECEL ACADEMY", kills:0}, {slot:16, tag:"KZP AZE", kills:0},
-    {slot:17, tag:"PNT PRIME", kills:0}
+// Varsayılan takım listesi
+const initialTeams = [
+    {slot:3, tag:"KZP E SPORTS", alive:4, kills:0}, {slot:4, tag:"KARA E SPORTS", alive:4, kills:0},
+    {slot:5, tag:"ECEL E SPORTS", alive:4, kills:0}, {slot:6, tag:"EMK E SPORTS", alive:4, kills:0},
+    {slot:7, tag:"PNT E SPORTS", alive:4, kills:0}, {slot:8, tag:"GOK TEAM", alive:4, kills:0},
+    {slot:9, tag:"KZP ACADEMY", alive:4, kills:0}, {slot:10, tag:"SVS E SPORTS", alive:4, kills:0},
+    {slot:11, tag:"FLEX E SPORTS", alive:4, kills:0}, {slot:12, tag:"PNT ACADEMY", alive:4, kills:0},
+    {slot:13, tag:"SFP E SPORTS", alive:4, kills:0}, {slot:14, tag:"HD E SPORTS", alive:4, kills:0},
+    {slot:15, tag:"ECEL ACADEMY", alive:4, kills:0}, {slot:16, tag:"KZP AZE", alive:4, kills:0},
+    {slot:17, tag:"PNT PRIME", alive:4, kills:0}
 ];
 
 function render(){
-    let savedTeams = JSON.parse(localStorage.getItem('teams')) || teams;
+    // LocalStorage'da veri yoksa varsayılanları kullan
+    let teams = JSON.parse(localStorage.getItem('teams')) || initialTeams;
+    
     const table = document.getElementById("table");
-    table.innerHTML = savedTeams.map(t => `
+    table.innerHTML = teams.map(t => `
         <div class="row">
             <div class="rank">${t.slot}</div>
             <div class="tag">${t.tag}</div>
-            <div class="kills">${t.kills} Kill</div>
+            <div class="alive">${t.alive} alive</div>
+            <div class="kills">${t.kills} kill</div>
         </div>`).join("");
 }
+
+// Her 500 milisaniyede bir günceller
 setInterval(render, 500);
 render();
 </script>
