@@ -2,97 +2,64 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>KZP Turnuva Skor</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    
-    body { margin: 0; background: transparent; font-family: 'Roboto', sans-serif; }
+    /* OBS'de şeffaflığı zorlamak için temel yapı */
+    body { margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0); overflow: hidden; font-family: sans-serif; }
     
     .overlay { 
-        position: fixed; top: 20px; right: 20px; width: 380px; 
-        background: rgba(10, 10, 15, 0.85); border-radius: 12px; 
-        overflow: hidden; color: white; backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        width: 360px; 
+        background: rgba(15, 15, 15, 0.9); /* Arka planı biraz belirginleştiriyoruz */
+        border-left: 4px solid #4cff7a;
+        color: white; 
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5); 
     }
     .header { 
-        background: rgba(255, 255, 255, 0.05); padding: 15px; font-size: 16px; 
-        font-weight: bold; text-align: center; letter-spacing: 2px; 
-        border-bottom: 2px solid #4cff7a; color: #4cff7a;
+        padding: 12px; background: rgba(30, 30, 30, 0.95); 
+        font-weight: bold; text-align: center; letter-spacing: 2px;
+        border-bottom: 1px solid #4cff7a; color: #4cff7a;
     }
     .row { 
-        display: grid; grid-template-columns: 40px 1fr 80px 70px; 
-        padding: 12px; font-size: 14px; align-items: center; 
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        transition: background 0.3s;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    .row:hover { background: rgba(255,255,255,0.05); }
-    .rank { color: #4cff7a; font-weight: bold; font-size: 16px; }
-    .tag { font-weight: 700; text-transform: uppercase; }
-    .alive { color: #aaa; font-size: 12px; }
-    .kills { text-align: right; font-weight: bold; color: #fff; background: rgba(76, 255, 122, 0.1); padding: 4px 8px; border-radius: 4px; }
-
-    /* Admin Paneli Stili */
-    .admin-panel { padding: 15px; background: #1a1a1a; color: #ccc; font-size: 12px; border-top: 1px solid #333; }
-    input { width: 100%; padding: 5px; margin: 3px 0; background: #000; border: 1px solid #444; color: white; box-sizing: border-box;}
-    button { cursor: pointer; background: #4cff7a; border: none; padding: 5px 10px; border-radius: 3px; font-weight: bold; margin-top: 5px; width: 100%; }
+    .team-info { display: flex; align-items: center; gap: 10px; }
+    .rank { color: #4cff7a; font-weight: bold; width: 20px; }
+    .tag { font-weight: bold; font-size: 15px; }
+    .stats { font-size: 12px; color: #aaa; }
+    .kills { color: #fff; font-weight: bold; background: #222; padding: 2px 8px; border-radius: 4px; }
 </style>
 </head>
 <body>
 
 <div class="overlay">
-    <div class="header">KZP TURNUVA SKOR</div>
+    <div class="header">KZP TURNUVA</div>
     <div id="table"></div>
-    
-    <div class="admin-panel">
-        <input type="text" id="tTag" placeholder="Takım Adı (örn: EXM)">
-        <input type="number" id="tAlive" placeholder="Kalan Oyuncu">
-        <input type="number" id="tKills" placeholder="Kill Sayısı">
-        <button onclick="addTeam()">Takım Ekle / Güncelle</button>
-        <button onclick="clearData()" style="background: #ff4c4c; color: white;">Verileri Sıfırla</button>
-    </div>
 </div>
 
 <script>
 function render(){
-    let teams = JSON.parse(localStorage.getItem('teams')) || [];
+    // Buraya doğrudan takımları yazabilirsin (Veya bir JSON dosyasından çekebilirsin)
+    const teams = [
+        { tag: "TEAM A", alive: 4, kills: 12 },
+        { tag: "KZP", alive: 2, kills: 8 },
+        { tag: "XLOG", alive: 0, kills: 5 },
+        { tag: "RED", alive: 1, kills: 3 }
+    ];
+
     teams.sort((a, b) => b.kills - a.kills);
     
     const table = document.getElementById("table");
     table.innerHTML = teams.map((t, i) => `
         <div class="row">
-            <div class="rank">#${i + 1}</div>
-            <div class="tag">${t.tag}</div>
-            <div class="alive">${t.alive} alive</div>
-            <div class="kills">${t.kills} kill</div>
+            <div class="team-info">
+                <div class="rank">${i + 1}</div>
+                <div class="tag">${t.tag}</div>
+            </div>
+            <div>
+                <span class="stats">${t.alive} alive</span>
+                <span class="kills">${t.kills} kill</span>
+            </div>
         </div>`).join("");
-}
-
-function addTeam() {
-    let tag = document.getElementById("tTag").value.toUpperCase();
-    let alive = document.getElementById("tAlive").value;
-    let kills = parseInt(document.getElementById("tKills").value);
-    
-    if(!tag) return alert("Takım adı girin!");
-    
-    let teams = JSON.parse(localStorage.getItem('teams')) || [];
-    let index = teams.findIndex(t => t.tag === tag);
-    
-    if(index > -1) {
-        teams[index] = {tag, alive, kills};
-    } else {
-        teams.push({tag, alive, kills});
-    }
-    
-    localStorage.setItem('teams', JSON.stringify(teams));
-    render();
-}
-
-function clearData() {
-    if(confirm("Tüm skorlar silinsin mi?")) {
-        localStorage.removeItem('teams');
-        render();
-    }
 }
 
 setInterval(render, 1000);
