@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Esports Overlay</title>
+<title>Slot List Overlay</title>
 
 <style>
 body {
@@ -11,55 +11,84 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* ✅ SAĞA SABİT PANEL */
 .overlay {
     position: fixed;
     top: 20px;
-    right: 20px;   /* <-- SAĞ TARAF */
-    width: 260px;
-    background: rgba(10,10,10,0.88);
+    right: 20px;
+    width: 340px;
+    background: rgba(10,10,10,0.92);
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 
 .header {
-    display: flex;
-    padding: 8px 10px;
-    font-size: 12px;
-    color: #aaa;
+    padding: 10px;
     background: rgba(25,25,25,0.95);
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
     letter-spacing: 1px;
 }
 
-.row {
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 10px;
+}
+
+.slot {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.slot.empty {
+    color: #666;
+}
+
+.top {
     display: flex;
     justify-content: space-between;
-    padding: 7px 10px;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: #aaa;
 }
 
-.rank {
-    width: 20px;
-    color: #777;
+.team {
+    font-weight: bold;
+    font-size: 12px;
 }
 
-.name {
+.alive {
+    font-size: 11px;
+    color: #4cff7a;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+
+button {
     flex: 1;
-    padding-left: 6px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: white;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
 }
 
-.stats {
-    width: 80px;
-    text-align: right;
-    color: #ddd;
-}
-
-/* küçük highlight (1. sıra) */
-.row:first-child {
-    background: rgba(255,255,255,0.05);
+button:hover {
+    background: rgba(255,255,255,0.18);
 }
 </style>
 </head>
@@ -67,52 +96,70 @@ body {
 <body>
 
 <div class="overlay">
-    <div class="header">
-        <div style="width:20px;">#</div>
-        <div class="name">TEAM</div>
-        <div class="stats">PTS / K</div>
-    </div>
-
-    <div id="board"></div>
+    <div class="header">KZP PUBG TURNUVA SLOT LİSTESİ</div>
+    <div class="grid" id="grid"></div>
 </div>
 
 <script>
 
-// 🎮 SADE PUBG STYLE DATA
-let data = [
-    {rank:1, name:"ARG", pts:12, kills:4},
-    {rank:2, name:"PHI", pts:10, kills:4},
-    {rank:3, name:"DEN", pts:9, kills:3},
-    {rank:4, name:"USA", pts:7, kills:2},
-    {rank:5, name:"INA", pts:5, kills:5},
+let slots = [
+    {id:1, team:"BOS", alive:0},
+    {id:2, team:"BOS", alive:0},
+    {id:3, team:"KZP E SPORTS", alive:4},
+    {id:4, team:"KARA E SPORTS", alive:4},
+    {id:5, team:"ECEL E SPORTS", alive:4},
+    {id:6, team:"EMK E SPORTS", alive:4},
+    {id:7, team:"PNT E SPORTS", alive:4},
+    {id:8, team:"57 ESPORT", alive:4},
+    {id:9, team:"KZP ACADEMY", alive:4},
+    {id:10, team:"SVS E SPORTS", alive:4},
+    {id:11, team:"FLEX E SPORTS", alive:4},
+    {id:12, team:"PNT ACADEMY", alive:4},
+    {id:13, team:"SFP E SPORTS", alive:4},
+    {id:14, team:"HD E SPORTS", alive:4},
+    {id:15, team:"GOK TEAM", alive:4},
+    {id:16, team:"ECEL ACADEMY", alive:4},
+    {id:17, team:"KZP AZE", alive:4},
+    {id:18, team:"PNT PRIME", alive:4}
 ];
 
-function render() {
-    const el = document.getElementById("board");
-    el.innerHTML = "";
+function changeAlive(id, delta) {
+    const slot = slots.find(s => s.id === id);
+    if (!slot || slot.team === "BOS") return;
 
-    data.forEach(t => {
-        el.innerHTML += `
-        <div class="row">
-            <div class="rank">${t.rank}</div>
-            <div class="name">${t.name}</div>
-            <div class="stats">${t.pts}/${t.kills}</div>
-        </div>
-        `;
+    slot.alive += delta;
+
+    if (slot.alive < 0) slot.alive = 0;
+    if (slot.alive > 4) slot.alive = 4;
+
+    render();
+}
+
+function render() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+
+    slots.forEach(s => {
+        grid.innerHTML += `
+        <div class="slot ${s.team === "BOS" ? "empty" : ""}">
+            
+            <div class="top">
+                <span>SLOT ${s.id}</span>
+                <span class="alive">ALIVE: ${s.team === "BOS" ? 0 : s.alive}</span>
+            </div>
+
+            <div class="team">${s.team}</div>
+
+            <div class="buttons">
+                <button onclick="changeAlive(${s.id}, -1)">-1</button>
+                <button onclick="changeAlive(${s.id}, 1)">+1</button>
+            </div>
+
+        </div>`;
     });
 }
 
 render();
-
-// 🔄 demo auto update
-setInterval(() => {
-    data = data.map(t => ({
-        ...t,
-        kills: t.kills + (Math.random() > 0.8 ? 1 : 0)
-    }));
-
-    render();
-}, 3000);
 
 </script>
 
