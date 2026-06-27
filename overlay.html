@@ -1,77 +1,140 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Leaderboard Overlay</title>
+<meta charset="UTF-8">
+<title>Overlay</title>
 <style>
     body {
         margin: 0;
         background: transparent;
-        overflow: hidden;
         font-family: Arial, sans-serif;
     }
 
-    /* SAĞ PANEL */
-    .panel {
-        position: absolute;
-        right: 40px;
-        top: 80px;
+    .overlay {
         width: 320px;
-        background: rgba(10, 10, 20, 0.75);
-        border-radius: 12px;
-        padding: 12px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        background: rgba(15, 15, 15, 0.85);
+        color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
-    .title {
-        color: white;
-        font-size: 18px;
+    .header {
+        display: flex;
+        background: rgba(30,30,30,0.95);
+        padding: 6px 10px;
+        font-size: 12px;
         font-weight: bold;
-        margin-bottom: 10px;
-        text-align: center;
-        letter-spacing: 1px;
+        color: #aaa;
     }
 
     .row {
         display: flex;
-        justify-content: space-between;
-        padding: 8px;
-        margin-bottom: 6px;
-        border-radius: 8px;
-        background: rgba(255,255,255,0.05);
-        color: white;
-        font-size: 14px;
+        align-items: center;
+        padding: 6px 10px;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .row:nth-child(2) { border-left: 4px solid gold; }
-    .row:nth-child(3) { border-left: 4px solid silver; }
-    .row:nth-child(4) { border-left: 4px solid #cd7f32; }
-
     .rank {
-        width: 25px;
-        opacity: 0.8;
+        width: 20px;
+        color: #ccc;
     }
 
     .team {
         flex: 1;
-        padding-left: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
 
-    .points {
-        font-weight: bold;
+    .team img {
+        width: 18px;
+        height: 12px;
+        object-fit: cover;
+        border-radius: 2px;
+    }
+
+    .bars {
+        width: 60px;
+        display: flex;
+        gap: 2px;
+    }
+
+    .bar {
+        width: 3px;
+        height: 10px;
+        background: #444;
+    }
+
+    .bar.on {
+        background: #ffffff;
+    }
+
+    .pts, .kills {
+        width: 30px;
+        text-align: center;
+    }
+
+    .alive {
+        width: 50px;
+        text-align: center;
+        letter-spacing: 1px;
     }
 </style>
 </head>
 <body>
 
-<div class="panel">
-    <div class="title">LEADERBOARD</div>
+<div class="overlay">
 
-    <div class="row"><div class="rank">1</div><div class="team">Team Alpha</div><div class="points">120</div></div>
-    <div class="row"><div class="rank">2</div><div class="team">Team Beta</div><div class="points">98</div></div>
-    <div class="row"><div class="rank">3</div><div class="team">Team Gamma</div><div class="points">87</div></div>
-    <div class="row"><div class="rank">4</div><div class="team">Team Delta</div><div class="points">75</div></div>
-    <div class="row"><div class="rank">5</div><div class="team">Team Sigma</div><div class="points">61</div></div>
+    <div class="header">
+        <div style="width:20px;">#</div>
+        <div class="team">TEAM</div>
+        <div class="alive">ALIVE</div>
+        <div class="pts">PTS</div>
+        <div class="kills">K</div>
+    </div>
+
+    <div class="row">
+        <div class="rank">1</div>
+        <div class="team"><img src="https://flagcdn.com/ar.svg"> ARG</div>
+        <div class="alive">▮▮▮▮</div>
+        <div class="pts">4</div>
+        <div class="kills">4</div>
+    </div>
+
+    <div class="row">
+        <div class="rank">2</div>
+        <div class="team"><img src="https://flagcdn.com/ph.svg"> PHI</div>
+        <div class="alive">▮▮</div>
+        <div class="pts">4</div>
+        <div class="kills">4</div>
+    </div>
+
+    <div class="row">
+        <div class="rank">3</div>
+        <div class="team"><img src="https://flagcdn.com/dk.svg"> DEN</div>
+        <div class="alive">▮▮▮▮</div>
+        <div class="pts">3</div>
+        <div class="kills">3</div>
+    </div>
+
+    <div class="row">
+        <div class="rank">4</div>
+        <div class="team"><img src="https://flagcdn.com/us.svg"> USA</div>
+        <div class="alive">▮▮▮▮</div>
+        <div class="pts">2</div>
+        <div class="kills">2</div>
+    </div>
+
+    <div class="row">
+        <div class="rank">5</div>
+        <div class="team"><img src="https://flagcdn.com/id.svg"> INA</div>
+        <div class="alive">▮▮▮▮</div>
+        <div class="pts">1</div>
+        <div class="kills">1</div>
+    </div>
+
 </div>
 
 </body>
