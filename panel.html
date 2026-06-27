@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yönetim Paneli</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .item { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Takım Skor Paneli</h2>
+    <div id="controls"></div>
+
+<script>
+let teams = JSON.parse(localStorage.getItem('teams')) || [
+    {rank:1, tag:"BRA", alive:3, pts:63, kills:2},
+    {rank:2, tag:"ARG", alive:0, pts:44, kills:0},
+    {rank:3, tag:"UKR", alive:1, pts:42, kills:3},
+    {rank:4, tag:"VIE", alive:0, pts:38, kills:2},
+    {rank:5, tag:"DEN", alive:4, pts:35, kills:0},
+    {rank:6, tag:"THA", alive:0, pts:34, kills:0},
+    {rank:7, tag:"KOR", alive:1, pts:34, kills:1},
+    {rank:8, tag:"CHN", alive:0, pts:30, kills:4},
+    {rank:9, tag:"NEU", alive:0, pts:29, kills:0},
+    {rank:10, tag:"USA", alive:4, pts:26, kills:3},
+    {rank:11, tag:"GER", alive:0, pts:23, kills:0}
+];
+
+function updateKill(index) {
+    teams[index].kills += 1;
+    localStorage.setItem('teams', JSON.stringify(teams));
+}
+
+const controls = document.getElementById("controls");
+teams.forEach((t, i) => {
+    controls.innerHTML += `
+        <div class="item">
+            <strong>${t.tag}</strong> - Kills: ${t.kills} 
+            <button onclick="updateKill(${i}); location.reload();">+1 Kill</button>
+        </div>`;
+});
+</script>
+</body>
+</html>
