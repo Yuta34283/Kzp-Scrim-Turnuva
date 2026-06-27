@@ -4,52 +4,59 @@
 <meta charset="UTF-8">
 <title>Leaderboard</title>
 <style>
-    body { margin: 0; background: transparent; font-family: Arial; }
-    .overlay { position: fixed; top: 20px; right: 20px; width: 360px; background: rgba(15,15,15,0.95); border-radius: 10px; overflow: hidden; color: white; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
-    .header { background: rgba(30,30,30,0.95); padding: 10px; font-size: 12px; font-weight: bold; text-align: center; letter-spacing: 1px; }
-    .row { display: grid; grid-template-columns: 30px 1fr 60px 60px; padding: 6px 12px; font-size: 13px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .rank { color: #aaa; }
+    body { margin: 0; background: transparent; font-family: Arial, sans-serif; }
+    .overlay { 
+        position: fixed; top: 20px; right: 20px; width: 360px; 
+        background: rgba(15,15,15,0.95); border-radius: 10px; 
+        overflow: hidden; color: white; box-shadow: 0 0 15px rgba(0,0,0,0.5); 
+    }
+    .header { 
+        background: rgba(30,30,30,0.95); padding: 10px; font-size: 14px; 
+        font-weight: bold; text-align: center; letter-spacing: 1px; border-bottom: 2px solid #4cff7a;
+    }
+    .row { 
+        display: grid; grid-template-columns: 30px 1fr 80px 60px; 
+        padding: 8px 12px; font-size: 13px; align-items: center; 
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .rank { color: #4cff7a; font-weight: bold; }
     .tag { font-weight: bold; }
-    .alive { color: #4cff7a; font-weight: bold; }
-    .kills { text-align: right; color: #fff; }
+    .alive { color: #ddd; }
+    .kills { text-align: right; font-weight: bold; color: #fff; }
 </style>
 </head>
 <body>
+
 <div class="overlay">
     <div class="header">KZP TURNUVA SKOR</div>
     <div id="table"></div>
 </div>
 
 <script>
-// Varsayılan takım listesi
-const initialTeams = [
-    {slot:3, tag:"KZP E SPORTS", alive:4, kills:0}, {slot:4, tag:"KARA E SPORTS", alive:4, kills:0},
-    {slot:5, tag:"ECEL E SPORTS", alive:4, kills:0}, {slot:6, tag:"EMK E SPORTS", alive:4, kills:0},
-    {slot:7, tag:"PNT E SPORTS", alive:4, kills:0}, {slot:8, tag:"GOK TEAM", alive:4, kills:0},
-    {slot:9, tag:"KZP ACADEMY", alive:4, kills:0}, {slot:10, tag:"SVS E SPORTS", alive:4, kills:0},
-    {slot:11, tag:"FLEX E SPORTS", alive:4, kills:0}, {slot:12, tag:"PNT ACADEMY", alive:4, kills:0},
-    {slot:13, tag:"SFP E SPORTS", alive:4, kills:0}, {slot:14, tag:"HD E SPORTS", alive:4, kills:0},
-    {slot:15, tag:"ECEL ACADEMY", alive:4, kills:0}, {slot:16, tag:"KZP AZE", alive:4, kills:0},
-    {slot:17, tag:"PNT PRIME", alive:4, kills:0}
-];
-
 function render(){
-    // LocalStorage'da veri yoksa varsayılanları kullan
-    let teams = JSON.parse(localStorage.getItem('teams')) || initialTeams;
+    // LocalStorage'dan veriyi al
+    let teams = JSON.parse(localStorage.getItem('teams'));
+    
+    // Veri yoksa tabloyu boş bırak
+    if(!teams) return;
+    
+    // Kill sayısına göre büyükten küçüğe sırala
+    teams.sort((a, b) => b.kills - a.kills);
     
     const table = document.getElementById("table");
-    table.innerHTML = teams.map(t => `
+    table.innerHTML = teams.map((t, i) => `
         <div class="row">
-            <div class="rank">${t.slot}</div>
+            <div class="rank">${i + 1}</div>
             <div class="tag">${t.tag}</div>
             <div class="alive">${t.alive} alive</div>
             <div class="kills">${t.kills} kill</div>
         </div>`).join("");
 }
 
-// Her 500 milisaniyede bir günceller
+// 500ms'de bir güncelleyerek anlık takip sağlar
 setInterval(render, 500);
 render();
 </script>
+
 </body>
 </html>
