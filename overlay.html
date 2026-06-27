@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Overlay</title>
+<title>Esports Overlay</title>
 
 <style>
 body {
@@ -11,115 +11,104 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* ✅ SOL ÜSTE SABİT PANEL */
+/* ✅ SAĞA SABİT PANEL */
 .overlay {
     position: fixed;
     top: 20px;
-    left: 20px;   /* <-- SOLA ALIR */
-    width: 320px;
-    background: rgba(15, 15, 15, 0.85);
+    right: 20px;   /* <-- SAĞ TARAF */
+    width: 260px;
+    background: rgba(10,10,10,0.88);
     color: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
 }
 
 .header {
     display: flex;
-    background: rgba(30,30,30,0.95);
-    padding: 6px 10px;
+    padding: 8px 10px;
     font-size: 12px;
-    font-weight: bold;
     color: #aaa;
+    background: rgba(25,25,25,0.95);
+    letter-spacing: 1px;
 }
 
 .row {
     display: flex;
-    align-items: center;
-    padding: 6px 10px;
-    font-size: 13px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    justify-content: space-between;
+    padding: 7px 10px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.rank { width: 20px; color: #ccc; }
+.rank {
+    width: 20px;
+    color: #777;
+}
 
-.team {
+.name {
     flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    padding-left: 6px;
 }
 
-.team img {
-    width: 18px;
-    height: 12px;
-    object-fit: cover;
-    border-radius: 2px;
+.stats {
+    width: 80px;
+    text-align: right;
+    color: #ddd;
 }
 
-.pts, .kills { width: 30px; text-align: center; }
-.alive { width: 50px; text-align: center; letter-spacing: 1px; }
+/* küçük highlight (1. sıra) */
+.row:first-child {
+    background: rgba(255,255,255,0.05);
+}
 </style>
 </head>
 
 <body>
 
-<div class="overlay" id="overlay">
-
+<div class="overlay">
     <div class="header">
         <div style="width:20px;">#</div>
-        <div class="team">TEAM</div>
-        <div class="alive">ALIVE</div>
-        <div class="pts">PTS</div>
-        <div class="kills">K</div>
+        <div class="name">TEAM</div>
+        <div class="stats">PTS / K</div>
     </div>
 
-    <div id="rows"></div>
-
+    <div id="board"></div>
 </div>
 
 <script>
-// ✅ ÖRNEK DİNAMİK DATA
+
+// 🎮 SADE PUBG STYLE DATA
 let data = [
-    {rank:1, code:"ar", name:"ARG", alive:4, pts:4, kills:4},
-    {rank:2, code:"ph", name:"PHI", alive:2, pts:4, kills:4},
-    {rank:3, code:"dk", name:"DEN", alive:4, pts:3, kills:3},
-    {rank:4, code:"us", name:"USA", alive:4, pts:2, kills:2},
-    {rank:5, code:"id", name:"INA", alive:4, pts:1, kills:1},
-    {rank:5, code:"id", name:"BCS", alive:2, pts:31, kills:28},
+    {rank:1, name:"ARG", pts:12, kills:4},
+    {rank:2, name:"PHI", pts:10, kills:4},
+    {rank:3, name:"DEN", pts:9, kills:3},
+    {rank:4, name:"USA", pts:7, kills:2},
+    {rank:5, name:"INA", pts:5, kills:1},
 ];
 
-// ✅ UI ÇİZ
 function render() {
-    const container = document.getElementById("rows");
-    container.innerHTML = "";
+    const el = document.getElementById("board");
+    el.innerHTML = "";
 
     data.forEach(t => {
-        container.innerHTML += `
+        el.innerHTML += `
         <div class="row">
             <div class="rank">${t.rank}</div>
-            <div class="team">
-                <img src="https://flagcdn.com/${t.code}.svg">
-                ${t.name}
-            </div>
-            <div class="alive">${"▮".repeat(t.alive)}</div>
-            <div class="pts">${t.pts}</div>
-            <div class="kills">${t.kills}</div>
+            <div class="name">${t.name}</div>
+            <div class="stats">${t.pts}/${t.kills}</div>
         </div>
         `;
     });
 }
 
-// ilk çizim
 render();
 
-// ✅ 3 saniyede bir güncelle (örnek refresh)
+// 🔄 demo auto update
 setInterval(() => {
-    // burada gerçek API / oyun verisi bağlanır
-
     data = data.map(t => ({
         ...t,
-        kills: t.kills + (Math.random() > 0.7 ? 1 : 0)
+        kills: t.kills + (Math.random() > 0.8 ? 1 : 0)
     }));
 
     render();
