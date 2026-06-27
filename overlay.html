@@ -1,287 +1,78 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KZP Scrim Lider Tablosu</title>
-  <style>
-    /* 💥 Genel Tema ve Karanlık Arka Plan */
+<meta charset="UTF-8" />
+<title>Leaderboard Overlay</title>
+<style>
     body {
-      margin: 0;
-      padding: 20px;
-      background: #060608 url('https://i.hizliresim.com/d9fo3b9.png') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      min-height: 100vh;
-      box-sizing: border-box;
+        margin: 0;
+        background: transparent;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, rgba(10, 5, 5, 0.9) 0%, rgba(5, 15, 15, 0.95) 100%);
-      z-index: -1;
+    /* SAĞ PANEL */
+    .panel {
+        position: absolute;
+        right: 40px;
+        top: 80px;
+        width: 320px;
+        background: rgba(10, 10, 20, 0.75);
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
-    /* 🏎️ Çift Panelli Ana Konteyner */
-    .scrim-container{
-    background:transparent;
-    box-shadow:none;
-    border:none;
-    display:block;
-}
-
-    /* 🏠 Yakışıklı Geri Dön Butonu */
-    .back-to-home {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(26, 188, 156, 0.1);
-      border: 1px solid #1abc9c;
-      color: #1abc9c;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: bold;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      margin-bottom: 20px;
-      align-self: flex-start; /* Butonun kendi boyutu kadar yer kaplaması için */
-      box-shadow: 0 0 10px rgba(26, 188, 156, 0.1);
+    .title {
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+        letter-spacing: 1px;
     }
 
-    .back-to-home:hover {
-      background: #1abc9c;
-      color: #060608;
-      box-shadow: 0 0 20px rgba(26, 188, 156, 0.4);
-      transform: translateX(-3px); /* Hafif sola kayma efekti */
-      cursor: pointer;
+    .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.05);
+        color: white;
+        font-size: 14px;
     }
 
-    .scrim-title {
-      font-size: 26px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #fff;
-      margin: 0 0 25px 0;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 15px;
+    .row:nth-child(2) { border-left: 4px solid gold; }
+    .row:nth-child(3) { border-left: 4px solid silver; }
+    .row:nth-child(4) { border-left: 4px solid #cd7f32; }
+
+    .rank {
+        width: 25px;
+        opacity: 0.8;
     }
 
-    /* 📢 Kayıt Dönemi Bilgi Kutusu */
-    .no-event {
-      background: rgba(230, 126, 34, 0.1);
-      border: 1px solid rgba(230, 126, 34, 0.4);
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-      color: #ffb8b8;
+    .team {
+        flex: 1;
+        padding-left: 6px;
     }
 
-    /* 🥇 MVP Kartları */
-    .mvp-section-title {
-      font-size: 11px;
-      font-weight: bold;
-      color: #e67e22;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+    .points {
+        font-weight: bold;
     }
-
-    .mvp-card {
-      background: rgba(20, 20, 25, 0.7);
-      border: 1px solid rgba(230, 126, 34, 0.4);
-      border-radius: 8px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .mvp-info { display: flex; align-items: center; gap: 10px; }
-    .mvp-avatar { width: 35px; height: 35px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .mvp-team-avatar { width: 35px; height: 35px; background: #1abc9c; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .mvp-name { font-weight: bold; font-size: 14px; }
-    .mvp-stats { text-align: right; font-size: 11px; color: #aaa; font-family: monospace; }
-    .mvp-stats b { color: #fff; }
-
-    /* 📊 SAĞ PANEL: ÇİFT TABLO ALANI */
-    .right-panel{
-    width:400px;
-    position:fixed;
-    right:15px;
-    top:20px;
-    bottom:20px;
-    overflow:hidden;
-}
-
-    .right-panel::-webkit-scrollbar { width: 6px; }
-    .right-panel::-webkit-scrollbar-thumb { background: #1abc9c; border-radius: 4px; }
-
-    .table-section {
-      background: rgba(15, 15, 18, 0.6);
-      border-radius: 10px;
-      padding: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .table-header-title {
-      color: #1abc9c;
-      font-size: 15px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-      text-shadow: 0 0 10px rgba(26, 188, 156, 0.4);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .scrim-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 4px;
-    }
-
-    .scrim-table th {
-      background: rgba(26, 188, 156, 0.12);
-      color: #1abc9c;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 10px;
-    }
-
-    .scrim-table td {
-      background: rgba(22, 22, 28, 0.8);
-      color: #fff;
-      padding: 10px;
-      font-size: 12px;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    .scrim-table td:first-child {
-      border-left: 3px solid #1abc9c;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      font-weight: bold;
-    }
-
-    .scrim-table td:last-child {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      color: #1abc9c;
-      font-weight: bold;
-    }
-
-    .scrim-table .team-name-col {
-      text-align: left;
-      padding-left: 15px;
-      font-weight: bold;
-    }
-
-    .scrim-table tr:hover td {
-      background: rgba(26, 188, 156, 0.12) !important;
-    }
-
-    /* Liderlik Renkleri */
-    .scrim-table tr:nth-child(1) td:first-child { border-left-color: #f1c40f; color: #f1c40f; }
-    .scrim-table tr:nth-child(2) td:first-child { border-left-color: #bdc3c7; color: #bdc3c7; }
-    .scrim-table tr:nth-child(3) td:first-child { border-left-color: #e67e22; color: #e67e22; }
-
-    @media (max-width: 992px) {
-      .scrim-container { flex-direction: column; }
-      .left-panel { max-width: 100%; border-right: none; border-bottom: 2px solid #1abc9c; }
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <div class="scrim-container">
-    
-    <div class="left-panel">
-      
-      <a href="index.html" class="back-to-home">🏠 Ana Sayfaya Dön</a>
-      
-      <div class="scrim-title">KZP SCRIM<br>LİDER TABLOSU</div>
-      <div class="mvp-section-title">GÜNÜN MVP OYUNCULARI:</div>
-      <div class="mvp-card">
-        <div class="mvp-info">
-          <div class="mvp-avatar">👤</div>
-          <div class="mvp-name">DRwaxsssss31</div>
-        </div>
-        <div class="mvp-stats">KILL: <b>13</b></div>
-      </div>
+<div class="panel">
+    <div class="title">LEADERBOARD</div>
 
-      <div class="mvp-section-title">GÜNÜN MVP TAKIMI:</div>
-      <div class="mvp-card" style="border-color: rgba(26, 188, 156, 0.4);">
-        <div class="mvp-info">
-          <div class="mvp-team-avatar">🛡️</div>
-          <div class="mvp-name" style="color: #1abc9c;">BCS Esports</div>
-        </div>
-        <div class="mvp-stats">
-          S.PUANI: <b>12</b><br>
-          KILL: <b>32</b><br>
-          TOTAL: <span style="color:#1abc9c; font-weight:bold;">44</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="right-panel">
-      
-      <div class="table-section">
-  <div class="table-header-title">🏆 GÜNCEL GENEL PUAN DURUMU (5. MAÇ SONRASI)</div>
-  <table class="scrim-table">
-    <thead>
-      <tr>
-        <th>SIRA</th>
-        <th class="team-name-col">TAKIM ADI</th>
-        <th>WWCD</th>
-        <th>OM</th>
-        <th>KILL</th>
-        <th>S.PUANI</th>
-        <th>TOPLAM</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td class='team-name-col'>🥇 BCS</td><td>0</td><td>3</td><td>32</td><td>12</td><td>44</td></tr>
-      <tr><td>2</td><td class='team-name-col'>🥈 APEX</td><td>1</td><td>3</td><td>17</td><td>10</td><td>27</td></tr>
-      <tr><td>3</td><td class='team-name-col'>🥉 ECEL</td><td>0</td><td>3</td><td>13</td><td>14</td><td>27</td></tr>
-      <tr><td>4</td><td class='team-name-col'>PNT</td><td>1</td><td>3</td><td>16</td><td>10</td><td>26</td></tr>
-      <tr><td>5</td><td class='team-name-col'>DR</td><td>0</td><td>3</td><td>22</td><td>4</td><td>26</td></tr>
-      <tr><td>6</td><td class='team-name-col'>TYF</td><td>1</td><td>3</td><td>15</td><td>10</td><td>25</td></tr>
-      <tr><td>7</td><td class='team-name-col'>ARDIL</td><td>0</td><td>3</td><td>12</td><td>13</td><td>25</td></tr>
-      <tr><td>8</td><td class='team-name-col'>O </td><td>0</td><td>3</td><td>17</td><td>5</td><td>22</td></tr>
-      <tr><td>9</td><td class='team-name-col'>S7</td><td>0</td><td>3</td><td>19</td><td>3</td><td>22</td></tr>
-      <tr><td>10</td><td class='team-name-col'>KZP</td><td>0</td><td>3</td><td>17</td><td>4</td><td>21</td></tr>
-      <tr><td>11</td><td class='team-name-col'>YouTube</td><td>0</td><td>3</td><td>12</td><td>8</td><td>20</td></tr>
-      <tr><td>12</td><td class='team-name-col'>NeoN</td><td>0</td><td>3</td><td>9</td><td>0</td><td>9</td></tr>
-      <tr><td>13</td><td class='team-name-col'>BTX</td><td>0</td><td>3</td><td>6</td><td>2</td><td>8</td></tr>
-      <tr><td>14</td><td class='team-name-col'>SvS</td><td>0</td><td>2</td><td>6</td><td>0</td><td>6</td></tr>
-      <tr><td>15</td><td class='team-name-col'>NO1</td><td>0</td><td>3</td><td>5</td><td>0</td><td>5</td></tr>
-      <tr><td>16</td><td class='team-name-col'>EMK</td><td>0</td><td>3</td><td>3</td><td>0</td><td>3</td></tr>
-      <tr><td>17</td><td class='team-name-col'>GOK</td><td>0</td><td>2</td><td>3</td><td>0</td><td>3</td></tr>
-      <tr><td>18</td><td class='team-name-col'>BSG</td><td>0</td><td>3</td><td>2</td><td>0</td><td>2</td></tr>
-      <tr><td>19</td><td class='team-name-col'>FLEX</td><td>0</td><td>3</td><td>0</td><td>1</td><td>1</td></tr>
-      <tr><td>20</td><td class='team-name-col'></td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td></tr>
-    </tbody>
-  </table>
+    <div class="row"><div class="rank">1</div><div class="team">Team Alpha</div><div class="points">120</div></div>
+    <div class="row"><div class="rank">2</div><div class="team">Team Beta</div><div class="points">98</div></div>
+    <div class="row"><div class="rank">3</div><div class="team">Team Gamma</div><div class="points">87</div></div>
+    <div class="row"><div class="rank">4</div><div class="team">Team Delta</div><div class="points">75</div></div>
+    <div class="row"><div class="rank">5</div><div class="team">Team Sigma</div><div class="points">61</div></div>
 </div>
-<br>
-
-  </div>
 
 </body>
 </html>
