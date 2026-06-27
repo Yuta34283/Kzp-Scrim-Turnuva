@@ -5,12 +5,17 @@
     <title>Yönetim Paneli</title>
     <style>
         body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+        .header-bar { display: flex; justify-content: space-between; align-items: center; }
         .item { background: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .tag { width: 160px; font-weight: bold; }
+        .btn-reset { background: #ff4d4d; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h2>Takım Skor Paneli (Otomatik Sıralamalı)</h2>
+    <div class="header-bar">
+        <h2>Takım Skor Paneli</h2>
+        <button class="btn-reset" onclick="resetAll()">Sıfırla</button>
+    </div>
     <div id="controls"></div>
 
 <script>
@@ -30,10 +35,18 @@ let teams = JSON.parse(localStorage.getItem('teams')) || initialTeams;
 function update(index, type) {
     if(type === 'kill') teams[index].kills += 1;
     if(type === 'alive' && teams[index].alive > 0) teams[index].alive -= 1;
-    
-    // Kill sayısına göre büyükten küçüğe sırala
     teams.sort((a, b) => b.kills - a.kills);
-    
+    saveAndRender();
+}
+
+function resetAll() {
+    if (confirm("Tüm skorları ve alive sayılarını sıfırlamak istediğine emin misin?")) {
+        teams = JSON.parse(JSON.stringify(initialTeams)); // Başlangıç verisini kopyala
+        saveAndRender();
+    }
+}
+
+function saveAndRender() {
     localStorage.setItem('teams', JSON.stringify(teams));
     render();
 }
@@ -45,9 +58,9 @@ function render() {
         controls.innerHTML += `
             <div class="item">
                 <div class="tag"><strong>${i+1}. ${t.tag}</strong></div>
-                <div>Alive: ${t.alive}</div>
+                <div style="width:70px">Alive: ${t.alive}</div>
                 <button onclick="update(${i}, 'alive')">-1 Alive</button>
-                <div style="width:60px">Kills: ${t.kills}</div>
+                <div style="width:70px">Kills: ${t.kills}</div>
                 <button onclick="update(${i}, 'kill')">+1 Kill</button>
             </div>`;
     });
