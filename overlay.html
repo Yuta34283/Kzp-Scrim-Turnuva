@@ -2,93 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Slot List Overlay</title>
+<title>Leaderboard</title>
 
 <style>
 body {
     margin: 0;
     background: transparent;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
 }
 
 .overlay {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 340px;
-    background: rgba(10,10,10,0.92);
-    color: white;
+    width: 360px;
+    background: rgba(15,15,15,0.95);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .header {
+    background: rgba(30,30,30,0.95);
     padding: 10px;
-    background: rgba(25,25,25,0.95);
+    font-size: 12px;
     font-weight: bold;
-    font-size: 13px;
     text-align: center;
     letter-spacing: 1px;
 }
 
-.grid {
+.row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    padding: 10px;
-}
-
-.slot {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 8px;
+    grid-template-columns: 30px 1fr 80px 60px 60px;
+    padding: 6px 8px;
     font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.slot.empty {
-    color: #666;
+.row:nth-child(odd) {
+    background: rgba(255,255,255,0.02);
 }
 
-.top {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
+.rank {
+    text-align: center;
     color: #aaa;
 }
 
 .team {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag {
     font-weight: bold;
-    font-size: 12px;
 }
 
 .alive {
-    font-size: 11px;
     color: #4cff7a;
-}
-
-.buttons {
-    display: flex;
-    gap: 5px;
-}
-
-button {
-    flex: 1;
-    background: rgba(255,255,255,0.08);
-    border: none;
-    color: white;
-    padding: 4px;
-    border-radius: 5px;
-    cursor: pointer;
+    letter-spacing: 1px;
     font-size: 11px;
 }
 
-button:hover {
-    background: rgba(255,255,255,0.18);
+.pts, .kills {
+    text-align: center;
+    color: #ddd;
+}
+
+.bar {
+    color: #4cff7a;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 </style>
 </head>
@@ -96,64 +82,49 @@ button:hover {
 <body>
 
 <div class="overlay">
-    <div class="header">KZP PUBG TURNUVA SLOT LİSTESİ</div>
-    <div class="grid" id="grid"></div>
+    <div class="header">KZP PUBG LEADERBOARD</div>
+    <div id="table"></div>
 </div>
 
 <script>
 
-let slots = [
-    {id:1, team:"BOS", alive:0},
-    {id:2, team:"BOS", alive:0},
-    {id:3, team:"KZP E SPORTS", alive:4},
-    {id:4, team:"KARA E SPORTS", alive:4},
-    {id:5, team:"ECEL E SPORTS", alive:4},
-    {id:6, team:"EMK E SPORTS", alive:4},
-    {id:7, team:"PNT E SPORTS", alive:4},
-    {id:8, team:"57 ESPORT", alive:4},
-    {id:9, team:"KZP ACADEMY", alive:4},
-    {id:10, team:"SVS E SPORTS", alive:4},
-    {id:11, team:"FLEX E SPORTS", alive:4},
-    {id:12, team:"PNT ACADEMY", alive:4},
-    {id:13, team:"SFP E SPORTS", alive:4},
-    {id:14, team:"HD E SPORTS", alive:4},
-    {id:15, team:"GOK TEAM", alive:4},
-    {id:16, team:"ECEL ACADEMY", alive:4},
-    {id:17, team:"KZP AZE", alive:4},
-    {id:18, team:"PNT PRIME", alive:4}
+let teams = [
+    {rank:1, tag:"BRA", alive:3, pts:63, kills:2},
+    {rank:2, tag:"ARG", alive:0, pts:44, kills:0},
+    {rank:3, tag:"UKR", alive:1, pts:42, kills:3},
+    {rank:4, tag:"VIE", alive:0, pts:38, kills:2},
+    {rank:5, tag:"DEN", alive:4, pts:35, kills:0},
+    {rank:6, tag:"THA", alive:0, pts:34, kills:0},
+    {rank:7, tag:"KOR", alive:1, pts:34, kills:1},
+    {rank:8, tag:"CHN", alive:0, pts:30, kills:4},
+    {rank:9, tag:"NEU", alive:0, pts:29, kills:0},
+    {rank:10, tag:"USA", alive:4, pts:26, kills:3},
+    {rank:11, tag:"GER", alive:0, pts:23, kills:0}
 ];
 
-function changeAlive(id, delta) {
-    const slot = slots.find(s => s.id === id);
-    if (!slot || slot.team === "BOS") return;
-
-    slot.alive += delta;
-
-    if (slot.alive < 0) slot.alive = 0;
-    if (slot.alive > 4) slot.alive = 4;
-
-    render();
+function bars(n){
+    return "IIII".split("").map((x,i)=> i < n ? "I" : " ").join("");
 }
 
-function render() {
-    const grid = document.getElementById("grid");
-    grid.innerHTML = "";
+function render(){
+    const table = document.getElementById("table");
+    table.innerHTML = "";
 
-    slots.forEach(s => {
-        grid.innerHTML += `
-        <div class="slot ${s.team === "BOS" ? "empty" : ""}">
-            
-            <div class="top">
-                <span>SLOT ${s.id}</span>
-                <span class="alive">ALIVE: ${s.team === "BOS" ? 0 : s.alive}</span>
+    teams.forEach(t => {
+        table.innerHTML += `
+        <div class="row">
+
+            <div class="rank">${t.rank}</div>
+
+            <div class="team">
+                <div class="tag">${t.tag}</div>
             </div>
 
-            <div class="team">${s.team}</div>
+            <div class="alive bar">${bars(t.alive)}</div>
 
-            <div class="buttons">
-                <button onclick="changeAlive(${s.id}, -1)">-1</button>
-                <button onclick="changeAlive(${s.id}, 1)">+1</button>
-            </div>
+            <div class="pts">${t.pts}</div>
+
+            <div class="kills">${t.kills}</div>
 
         </div>`;
     });
