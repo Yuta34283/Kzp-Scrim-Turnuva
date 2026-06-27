@@ -7,50 +7,40 @@
     body { margin: 0; background: transparent; font-family: Arial; }
     .overlay { position: fixed; top: 20px; right: 20px; width: 360px; background: rgba(15,15,15,0.95); border-radius: 10px; overflow: hidden; color: white; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
     .header { background: rgba(30,30,30,0.95); padding: 10px; font-size: 12px; font-weight: bold; text-align: center; letter-spacing: 1px; }
-    .row { display: grid; grid-template-columns: 30px 1fr 80px 60px 60px; padding: 6px 8px; font-size: 12px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .row:nth-child(odd) { background: rgba(255,255,255,0.02); }
-    .rank { text-align: center; color: #aaa; }
+    .row { display: grid; grid-template-columns: 40px 1fr 60px; padding: 6px 12px; font-size: 13px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .rank { color: #aaa; }
     .tag { font-weight: bold; }
-    .pts, .kills { text-align: center; color: #ddd; }
-    .bar { color: #4cff7a; letter-spacing: 2px; font-weight: bold; }
+    .kills { text-align: right; color: #4cff7a; font-weight: bold; }
 </style>
 </head>
 <body>
 <div class="overlay">
-    <div class="header">KZP PUBG LEADERBOARD</div>
+    <div class="header">KZP TURNUVA SKOR</div>
     <div id="table"></div>
 </div>
 
 <script>
-let defaultTeams = [
-    {rank:1, tag:"BRA", alive:3, pts:63, kills:2},
-    {rank:2, tag:"ARG", alive:0, pts:44, kills:0},
-    {rank:3, tag:"UKR", alive:1, pts:42, kills:3},
-    {rank:4, tag:"VIE", alive:0, pts:38, kills:2},
-    {rank:5, tag:"DEN", alive:4, pts:35, kills:0},
-    {rank:6, tag:"THA", alive:0, pts:34, kills:0},
-    {rank:7, tag:"KOR", alive:1, pts:34, kills:1},
-    {rank:8, tag:"CHN", alive:0, pts:30, kills:4},
-    {rank:9, tag:"NEU", alive:0, pts:29, kills:0},
-    {rank:10, tag:"USA", alive:4, pts:26, kills:3},
-    {rank:11, tag:"GER", alive:0, pts:23, kills:0}
+const teams = [
+    {slot:3, tag:"KZP E SPORTS", kills:0}, {slot:4, tag:"KARA E SPORTS", kills:0},
+    {slot:5, tag:"ECEL E SPORTS", kills:0}, {slot:6, tag:"EMK E SPORTS", kills:0},
+    {slot:7, tag:"PNT E SPORTS", kills:0}, {slot:8, tag:"GOK TEAM", kills:0},
+    {slot:9, tag:"KZP ACADEMY", kills:0}, {slot:10, tag:"SVS E SPORTS", kills:0},
+    {slot:11, tag:"FLEX E SPORTS", kills:0}, {slot:12, tag:"PNT ACADEMY", kills:0},
+    {slot:13, tag:"SFP E SPORTS", kills:0}, {slot:14, tag:"HD E SPORTS", kills:0},
+    {slot:15, tag:"ECEL ACADEMY", kills:0}, {slot:16, tag:"KZP AZE", kills:0},
+    {slot:17, tag:"PNT PRIME", kills:0}
 ];
 
-function bars(n){ return "IIII".split("").map((x,i)=> i < n ? "I" : " ").join(""); }
-
 function render(){
-    let teams = JSON.parse(localStorage.getItem('teams')) || defaultTeams;
+    let savedTeams = JSON.parse(localStorage.getItem('teams')) || teams;
     const table = document.getElementById("table");
-    table.innerHTML = teams.map(t => `
+    table.innerHTML = savedTeams.map(t => `
         <div class="row">
-            <div class="rank">${t.rank}</div>
+            <div class="rank">${t.slot}</div>
             <div class="tag">${t.tag}</div>
-            <div class="bar">${bars(t.alive)}</div>
-            <div class="pts">${t.pts}</div>
-            <div class="kills">${t.kills}</div>
+            <div class="kills">${t.kills} Kill</div>
         </div>`).join("");
 }
-
 setInterval(render, 500);
 render();
 </script>
