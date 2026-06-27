@@ -1,69 +1,59 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<style>
-    /* OBS'de şeffaflığı zorlamak için temel yapı */
-    body { margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0); overflow: hidden; font-family: sans-serif; }
-    
-    .overlay { 
-        width: 360px; 
-        background: rgba(15, 15, 15, 0.9); /* Arka planı biraz belirginleştiriyoruz */
-        border-left: 4px solid #4cff7a;
-        color: white; 
-        box-shadow: 5px 0 15px rgba(0,0,0,0.5); 
-    }
-    .header { 
-        padding: 12px; background: rgba(30, 30, 30, 0.95); 
-        font-weight: bold; text-align: center; letter-spacing: 2px;
-        border-bottom: 1px solid #4cff7a; color: #4cff7a;
-    }
-    .row { 
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 10px 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .team-info { display: flex; align-items: center; gap: 10px; }
-    .rank { color: #4cff7a; font-weight: bold; width: 20px; }
-    .tag { font-weight: bold; font-size: 15px; }
-    .stats { font-size: 12px; color: #aaa; }
-    .kills { color: #fff; font-weight: bold; background: #222; padding: 2px 8px; border-radius: 4px; }
-</style>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0); font-family: sans-serif; color: white; }
+        .overlay { width: 450px; background: rgba(15, 15, 15, 0.95); border: 2px solid #4cff7a; border-radius: 8px; overflow: hidden; }
+        .header { background: #1a1a1a; padding: 10px; text-align: center; font-weight: bold; color: #4cff7a; border-bottom: 2px solid #4cff7a; }
+        .row { display: grid; grid-template-columns: 140px 60px 60px 80px; padding: 6px 10px; border-bottom: 1px solid #333; align-items: center; font-size: 13px; }
+        .head-row { font-weight: bold; background: #222; font-size: 12px; }
+        input { width: 45px; background: #000; border: 1px solid #444; color: #fff; text-align: center; }
+    </style>
 </head>
 <body>
 
 <div class="overlay">
-    <div class="header">KZP TURNUVA</div>
+    <div class="header">KZP TURNUVA PUAN TABLOSU</div>
+    <div class="row head-row">
+        <div>TAKIM</div>
+        <div>SIRALAMA</div>
+        <div>KILL</div>
+        <div>TOPLAM</div>
+    </div>
     <div id="table"></div>
 </div>
 
 <script>
-function render(){
-    // Buraya doğrudan takımları yazabilirsin (Veya bir JSON dosyasından çekebilirsin)
-    const teams = [
-        { tag: "TEAM A", alive: 4, kills: 12 },
-        { tag: "KZP", alive: 2, kills: 33 },
-        { tag: "XLOG", alive: 0, kills: 5 },
-        { tag: "RED", alive: 1, kills: 3 }
-    ];
+const teams = [
+    "KZP E SPORTS", "KARA E SPORTS", "ECEL E SPORTS", "EMK SPORTS", "PNT E SPORTS", 
+    "57 TEAM E SPORTS", "BCS E SPORTS", "SVS E SPORTS", "FLEX E SPORTS", "PNT ACADEMY", 
+    "SFP E SPORTS", "PNT PRIME", "GOK TEAM", "ECEL ACADEMY", "KZP AZE.", "HD E SPORTS"
+];
 
-    teams.sort((a, b) => b.kills - a.kills);
-    
-    const table = document.getElementById("table");
-    table.innerHTML = teams.map((t, i) => `
+// Takım verilerini oluştur
+let teamData = teams.map(name => ({ name, pos: 0, kills: 0 }));
+
+function update() {
+    teamData.sort((a, b) => (b.pos + b.kills) - (a.pos + a.kills));
+    const container = document.getElementById("table");
+    container.innerHTML = teamData.map((t, i) => `
         <div class="row">
-            <div class="team-info">
-                <div class="rank">${i + 1}</div>
-                <div class="tag">${t.tag}</div>
-            </div>
-            <div>
-                <span class="stats">${t.alive} alive</span>
-                <span class="kills">${t.kills} kill</span>
-            </div>
-        </div>`).join("");
+            <div>${t.name}</div>
+            <div><input type="number" value="${t.pos}" onchange="setVal('${t.name}', 'pos', this.value)"></div>
+            <div><input type="number" value="${t.kills}" onchange="setVal('${t.name}', 'kills', this.value)"></div>
+            <div style="font-weight:bold; color:#4cff7a;">${parseInt(t.pos) + parseInt(t.kills)}</div>
+        </div>
+    `).join("");
 }
 
-setInterval(render, 1000);
-render();
+function setVal(name, key, val) {
+    let team = teamData.find(t => t.name === name);
+    team[key] = parseInt(val) || 0;
+    update();
+}
+
+update();
 </script>
 
 </body>
