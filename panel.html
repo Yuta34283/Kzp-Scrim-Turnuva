@@ -2,32 +2,38 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Skor Paneli</title>
+    <title>Yönetim Paneli</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
-        .item { background: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+        .item { background: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tag { width: 150px; font-weight: bold; }
+        button { cursor: pointer; padding: 5px 10px; }
     </style>
 </head>
 <body>
-    <h2>Takım Kill Paneli</h2>
+    <h2>Takım Skor Paneli</h2>
     <div id="controls"></div>
 
 <script>
 const initialTeams = [
-    {slot:3, tag:"KZP E SPORTS", kills:0}, {slot:4, tag:"KARA E SPORTS", kills:0},
-    {slot:5, tag:"ECEL E SPORTS", kills:0}, {slot:6, tag:"EMK E SPORTS", kills:0},
-    {slot:7, tag:"PNT E SPORTS", kills:0}, {slot:8, tag:"GOK TEAM", kills:0},
-    {slot:9, tag:"KZP ACADEMY", kills:0}, {slot:10, tag:"SVS E SPORTS", kills:0},
-    {slot:11, tag:"FLEX E SPORTS", kills:0}, {slot:12, tag:"PNT ACADEMY", kills:0},
-    {slot:13, tag:"SFP E SPORTS", kills:0}, {slot:14, tag:"HD E SPORTS", kills:0},
-    {slot:15, tag:"ECEL ACADEMY", kills:0}, {slot:16, tag:"KZP AZE", kills:0},
-    {slot:17, tag:"PNT PRIME", kills:0}
+    {slot:3, tag:"KZP E SPORTS", alive:4, kills:0}, {slot:4, tag:"KARA E SPORTS", alive:4, kills:0},
+    {slot:5, tag:"ECEL E SPORTS", alive:4, kills:0}, {slot:6, tag:"EMK E SPORTS", alive:4, kills:0},
+    {slot:7, tag:"PNT E SPORTS", alive:4, kills:0}, {slot:8, tag:"GOK TEAM", alive:4, kills:0},
+    {slot:9, tag:"KZP ACADEMY", alive:4, kills:0}, {slot:10, tag:"SVS E SPORTS", alive:4, kills:0},
+    {slot:11, tag:"FLEX E SPORTS", alive:4, kills:0}, {slot:12, tag:"PNT ACADEMY", alive:4, kills:0},
+    {slot:13, tag:"SFP E SPORTS", alive:4, kills:0}, {slot:14, tag:"HD E SPORTS", alive:4, kills:0},
+    {slot:15, tag:"ECEL ACADEMY", alive:4, kills:0}, {slot:16, tag:"KZP AZE", alive:4, kills:0},
+    {slot:17, tag:"PNT PRIME", alive:4, kills:0}
 ];
 
 let teams = JSON.parse(localStorage.getItem('teams')) || initialTeams;
 
-function updateKill(index) {
-    teams[index].kills += 1;
+function update(index, type) {
+    if(type === 'kill') {
+        teams[index].kills += 1;
+    } else if(type === 'alive') {
+        if(teams[index].alive > 0) teams[index].alive -= 1;
+    }
     localStorage.setItem('teams', JSON.stringify(teams));
     render();
 }
@@ -38,8 +44,11 @@ function render() {
     teams.forEach((t, i) => {
         controls.innerHTML += `
             <div class="item">
-                <span><strong>${t.tag}</strong> (${t.kills} Kill)</span>
-                <button onclick="updateKill(${i})">+1 Kill</button>
+                <div class="tag">${t.tag}</div>
+                <div>Alive: ${t.alive}</div>
+                <button onclick="update(${i}, 'alive')">-1 Alive</button>
+                <div>Kills: ${t.kills}</div>
+                <button onclick="update(${i}, 'kill')">+1 Kill</button>
             </div>`;
     });
 }
